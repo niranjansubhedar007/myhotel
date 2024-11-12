@@ -1262,21 +1262,23 @@ const MenuList = () => {
         setFile(event.target.files[0]);
     };
 
-    // const filterMenus = () => {
-    //     const regex = new RegExp(searchQuery, 'i');
+    const filterMenus = () => {
+        const regex = new RegExp(searchQuery, 'i');
 
-    //     return menus.filter((menu) => {
-    //         const lowerCaseName = menu.name.toLowerCase();
-    //         const lowerCaseUniqueId = menu.uniqueId ? menu.uniqueId.toString().toLowerCase() : "";
+        return menus.filter((menu) => {
+            const lowerCaseName = menu.name.toLowerCase();
+            const lowerCaseUniqueId = menu.uniqueId ? menu.uniqueId.toString().toLowerCase() : "";
 
-    //         return (
-    //             regex.test(lowerCaseName) ||
-    //             regex.test(lowerCaseUniqueId)
-    //         );
-    //     });
-    // };
-// new changes
-    const exportToExcel = (isExportMenu) => {
+            return (
+                regex.test(lowerCaseName) ||
+                regex.test(lowerCaseUniqueId)
+            );
+        });
+    };
+new changes
+  
+
+const exportToExcel = (isExportMenu) => {
         // Create an empty worksheet
         const ws = XLSX.utils.aoa_to_sheet([['name', 'price', 'uniqueId']]);
 
@@ -1514,61 +1516,61 @@ const MenuList = () => {
 
     const pageCount = Math.ceil(menus.length / menusPerPage);
 
-    // const displayMenus = filterMenus()
-    //     .slice(pageNumber * menusPerPage, (pageNumber + 1) * menusPerPage)
-    //     .map((menu, index) => (
-    //         <tr
-    //             key={menu._id}
-    //             className={index % 2 === 0 ? 'bg-white' : 'bg-gray-100 '}
-    //         >
-    //             <td className="p-2  text-center text-gray ">
-    //                 {pageNumber * menusPerPage + index + 1}
-    //             </td>
-    //             <td className="text-left text-gray lg:pl-36 pl-4">{menu.name}</td>
-    //             <td className="text-left pl-8">
-    //                 {menu.imageUrl ? (
-    //                     <img
-    //                         src={`http://localhost:5000/${menu.imageUrl}`}
-    //                         width={50}
-    //                         height={50}
-    //                         alt="Menu Image"
-    //                         className="max-w-full max-h-32 rounded-md shadow-md"
-    //                     />
-    //                 ) : (
-    //                     "No Image"
-    //                 )}
-    //             </td>
-    //             <td className="p-2 text-center text-gray text-orange-400">{menu.uniqueId || "N/A"}</td>
-    //             <td className="p-2  text-center text-gray">{menu.price}</td>
+    const displayMenus = filterMenus()
+        .slice(pageNumber * menusPerPage, (pageNumber + 1) * menusPerPage)
+        .map((menu, index) => (
+            <tr
+                key={menu._id}
+                className={index % 2 === 0 ? 'bg-white' : 'bg-gray-100 '}
+            >
+                <td className="p-2  text-center text-gray ">
+                    {pageNumber * menusPerPage + index + 1}
+                </td>
+                <td className="text-left text-gray lg:pl-36 pl-4">{menu.name}</td>
+                <td className="text-left pl-8">
+                    {menu.imageUrl ? (
+                        <img
+                            src={`http://localhost:5000/${menu.imageUrl}`}
+                            width={50}
+                            height={50}
+                            alt="Menu Image"
+                            className="max-w-full max-h-32 rounded-md shadow-md"
+                        />
+                    ) : (
+                        "No Image"
+                    )}
+                </td>
+                <td className="p-2 text-center text-gray text-orange-400">{menu.uniqueId || "N/A"}</td>
+                <td className="p-2  text-center text-gray">{menu.price}</td>
 
 
-    //             <td className="py-1 text-center">
-    //                 <button
-    //                     className="text-gray-600 mr-3 focus:outline-none font-sans font-medium p-1 rounded-full px-2 text-sm shadow-md" style={{ background: "#ffff", }}
-    //                     onClick={() => handleEdit(menu)}
-    //                 >
-    //                     <FontAwesomeIcon
-    //                         icon={faPenToSquare}
-    //                         color="orange"
+                <td className="py-1 text-center">
+                    <button
+                        className="text-gray-600 mr-3 focus:outline-none font-sans font-medium p-1 rounded-full px-2 text-sm shadow-md" style={{ background: "#ffff", }}
+                        onClick={() => handleEdit(menu)}
+                    >
+                        <FontAwesomeIcon
+                            icon={faPenToSquare}
+                            color="orange"
 
-    //                         className="cursor-pointer"
-    //                     />{" "}
+                            className="cursor-pointer"
+                        />{" "}
 
-    //                 </button>
-    //                 <button
-    //                     className="text-gray-600 mr-3 font-sans focus:outline-none font-medium p-1 rounded-full px-2 text-sm shadow-md" style={{ background: "#ffff", }}
-    //                     onClick={() => handleDelete(menu)}
-    //                 >
-    //                     <FontAwesomeIcon
-    //                         icon={faTrash}
-    //                         color="red"
-    //                         className="cursor-pointer"
-    //                     />{" "}
+                    </button>
+                    <button
+                        className="text-gray-600 mr-3 font-sans focus:outline-none font-medium p-1 rounded-full px-2 text-sm shadow-md" style={{ background: "#ffff", }}
+                        onClick={() => handleDelete(menu)}
+                    >
+                        <FontAwesomeIcon
+                            icon={faTrash}
+                            color="red"
+                            className="cursor-pointer"
+                        />{" "}
 
-    //                 </button>
-    //             </td>
-    //         </tr>
-    //     ));
+                    </button>
+                </td>
+            </tr>
+        ));
 
     const home = () => {
         router.push("/dashboard");
@@ -1774,8 +1776,8 @@ const MenuList = () => {
                             <th className="p-2 text-center">Actions</th>
                         </tr>
                     </thead>
-                            {/*                     <tbody className="text-md font-sans font-bold">{displayMenus}</tbody>
- */}
+                      <tbody className="text-md font-sans font-bold">{displayMenus}</tbody>
+ 
 
                 </table>
 

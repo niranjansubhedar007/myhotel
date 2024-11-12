@@ -294,18 +294,18 @@ const BarList = () => {
     setFile(event.target.files[0]);
   };
 
-  // const filterMenus = () => {
-  //   const regex = new RegExp(searchQuery, "i");
+  const filterMenus = () => {
+    const regex = new RegExp(searchQuery, "i");
 
-  //   return menus.filter((menu) => {
-  //     const lowerCaseName = menu.name?.toLowerCase() || "";
-  //     const lowerCaseUniqueId = menu.barSubmenuId
-  //       ? menu.barSubmenuId.toString().toLowerCase()
-  //       : "";
+    return menus.filter((menu) => {
+      const lowerCaseName = menu.name?.toLowerCase() || "";
+      const lowerCaseUniqueId = menu.barSubmenuId
+        ? menu.barSubmenuId.toString().toLowerCase()
+        : "";
 
-  //     return regex.test(lowerCaseName) || regex.test(lowerCaseUniqueId);
-  //   });
-  // };
+      return regex.test(lowerCaseName) || regex.test(lowerCaseUniqueId);
+    });
+  };
 
   const exportToSampleExcel = (isExportMenu) => {
     // Create an empty worksheet
@@ -796,55 +796,55 @@ const BarList = () => {
   const pageCount = Math.ceil(menus.length / menusPerPage);
 
 
-  // const displayMenus = filterMenus()
-  //   .slice(pageNumber * menusPerPage, (pageNumber + 1) * menusPerPage)
-  //   .map((menu, index) => (
-  //     <tr key={menu._id.$oid} className={index % 2 === 0 ? "bg-white" : "bg-gray-100 text-sm"}>
-  //       <td className="p-2 text-center text-gray border">{pageNumber * menusPerPage + index + 1}</td>
-  //       <td className="text-left text-green-950 lg:pl-10 lg:pr-5 pl-4 text-sm p-1 border">{menu.name}</td>
+  const displayMenus = filterMenus()
+    .slice(pageNumber * menusPerPage, (pageNumber + 1) * menusPerPage)
+    .map((menu, index) => (
+      <tr key={menu._id.$oid} className={index % 2 === 0 ? "bg-white" : "bg-gray-100 text-sm"}>
+        <td className="p-2 text-center text-gray border">{pageNumber * menusPerPage + index + 1}</td>
+        <td className="text-left text-green-950 lg:pl-10 lg:pr-5 pl-4 text-sm p-1 border">{menu.name}</td>
 
-  //       {barCategories.map((category, catIndex) => (
-  //         <React.Fragment key={`${menu._id.$oid}-${category}-${catIndex}`}>
-  //           {/* Check if the menu has child menus for this category */}
-  //           {menu.childMenus.some(childMenu => childMenu.barCategory === category) ? (
-  //             <>
-  //               {/* Find the child menu for the current category */}
-  //               {menu.childMenus.map((childMenu, childIndex) => {
-  //                 if (childMenu.barCategory === category) {
-  //                   return (
-  //                     <React.Fragment key={`${childMenu._id.$oid}`}>
-  //                       <td className="p-1 text-center text-gray text-sm border">{childMenu.pricePer ? childMenu.pricePer[`pricePer${category}`] || 0 : 0}</td>
-  //                       <td className="p-1 text-center text-gray text-sm border">{childMenu.lessStock || 0}</td>
-  //                     </React.Fragment>
-  //                   );
-  //                 }
-  //                 return null;
-  //               })}
-  //             </>
-  //           ) : (
-  //             // Display blank cells for the category if no child menus are found
-  //             <React.Fragment key={`empty-${category}`}>
-  //               <td className="p-1 text-center text-gray text-sm">0</td>
-  //               <td className="p-1 text-center text-gray text-sm">0</td>
-  //             </React.Fragment>
-  //           )}
-  //         </React.Fragment>
-  //       ))}
-  //       <td className="py-1 text-center">
-  //         <button
-  //           className="text-gray-600 mr-3 font-sans focus:outline-none font-medium p-1 rounded-full px-2 text-sm shadow-md"
-  //           style={{ background: "#ffff" }}
-  //           onClick={() => handleDelete(menu)}
-  //         >
-  //           <FontAwesomeIcon
-  //             icon={faTrash}
-  //             color="red"
-  //             className="cursor-pointer"
-  //           />{" "}
-  //         </button>
-  //       </td>
-  //     </tr>
-  //   ));
+        {barCategories.map((category, catIndex) => (
+          <React.Fragment key={`${menu._id.$oid}-${category}-${catIndex}`}>
+            {/* Check if the menu has child menus for this category */}
+            {menu.childMenus.some(childMenu => childMenu.barCategory === category) ? (
+              <>
+                {/* Find the child menu for the current category */}
+                {menu.childMenus.map((childMenu, childIndex) => {
+                  if (childMenu.barCategory === category) {
+                    return (
+                      <React.Fragment key={`${childMenu._id.$oid}`}>
+                        <td className="p-1 text-center text-gray text-sm border">{childMenu.pricePer ? childMenu.pricePer[`pricePer${category}`] || 0 : 0}</td>
+                        <td className="p-1 text-center text-gray text-sm border">{childMenu.lessStock || 0}</td>
+                      </React.Fragment>
+                    );
+                  }
+                  return null;
+                })}
+              </>
+            ) : (
+              // Display blank cells for the category if no child menus are found
+              <React.Fragment key={`empty-${category}`}>
+                <td className="p-1 text-center text-gray text-sm">0</td>
+                <td className="p-1 text-center text-gray text-sm">0</td>
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        ))}
+        <td className="py-1 text-center">
+          <button
+            className="text-gray-600 mr-3 font-sans focus:outline-none font-medium p-1 rounded-full px-2 text-sm shadow-md"
+            style={{ background: "#ffff" }}
+            onClick={() => handleDelete(menu)}
+          >
+            <FontAwesomeIcon
+              icon={faTrash}
+              color="red"
+              className="cursor-pointer"
+            />{" "}
+          </button>
+        </td>
+      </tr>
+    ));
 
 
   const modalContent = (
@@ -1058,8 +1058,8 @@ const BarList = () => {
               <th className="p-2 text-center">Actions</th>
             </tr >
           </thead>
-                                     {/*                     <tbody className="text-md font-sans font-bold">{displayMenus}</tbody>
- */}
+                         <tbody className="text-md font-sans font-bold">{displayMenus}</tbody>
+
         </table>
 
         <div className="flex flex-col items-center mt-1">
