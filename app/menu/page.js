@@ -1275,7 +1275,6 @@ const MenuList = () => {
             );
         });
     };
-new changes
   
 
 const exportToExcel = (isExportMenu) => {
