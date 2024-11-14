@@ -43,7 +43,7 @@
 //         if (menuToEdit) {
 //             setExistingImage(
 //                 menuToEdit.imageUrl
-//                     ? `http://localhost:5000/${menuToEdit.imageUrl}`
+//                     ? `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${menuToEdit.imageUrl}`
 //                     : null
 //             );
 
@@ -89,7 +89,7 @@
 //             // formData.append("mainCategoryId", editedMenuData.mainCategoryId);
 
 //             const response = await axios.patch(
-//                 `http://localhost:5000/api/menu/menus/${menuToEdit._id}`,
+//                 `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/${menuToEdit._id}`,
 //                 formData
 //             );
 
@@ -376,7 +376,7 @@
 //         try {
 //             // Proceed with the delete operation
 //             const response = await axios.delete(
-//                 `http://localhost:5000/api/menu/menus/${menuToDelete._id}`
+//                 `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/${menuToDelete._id}`
 //             );
 //             console.log("Menu deleted successfully:", response.data);
 
@@ -451,7 +451,7 @@
 //             formData.append("uniqueId", newMenuData.uniqueId);
 
 //             const response = await axios.post(
-//                 "http://localhost:5000/api/menu/menu",
+//                 "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menu",
 //                 formData
 //             );
 
@@ -511,7 +511,7 @@
 //         const fetchMenus = async () => {
 //             try {
 //                 const response = await axios.get(
-//                     "http://localhost:5000/api/menu/menus/list"
+//                     "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list"
 //                 );
 //                 setMenus(response.data);
 //             } catch (error) {
@@ -534,7 +534,7 @@
 
 //             // Make a POST request to the backend endpoint
 //             const response = await axios.post(
-//                 "http://localhost:5000/api/menu/upload-excel",
+//                 "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/upload-excel",
 //                 formData
 //             );
 
@@ -561,7 +561,7 @@
 //                 <td className="text-left pl-8">
 //                     {menu.imageUrl ? (
 //                         <img
-//                             src={`http://localhost:5000/${menu.imageUrl}`}
+//                             src={`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${menu.imageUrl}`}
 //                             width={50}
 //                             height={50}
 //                             alt="Menu Image"
@@ -942,7 +942,7 @@
 //                                 <span className="font-semibold">Image:</span>{" "}
 //                                 {menuToView?.imageUrl ? (
 //                                     <img
-//                                         src={`http://localhost:5000/${menuToView.imageUrl}`}
+//                                         src={`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${menuToView.imageUrl}`}
 //                                         alt="Menu"
 //                                         className="max-w-full max-h-32 mt-2 rounded-md shadow-md"
 //                                     />
@@ -1015,7 +1015,7 @@ const EditModal = ({ isOpen, onCancel, onEdit, menuToEdit }) => {
         if (menuToEdit) {
             setExistingImage(
                 menuToEdit.imageUrl
-                    ? `http://localhost:5000/${menuToEdit.imageUrl}`
+                    ? `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${menuToEdit.imageUrl}`
                     : null
             );
 
@@ -1061,7 +1061,7 @@ const EditModal = ({ isOpen, onCancel, onEdit, menuToEdit }) => {
             // formData.append("mainCategoryId", editedMenuData.mainCategoryId);
 
             const response = await axios.patch(
-                `http://localhost:5000/api/menu/menus/${menuToEdit._id}`,
+                `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/${menuToEdit._id}`,
                 formData
             );
 
@@ -1344,7 +1344,7 @@ const exportToExcel = (isExportMenu) => {
         try {
             // Proceed with the delete operation
             const response = await axios.delete(
-                `http://localhost:5000/api/menu/menus/${menuToDelete._id}`
+                `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/${menuToDelete._id}`
             );
             console.log("Menu deleted successfully:", response.data);
 
@@ -1419,7 +1419,7 @@ const exportToExcel = (isExportMenu) => {
             formData.append("uniqueId", newMenuData.uniqueId);
 
             const response = await axios.post(
-                "http://localhost:5000/api/menu/menu",
+                "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menu",
                 formData
             );
 
@@ -1479,7 +1479,7 @@ const exportToExcel = (isExportMenu) => {
         const fetchMenus = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:5000/api/menu/menus/list"
+                    "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list"
                 );
                 setMenus(response.data);
             } catch (error) {
@@ -1502,7 +1502,7 @@ const exportToExcel = (isExportMenu) => {
 
             // Make a POST request to the backend endpoint
             const response = await axios.post(
-                "http://localhost:5000/api/menu/upload-excel",
+                "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/upload-excel",
                 formData
             );
 
@@ -1529,7 +1529,7 @@ const exportToExcel = (isExportMenu) => {
                 <td className="text-left pl-8">
                     {menu.imageUrl ? (
                         <img
-                            src={`http://localhost:5000/${menu.imageUrl}`}
+                            src={`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${menu.imageUrl}`}
                             width={50}
                             height={50}
                             alt="Menu Image"
@@ -1942,7 +1942,7 @@ const exportToExcel = (isExportMenu) => {
                                 <span className="font-semibold">Image:</span>{" "}
                                 {menuToView?.imageUrl ? (
                                     <img
-                                        src={`http://localhost:5000/${menuToView.imageUrl}`}
+                                        src={`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${menuToView.imageUrl}`}
                                         alt="Menu"
                                         className="max-w-full max-h-32 mt-2 rounded-md shadow-md"
                                     />

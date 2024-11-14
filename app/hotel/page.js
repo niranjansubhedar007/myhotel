@@ -39,7 +39,7 @@ const CreateHotelForm = () => {
 
   const fetchHotels = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/hotel/get-all');
+      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get-all');
       setHotels(response.data);
     } catch (error) {
       console.error('Error fetching hotels:', error);
@@ -75,7 +75,7 @@ const CreateHotelForm = () => {
   const handleEdit = async (hotelId) => {
     try {
 
-      const response = await axios.get(`http://localhost:5000/api/hotel/get/${hotelId}`);
+      const response = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get/${hotelId}`);
       const hotelDetails = response.data;
 
       setEditFormData(hotelDetails);
@@ -142,7 +142,7 @@ const handleEditInputChange = (e) => {
         formDataForUpload.append(key, value);
       });
 
-      const response = await axios.patch(`http://localhost:5000/api/hotel/edit/${editFormData._id}`, formDataForUpload);
+      const response = await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/edit/${editFormData._id}`, formDataForUpload);
       console.log('Hotel edited successfully:', response.data);
 
       setIsEditModalOpen(false); // Close the edit modal
@@ -156,7 +156,7 @@ const handleEditInputChange = (e) => {
 
   // const handleDelete = async (hotelId) => {
   //   try {
-  //     await axios.delete(`http://localhost:5000/api/hotel/delete/${hotelId}`);
+  //     await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/delete/${hotelId}`);
   //     console.log('Hotel deleted successfully.');
   //     fetchHotels(); // Refresh the list after deletion
   //   } catch (error) {
@@ -175,7 +175,7 @@ const handleEditInputChange = (e) => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/hotel/delete/${deleteHotelId}`);
+      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/delete/${deleteHotelId}`);
       console.log('Hotel deleted successfully.');
       fetchHotels(); // Refresh the list after deletion
     resetFormSubmission(); // Reset form submission state
@@ -277,7 +277,7 @@ const handleEditInputChange = (e) => {
         formDataForUpload.append(key, value);
       });
 
-      const response = await axios.post('http://localhost:5000/api/hotel/create', formDataForUpload);
+      const response = await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/create', formDataForUpload);
       console.log('Hotel created successfully:', response.data);
 
       resetForm(); // Clear form data
@@ -523,7 +523,7 @@ const handleEditInputChange = (e) => {
                     <td className="p-2 whitespace-nowrap text-left text-gray lg:pl-6">{hotel.sacNo}</td>
                     <td className="p-2 whitespace-nowrap text-left text-gray lg:pl-6">{hotel.fssaiNo}</td>
                     <td className="p-2 whitespace-nowrap text-left text-gray lg:pl-6">
-                    {hotel.hotelLogo && <img src={`http://localhost:5000/${hotel.hotelLogo}`} alt="Hotel Logo" className="w-10 h-10" />}
+                    {hotel.hotelLogo && <img src={`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${hotel.hotelLogo}`} alt="Hotel Logo" className="w-10 h-10" />}
                     </td>
                     <td className="text-center pl-2 lg:pl-6">
                       <div className="py-1 text-center flex">

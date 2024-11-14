@@ -51,7 +51,7 @@ const Greetings = () => {
 
   const getGreetings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/greet/greet');
+      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet');
       setGreetings(response.data);
     } catch (error) {
       console.error('Error retrieving greetings:', error);
@@ -86,7 +86,7 @@ const Greetings = () => {
     }
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/greet/greet/${editedGreet.id}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${editedGreet.id}`,
         { greet: editedGreet.greet, message: editedGreet.message }
       );
       const updatedGreet = response.data;
@@ -108,7 +108,7 @@ const Greetings = () => {
 
   // const handleDeleteConfirmed = async () => {
   //   try {
-  //     await axios.delete(`http://localhost:5000/api/greet/greet/${itemIdToDelete}`);
+  //     await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${itemIdToDelete}`);
   //     setGreetings((prevGreetings) => prevGreetings.filter((greet) => greet._id !== itemIdToDelete));
   //     setIsDeleteConfirmationModalOpen(false);
   //   } catch (error) {
@@ -118,7 +118,7 @@ const Greetings = () => {
 
   const handleDeleteConfirmed = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/greet/greet/${itemIdToDelete}`);
+      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${itemIdToDelete}`);
       setGreetings((prevGreetings) => prevGreetings.filter((greet) => greet._id !== itemIdToDelete));
       setIsDeleteConfirmationModalOpen(false);
       // Set dataAdded flag to false after successful deletion
@@ -131,7 +131,7 @@ const Greetings = () => {
 
   // const handleDeleteConfirmed = async () => {
   //   try {
-  //     await axios.delete(`http://localhost:5000/api/greet/greet/${itemIdToDelete}`);
+  //     await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${itemIdToDelete}`);
   //     setGreetings((prevGreetings) => prevGreetings.filter((greet) => greet._id !== itemIdToDelete));
   //     setIsDeleteConfirmationModalOpen(false);
   //     // Reload the page after successful deletion
@@ -157,7 +157,7 @@ const Greetings = () => {
 
   //   try {
   //     if (!dataAdded) {
-  //       const response = await axios.post('http://localhost:5000/api/greet/greet', {
+  //       const response = await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet', {
   //         greet: trimmedGreet,
   //         message: trimmedMessage
   //       });
@@ -186,7 +186,7 @@ const Greetings = () => {
     }
   
     try {
-      const response = await axios.post('http://localhost:5000/api/greet/greet', {
+      const response = await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet', {
         greet: trimmedGreet,
         message: trimmedMessage
       });
@@ -215,7 +215,7 @@ const Greetings = () => {
     }
 
     try {
-      const response = await axios.patch(`http://localhost:5000/api/greet/greet/${greetId}`, updateGreetData);
+      const response = await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${greetId}`, updateGreetData);
       setUpdateGreetData({ id: '', greet: '', message: '' });
       getGreetings();
     } catch (error) {

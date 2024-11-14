@@ -29,7 +29,7 @@ const IpSettings = () => {
 
   const fetchSettings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/couponPrinter');
+      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/couponPrinter');
       console.log(response);
       setSavedData(response.data);
     } catch (error) {
@@ -40,7 +40,7 @@ const IpSettings = () => {
   useEffect(() => {
     const fetchCounterAdmins = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/counteradmin/counteradmins');
+        const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counteradmin/counteradmins');
         setCounterAdmins(response.data.counterAdmins); // Set the fetched counter admins
       } catch (error) {
         console.error('Error fetching counter admins:', error.message);
@@ -60,7 +60,7 @@ const IpSettings = () => {
     e.preventDefault();
   
     try {
-      await axios.post('http://localhost:5000/printerCoupon', {
+      await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/printerCoupon', {
         printerIPCoupon: printerIPCoupon, // Sending printer IP correctly
         printerPortCoupon: printerPortCoupon, // Make sure this matches what the server expects
       });
@@ -80,7 +80,7 @@ const IpSettings = () => {
   const handleCounterAdminLanBillToggleChange = async (counterAdminId, currentStatus) => {
     try {
       const newValue = !currentStatus;
-      const response = await axios.patch(`http://localhost:5000/api/counteradmin/counteradmin/${counterAdminId}/lanbill`, {
+      const response = await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counteradmin/counteradmin/${counterAdminId}/lanbill`, {
         islanBill: newValue
       });
   

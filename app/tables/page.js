@@ -85,7 +85,7 @@
 
 //     const handleView = async (tableId) => {
 //         try {
-//             const response = await axios.get(`http://localhost:5000/api/table/tables/${tableId}`);
+//             const response = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`);
 //             const tableData = response.data;
 
 //             // Set the table information in the state
@@ -109,7 +109,7 @@
 //     useEffect(() => {
 //         const fetchTables = async () => {
 //             try {
-//                 const tablesResponse = await axios.get('http://localhost:5000/api/table/tables');
+//                 const tablesResponse = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables');
 //                 console.log(tablesResponse.data)
 //                 setTables(tablesResponse.data);
 //             } catch (error) {
@@ -119,7 +119,7 @@
 
 //         const fetchSections = async () => {
 //             try {
-//                 const sectionsResponse = await axios.get('http://localhost:5000/api/section');
+//                 const sectionsResponse = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section');
 //                 setSections(sectionsResponse.data);
 //             } catch (error) {
 //                 console.error('Error fetching sections:', error);
@@ -155,7 +155,7 @@
 //             formData.append("tableName", newTable.name);
 
 //             const response = await axios.post(
-//                 `http://localhost:5000/api/table/${sectionId}/tables`,
+//                 `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/${sectionId}/tables`,
 //                 { numberOfTables },
 //                 {
 //                     headers: {
@@ -188,7 +188,7 @@
 //     useEffect(() => {
 //         const fetchtables = async () => {
 //             try {
-//                 const response = await axios.get('http://localhost:5000/api/table/tables');
+//                 const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables');
 //                 console.log(response.data)
 //                 setTables(response.data);
 //             } catch (error) {
@@ -258,7 +258,7 @@
 //         try {
 //             // Proceed with the delete operation
 //             const response = await axios.delete(
-//                 `http://localhost:5000/api/table/tables/${tableToDelete._id}`
+//                 `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableToDelete._id}`
 //             );
 //             console.log("Table deleted successfully:", response.data);
 
@@ -307,7 +307,7 @@
 //             formData.append('sectionId', editTable.section._id); // Add sectionId to FormData
 
 //             const response = await axios.patch(
-//                 `http://localhost:5000/api/table/tables/${editTable._id}`,
+//                 `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${editTable._id}`,
 //                 formData,
 //                 {
 //                     headers: {
@@ -777,7 +777,7 @@
 //   const handleView = async (tableId) => {
 //     try {
 //       const response = await axios.get(
-//         `http://localhost:5000/api/table/tables/${tableId}`
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
 //       );
 //       const tableData = response.data;
 
@@ -800,7 +800,7 @@
 //     const fetchTables = async () => {
 //       try {
 //         const tablesResponse = await axios.get(
-//           "http://localhost:5000/api/table/tables"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables"
 //         );
 //         console.log(tablesResponse.data);
 //         setTables(tablesResponse.data);
@@ -812,7 +812,7 @@
 //     const fetchSections = async () => {
 //       try {
 //         const sectionsResponse = await axios.get(
-//           "http://localhost:5000/api/section"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section"
 //         );
 //         setSections(sectionsResponse.data);
 //       } catch (error) {
@@ -851,7 +851,7 @@
 //       formData.append("tableName", newTable.name);
 
 //       const response = await axios.post(
-//         `http://localhost:5000/api/table/${sectionId}/tables`,
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/${sectionId}/tables`,
 //         { numberOfTables },
 //         {
 //           headers: {
@@ -883,7 +883,7 @@
 //   const fetchtables = async () => {
 //     try {
 //       const response = await axios.get(
-//         "http://localhost:5000/api/table/tables"
+//         "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables"
 //       );
 //       console.log(response.data);
 //       setTables(response.data);
@@ -960,7 +960,7 @@
 //     try {
 //       // Proceed with the delete operation
 //       const response = await axios.delete(
-//         `http://localhost:5000/api/table/tables/${tableToDelete._id}`
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableToDelete._id}`
 //       );
 //       console.log("Table deleted successfully:", response.data);
 
@@ -997,7 +997,7 @@
 
 //   //     // console.log(JSON.stringify(checkedinputvalue));
 
-//   //     const response = await axios.post(`http://localhost:5000/api/table/${sectionId}/tables`, JSON.stringify(checkedinputvalue));
+//   //     const response = await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/${sectionId}/tables`, JSON.stringify(checkedinputvalue));
 //   //     setDelmessage(response.data.msg);
 
 //   //       // Open the delete confirmation modal
@@ -1033,7 +1033,7 @@
 //       formData.append("sectionId", editTable.section._id); // Add sectionId to FormData
 
 //       const response = await axios.patch(
-//         `http://localhost:5000/api/table/tables/${editTable._id}`,
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${editTable._id}`,
 //         formData,
 //         {
 //           headers: {
@@ -1151,7 +1151,7 @@
 //     try {
 //       // Proceed with the delete operation for all selected tables
 //       const response = await axios.delete(
-//         `http://localhost:5000/api/table/tables`,
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables`,
 //         {
 //           data: { ids: tableToDelete }, // Send the array of IDs to delete
 //         }
@@ -1743,7 +1743,7 @@ const Tables = () => {
   const handleView = async (tableId) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/table/tables/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
       );
       const tableData = response.data;
 
@@ -1766,7 +1766,7 @@ const Tables = () => {
     const fetchTables = async () => {
       try {
         const tablesResponse = await axios.get(
-          "http://localhost:5000/api/table/tables"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables"
         );
         console.log(tablesResponse.data);
         setTables(tablesResponse.data);
@@ -1778,7 +1778,7 @@ const Tables = () => {
     const fetchSections = async () => {
       try {
         const sectionsResponse = await axios.get(
-          "http://localhost:5000/api/section"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section"
         );
         setSections(sectionsResponse.data);
       } catch (error) {
@@ -1817,7 +1817,7 @@ const Tables = () => {
       formData.append("tableName", newTable.name);
 
       const response = await axios.post(
-        `http://localhost:5000/api/table/${sectionId}/tables`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/${sectionId}/tables`,
         { numberOfTables },
         {
           headers: {
@@ -1849,7 +1849,7 @@ const Tables = () => {
   const fetchtables = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/table/tables"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables"
       );
       console.log(response.data);
       setTables(response.data);
@@ -1926,7 +1926,7 @@ const Tables = () => {
     try {
       // Proceed with the delete operation
       const response = await axios.delete(
-        `http://localhost:5000/api/table/tables/${tableToDelete._id}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableToDelete._id}`
       );
       console.log("Table deleted successfully:", response.data);
 
@@ -1963,7 +1963,7 @@ const Tables = () => {
 
   //     // console.log(JSON.stringify(checkedinputvalue));
 
-  //     const response = await axios.post(`http://localhost:5000/api/table/${sectionId}/tables`, JSON.stringify(checkedinputvalue));
+  //     const response = await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/${sectionId}/tables`, JSON.stringify(checkedinputvalue));
   //     setDelmessage(response.data.msg);
 
   //       // Open the delete confirmation modal
@@ -1999,7 +1999,7 @@ const Tables = () => {
       formData.append("sectionId", editTable.section._id); // Add sectionId to FormData
 
       const response = await axios.patch(
-        `http://localhost:5000/api/table/tables/${editTable._id}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${editTable._id}`,
         formData,
         {
           headers: {
@@ -2221,7 +2221,7 @@ const Tables = () => {
   //   try {
   //     // Proceed with the delete operation for all selected tables
   //     const response = await axios.delete(
-  //       `http://localhost:5000/api/table/tables`,
+  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables`,
   //       {
   //         data: { ids: tabletodelete }, // Send the array of IDs to delete
   //       }
@@ -2256,7 +2256,7 @@ const Tables = () => {
   const confirmAllDelete = async () => {
     try {
       // Send the array of selected table IDs to the backend for deletion
-      const response = await axios.delete(`http://localhost:5000/api/table/tables`, {
+      const response = await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables`, {
         data: { ids: tabletodelete }, // tableToDelete stores the selected table IDs
       });
  

@@ -327,7 +327,7 @@ const OrderSidebar = () => {
     const fetchItems = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/item/items/equal-low-stock"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items/equal-low-stock"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
@@ -403,7 +403,7 @@ const OrderSidebar = () => {
       try {
         // Fetch all hotels
         const response = await axios.get(
-          "http://localhost:5000/api/hotel/get-all"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get-all"
         );
 
         setHotelInfo(response.data);

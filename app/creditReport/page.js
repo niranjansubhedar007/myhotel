@@ -37,7 +37,7 @@ const CreditReport = () => {
 
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/customer/customers");
+      const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers");
       setCustomers(response.data);
     } catch (error) {
       console.error("Error fetching customers:", error);

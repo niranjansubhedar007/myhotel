@@ -27,7 +27,7 @@ const ExpenseList = () => {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/expense/expenses');
+        const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/expense/expenses');
         setExpenses(response.data);
       } catch (error) {
         console.error('Error fetching expenses:', error);
@@ -53,11 +53,11 @@ const ExpenseList = () => {
     e.preventDefault();
 
     try {
-      await axios.patch(`http://localhost:5000/api/expense/expenses/${selectedExpense._id}`, {
+      await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/expense/expenses/${selectedExpense._id}`, {
         expense: selectedExpense.expense,
       });
 
-      const response = await axios.get('http://localhost:5000/api/expense/expenses');
+      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/expense/expenses');
       setExpenses(response.data);
 
       setIsEditModalOpen(false);
@@ -68,7 +68,7 @@ const ExpenseList = () => {
 
   const handleDeleteSubmit = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/expense/expenses/${selectedExpense._id}`);
+      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/expense/expenses/${selectedExpense._id}`);
 
       setExpenses((prevExpenses) => prevExpenses.filter((expense) => expense._id !== selectedExpense._id));
 
@@ -82,9 +82,9 @@ const ExpenseList = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/expense/expenses', { expense: newExpense });
+      await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/expense/expenses', { expense: newExpense });
 
-      const response = await axios.get('http://localhost:5000/api/expense/expenses');
+      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/expense/expenses');
       setExpenses(response.data);
 
       setNewExpense('');

@@ -19,7 +19,7 @@
 //   }, []);
 
 //   const handleLogout = async () => {
-//     await axios.post('http://localhost:5000/api/liquorBrand/updateClosing');
+//     await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/updateClosing');
 
 //     localStorage.removeItem("EmployeeAuthToken");
 //     router.push("/login");
@@ -166,7 +166,7 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/liquorBrand/updateClosing");
+      await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/updateClosing");
       localStorage.removeItem("EmployeeAuthToken");
       router.push("/login");
     } catch (error) {
@@ -178,7 +178,7 @@ const Dashboard = () => {
     try {
       const newIsBarState = !isBar;
       const response = await axios.post(
-        "http://localhost:5000/api/auth/updateBarState",
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/updateBarState",
         { email, isBar: newIsBarState }
       );
       if (response.status === 200) {

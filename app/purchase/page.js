@@ -47,7 +47,7 @@
 //   const handleEdit = async () => {
 //     try {
 //       await axios.put(
-//         `http://localhost:5000/api/item/items/${itemToEdit._id}`,
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items/${itemToEdit._id}`,
 //         formData
 //       );
 
@@ -231,7 +231,7 @@
 //     try {
 //       // Assuming the API returns the deleted item
 //       await axios.delete(
-//         `http://localhost:5000/api/item/items/${itemIdToDelete}`
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items/${itemIdToDelete}`
 //       );
 
 //       // Update the state by removing the deleted item
@@ -252,7 +252,7 @@
 //     try {
 //       // Make an API request using Axios to update the item data
 //       await axios.put(
-//         `http://localhost:5000/api/item/items/${itemToEdit._id}`,
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items/${itemToEdit._id}`,
 //         formData
 //       );
 
@@ -303,13 +303,13 @@
 //     try {
 //       // Fetch the list of items
 //       const itemsResponse = await axios.get(
-//         "http://localhost:5000/api/item/items"
+//         "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items"
 //       );
 //       setItems(itemsResponse.data);
 
 //       // Fetch the list of units
 //       const unitsResponse = await axios.get(
-//         "http://localhost:5000/api/unit/units"
+//         "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units"
 //       );
 //       setUnits(unitsResponse.data);
 //     } catch (error) {
@@ -336,7 +336,7 @@
 //       // Fetch the details of the selected unit
 //       try {
 //         const unitDetailsResponse = await axios.get(
-//           `http://localhost:5000/api/unit/units/${value}`
+//           `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${value}`
 //         );
 //         setSelectedUnitDetails(unitDetailsResponse.data);
 //       } catch (error) {
@@ -374,7 +374,7 @@
 //     try {
      
 //         // If creating, make a POST request
-//         await axios.post("http://localhost:5000/api/item/items", {
+//         await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items", {
 //           ...formData,
 //           unit: formData.unit || "",
 //           lessStock: formData.lessStock || 0,
@@ -699,7 +699,7 @@
 //     const fetchUnits = async () => {
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/unit/units"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units"
 //         );
 //         setUnits(response.data);
 //       } catch (error) {
@@ -740,7 +740,7 @@
 //     try {
 //       // Make an API request using Axios to update the unit
 //       await axios.patch(
-//         `http://localhost:5000/api/unit/units/${selectedUnit._id}`,
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${selectedUnit._id}`,
 //         {
 //           unit: updatedUnit.unit, // Use 'unit' instead of 'updatedUnit.units'
 //         }
@@ -762,7 +762,7 @@
 //   const handleDeleteSubmit = async () => {
 //     try {
 //       await axios.delete(
-//         `http://localhost:5000/api/unit/units/${selectedUnit._id}`
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${selectedUnit._id}`
 //       );
 //       // Remove the deleted unit from the local state
 //       setUnits((prevUnits) =>
@@ -780,12 +780,12 @@
 
 //     try {
 //       // Make an API request using Axios to post the new unit
-//       await axios.post("http://localhost:5000/api/unit/units", {
+//       await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units", {
 //         unit: newUnit,
 //       });
 
 //       // Fetch the updated list of units
-//       const response = await axios.get("http://localhost:5000/api/unit/units");
+//       const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units");
 //       setUnits(response.data);
 
 //       // Reset the new unit input field
@@ -1013,7 +1013,7 @@
 //   const handleConfirmDelete = async () => {
 //     try {
 //       // Send a delete request to the server
-//       await axios.delete(`http://localhost:5000/api/gst/gst/${deletingItemId}`);
+//       await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/gst/${deletingItemId}`);
 //       // Fetch the updated GST list after deletion
 //       fetchGSTList();
 //     } catch (error) {
@@ -1031,7 +1031,7 @@
 
 //   const fetchGSTList = async () => {
 //     try {
-//       const response = await axios.get('http://localhost:5000/api/gst/list');
+//       const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/list');
 //       setGSTList(response.data || []);
 //     } catch (error) {
 //       console.error('Error fetching GST list:', error.message);
@@ -1046,7 +1046,7 @@
 //     e.preventDefault();
 
 //     try {
-//       await axios.post('http://localhost:5000/api/gst/create', { gstPercentage });
+//       await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/create', { gstPercentage });
 //       fetchGSTList();
 //       setGSTPercentage('');
 //     } catch (error) {
@@ -1251,7 +1251,7 @@
 
 //       // Make POST request to add supplier
 //       const response = await axios.post(
-//         "http://localhost:5000/api/supplier/suppliers",
+//         "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers",
 //         formData
 //       );
 
@@ -1260,7 +1260,7 @@
 
 //       // Fetch updated list of suppliers
 //       const updatedSuppliersResponse = await axios.get(
-//         "http://localhost:5000/api/supplier/suppliers"
+//         "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
 //       );
 //       setSuppliers(updatedSuppliersResponse.data);
 
@@ -1294,7 +1294,7 @@
 //     const fetchSuppliers = async () => {
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/supplier/suppliers"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
 //         );
 //         setSuppliers(response.data);
 //       } catch (error) {
@@ -1333,7 +1333,7 @@
 //     //     return; // Exit the function early if validation fails
 //     //   }
 //     //   const response = await axios.patch(
-//     //     `http://localhost:5000/api/supplier/suppliers/${editedSupplier._id}`,
+//     //     `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`,
 //     //     editedSupplier
 //     //   );
 
@@ -1369,7 +1369,7 @@
 //       }
 
 //       const response = await axios.patch(
-//         `http://localhost:5000/api/supplier/suppliers/${editedSupplier._id}`,
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`,
 //         editedSupplier
 //       );
 
@@ -1394,7 +1394,7 @@
 //     try {
 //       // Assuming the API returns the deleted supplier
 //       await axios.delete(
-//         `http://localhost:5000/api/supplier/suppliers/${editedSupplier._id}`
+//         `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`
 //       );
 
 //       // Update the state by removing the deleted supplier
@@ -2237,7 +2237,7 @@
 //     const fetchStockQty = async () => {
 //       try {
 //         const response = await axios.get(
-//           `http://localhost:5000/api/purchase/purchase/stockQty?itemName=${formData.itemName}`
+//           `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchase/purchase/stockQty?itemName=${formData.itemName}`
 //         );
 //         console.log("stock Quantity", response.data.stockQty);
 //         setStockQty(response.data.stockQty);
@@ -2257,7 +2257,7 @@
 //     const fetchVendors = async () => {
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/supplier/suppliers"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
 //         );
 //         setVendors(response.data);
 //       } catch (error) {
@@ -2271,7 +2271,7 @@
 //     const fetchProducts = async () => {
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/item/items"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items"
 //         );
 //         setProducts(response.data);
 //         console.log(response.data);
@@ -2286,7 +2286,7 @@
 //   useEffect(() => {
 //     const fetchGSTList = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/gst/list");
+//         const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/list");
 //         setGsts(response.data);
 //         console.log(response.data);
 //       } catch (error) {
@@ -2300,7 +2300,7 @@
 //     const fetchUnitList = async () => {
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/unit/units"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units"
 //         );
 //         setUnits(response.data);
 //         console.log(response.data);
@@ -2567,7 +2567,7 @@
 
 //       // Make a POST request to save the bill
 //       const response = await axios.post(
-//         "http://localhost:5000/api/purchase/purchase/savebill",
+//         "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchase/purchase/savebill",
 //         data
 //       );
 
@@ -2578,13 +2578,13 @@
 
 //       if (parseFloat(data.total) > 0) {
 //         // If there is a paid amount, update the supplier's debit balance
-//         await axios.post("http://localhost:5000/api/supplier/supplier/debit", {
+//         await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/supplier/debit", {
 //           vendorName,
 //           amount: parseFloat(data.paidAmount),
 //         });
 //       } else {
 //         // If there is no paid amount, update the supplier's credit balance
-//         await axios.post("http://localhost:5000/api/supplier/supplier/credit", {
+//         await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/supplier/credit", {
 //           vendorName,
 //           amount: parseFloat(data.balance),
 //         });
@@ -3293,7 +3293,7 @@ const EditModal = ({ isOpen, onCancel, onEdit, itemToEdit, units }) => {
   const handleEdit = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/item/items/${itemToEdit._id}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items/${itemToEdit._id}`,
         formData
       );
 
@@ -3477,7 +3477,7 @@ const NewItemModal = ({isOpen, onClose}) => {
     try {
       // Assuming the API returns the deleted item
       await axios.delete(
-        `http://localhost:5000/api/item/items/${itemIdToDelete}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items/${itemIdToDelete}`
       );
 
       // Update the state by removing the deleted item
@@ -3498,7 +3498,7 @@ const NewItemModal = ({isOpen, onClose}) => {
     try {
       // Make an API request using Axios to update the item data
       await axios.put(
-        `http://localhost:5000/api/item/items/${itemToEdit._id}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items/${itemToEdit._id}`,
         formData
       );
 
@@ -3549,13 +3549,13 @@ const NewItemModal = ({isOpen, onClose}) => {
     try {
       // Fetch the list of items
       const itemsResponse = await axios.get(
-        "http://localhost:5000/api/item/items"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items"
       );
       setItems(itemsResponse.data);
 
       // Fetch the list of units
       const unitsResponse = await axios.get(
-        "http://localhost:5000/api/unit/units"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units"
       );
       setUnits(unitsResponse.data);
     } catch (error) {
@@ -3582,7 +3582,7 @@ const NewItemModal = ({isOpen, onClose}) => {
       // Fetch the details of the selected unit
       try {
         const unitDetailsResponse = await axios.get(
-          `http://localhost:5000/api/unit/units/${value}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${value}`
         );
         setSelectedUnitDetails(unitDetailsResponse.data);
       } catch (error) {
@@ -3620,7 +3620,7 @@ const NewItemModal = ({isOpen, onClose}) => {
     try {
      
         // If creating, make a POST request
-        await axios.post("http://localhost:5000/api/item/items", {
+        await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items", {
           ...formData,
           unit: formData.unit || "",
           lessStock: formData.lessStock || 0,
@@ -3948,7 +3948,7 @@ const NewUnitModal = ({ isOpen, onClose }) => {
     const fetchUnits = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/unit/units"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units"
         );
         setUnits(response.data);
       } catch (error) {
@@ -3989,7 +3989,7 @@ const NewUnitModal = ({ isOpen, onClose }) => {
     try {
       // Make an API request using Axios to update the unit
       await axios.patch(
-        `http://localhost:5000/api/unit/units/${selectedUnit._id}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${selectedUnit._id}`,
         {
           unit: updatedUnit.unit, // Use 'unit' instead of 'updatedUnit.units'
         }
@@ -4011,7 +4011,7 @@ const NewUnitModal = ({ isOpen, onClose }) => {
   const handleDeleteSubmit = async () => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/unit/units/${selectedUnit._id}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${selectedUnit._id}`
       );
       // Remove the deleted unit from the local state
       setUnits((prevUnits) =>
@@ -4029,12 +4029,12 @@ const NewUnitModal = ({ isOpen, onClose }) => {
 
     try {
       // Make an API request using Axios to post the new unit
-      await axios.post("http://localhost:5000/api/unit/units", {
+      await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units", {
         unit: newUnit,
       });
 
       // Fetch the updated list of units
-      const response = await axios.get("http://localhost:5000/api/unit/units");
+      const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units");
       setUnits(response.data);
 
       // Reset the new unit input field
@@ -4262,7 +4262,7 @@ const NewGstModal = ({ isOpen, onClose }) => {
   const handleConfirmDelete = async () => {
     try {
       // Send a delete request to the server
-      await axios.delete(`http://localhost:5000/api/gst/gst/${deletingItemId}`);
+      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/gst/${deletingItemId}`);
       // Fetch the updated GST list after deletion
       fetchGSTList();
     } catch (error) {
@@ -4280,7 +4280,7 @@ const NewGstModal = ({ isOpen, onClose }) => {
 
   const fetchGSTList = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/gst/list');
+      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/list');
       setGSTList(response.data || []);
     } catch (error) {
       console.error('Error fetching GST list:', error.message);
@@ -4295,7 +4295,7 @@ const NewGstModal = ({ isOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/gst/create', { gstPercentage });
+      await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/create', { gstPercentage });
       fetchGSTList();
       setGSTPercentage('');
     } catch (error) {
@@ -4500,7 +4500,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
 
       // Make POST request to add supplier
       const response = await axios.post(
-        "http://localhost:5000/api/supplier/suppliers",
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers",
         formData
       );
 
@@ -4509,7 +4509,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
 
       // Fetch updated list of suppliers
       const updatedSuppliersResponse = await axios.get(
-        "http://localhost:5000/api/supplier/suppliers"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
       );
       setSuppliers(updatedSuppliersResponse.data);
 
@@ -4543,7 +4543,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
     const fetchSuppliers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/supplier/suppliers"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
         );
         setSuppliers(response.data);
       } catch (error) {
@@ -4582,7 +4582,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
     //     return; // Exit the function early if validation fails
     //   }
     //   const response = await axios.patch(
-    //     `http://localhost:5000/api/supplier/suppliers/${editedSupplier._id}`,
+    //     `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`,
     //     editedSupplier
     //   );
 
@@ -4618,7 +4618,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
       }
 
       const response = await axios.patch(
-        `http://localhost:5000/api/supplier/suppliers/${editedSupplier._id}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`,
         editedSupplier
       );
 
@@ -4643,7 +4643,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
     try {
       // Assuming the API returns the deleted supplier
       await axios.delete(
-        `http://localhost:5000/api/supplier/suppliers/${editedSupplier._id}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`
       );
 
       // Update the state by removing the deleted supplier
@@ -5486,7 +5486,7 @@ const PurchaseForm = () => {
     const fetchStockQty = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/purchase/purchase/stockQty?itemName=${formData.itemName}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchase/purchase/stockQty?itemName=${formData.itemName}`
         );
         console.log("stock Quantity", response.data.stockQty);
         setStockQty(response.data.stockQty);
@@ -5506,7 +5506,7 @@ const PurchaseForm = () => {
     const fetchVendors = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/supplier/suppliers"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
         );
         setVendors(response.data);
       } catch (error) {
@@ -5520,7 +5520,7 @@ const PurchaseForm = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/item/items"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items"
         );
         setProducts(response.data);
         console.log(response.data);
@@ -5535,7 +5535,7 @@ const PurchaseForm = () => {
   useEffect(() => {
     const fetchGSTList = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/gst/list");
+        const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/list");
         setGsts(response.data);
         console.log(response.data);
       } catch (error) {
@@ -5549,7 +5549,7 @@ const PurchaseForm = () => {
     const fetchUnitList = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/unit/units"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units"
         );
         setUnits(response.data);
         console.log(response.data);
@@ -5818,7 +5818,7 @@ const PurchaseForm = () => {
 
       // Make a POST request to save the bill
       const response = await axios.post(
-        "http://localhost:5000/api/purchase/purchase/savebill",
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchase/purchase/savebill",
         data
       );
 
@@ -5829,13 +5829,13 @@ const PurchaseForm = () => {
 
       if (parseFloat(data.total) > 0) {
         // If there is a paid amount, update the supplier's debit balance
-        await axios.post("http://localhost:5000/api/supplier/supplier/debit", {
+        await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/supplier/debit", {
           vendorName,
           amount: parseFloat(data.paidAmount),
         });
       } else {
         // If there is no paid amount, update the supplier's credit balance
-        await axios.post("http://localhost:5000/api/supplier/supplier/credit", {
+        await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/supplier/credit", {
           vendorName,
           amount: parseFloat(data.balance),
         });

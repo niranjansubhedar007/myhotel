@@ -40,7 +40,7 @@ export default function Home() {
 //       if (selectedDate) {
 //         try {
 //           const response = await axios.get(
-//             "http://localhost:5000/api/barPurchase/opening-balance",
+//             "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barPurchase/opening-balance",
 //             { params: { date: selectedDate } }
 //           );
 //           setDifferenceItems(response.data.differenceItems || []);
@@ -62,11 +62,11 @@ export default function Home() {
 //         try {
 //           const [barPurchaseResponse, orderResponse] = await Promise.all([
 //             axios.get(
-//               "http://localhost:5000/api/barPurchase/barPurchase/items/quantities",
+//               "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barPurchase/barPurchase/items/quantities",
 //               { params: { date: selectedDate } }
 //             ),
 //             axios.get(
-//               "http://localhost:5000/api/order/items/quantities",
+//               "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/items/quantities",
 //               { params: { date: selectedDate } }
 //             ),
 //           ]);

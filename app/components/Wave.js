@@ -15,10 +15,10 @@ function Wave() {
     const fetchData = async () => {
       try {
         const totalResponse = await axios.get(
-          "http://localhost:5000/api/order/total-amounts-by-month"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/total-amounts-by-month"
         );
         const expensesResponse = await axios.get(
-          "http://localhost:5000/api/expense/expenses-amounts-by-month"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/expense/expenses-amounts-by-month"
         );
 
         setTotalAmountsByMonth(totalResponse.data.totalAmountsByMonth);

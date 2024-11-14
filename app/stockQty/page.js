@@ -10,7 +10,7 @@ const Menus = () => {
   useEffect(() => {
     const fetchMenuData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/menu/menus/stockQty');
+        const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/stockQty');
         setMenuData(response.data);
       } catch (error) {
         console.error('Error fetching menu data:', error);

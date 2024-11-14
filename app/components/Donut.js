@@ -15,7 +15,7 @@ function Donut() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/order/summary");
+        const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/summary");
         const data = response.data;
         console.log(data)
         // Round the values

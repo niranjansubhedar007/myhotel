@@ -25,7 +25,7 @@ const ACForm = ({ onSubmit }) => {
     useEffect(() => {
         const fetchSections = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/section');
+                const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section');
                 setSections(response.data);
                 if (response.data.length > 0) {
                     setSelectedSection(response.data[0]._id);
@@ -41,7 +41,7 @@ const ACForm = ({ onSubmit }) => {
     useEffect(() => {
         const fetchACPercentage = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/section/${selectedSection}`);
+                const response = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section/${selectedSection}`);
                 setACPercentage(response.data.acPercentage.toString()); // Assuming acPercentage is a number
             } catch (error) {
                 console.error('Error fetching AC Percentage:', error.message);
@@ -55,7 +55,7 @@ const ACForm = ({ onSubmit }) => {
 
     const fetchUpdatedSections = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/section');
+            const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section');
             setSections(response.data);
         } catch (error) {
             console.error('Error fetching updated sections:', error.message);
@@ -66,7 +66,7 @@ const ACForm = ({ onSubmit }) => {
         e.preventDefault();
         if (selectedSection && acPercentage !== '') {
             try {
-                await axios.patch(`http://localhost:5000/api/section/ac/${selectedSection}`, {
+                await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section/ac/${selectedSection}`, {
                     acPercentage: parseFloat(acPercentage),
                 });
                 setSuccessMessage('AC Percentage updated successfully');

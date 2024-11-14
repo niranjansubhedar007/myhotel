@@ -25,7 +25,7 @@ const ResetReport = () => {
 
         try {
             // Send a POST request to the /resetPassword endpoint with the correct resetToken
-            const response = await axios.post(`http://localhost:5000/api/superAdmin/resetReport/${resetToken}`, {
+            const response = await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/superAdmin/resetReport/${resetToken}`, {
                 newPassword: newPassword,
             });
 

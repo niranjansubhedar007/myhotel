@@ -24,11 +24,10 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       // Call the API to write stock data to JSON file
-      // await axios.post('http://localhost:5000/api/liquorBrand/updateStock');
+      // await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/updateStock');
 
-      // Authenticate the user
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/login",
         { username, password }
       );
       const token = response.data.token;
@@ -40,7 +39,7 @@ export default function Login() {
 
       // Check if the hotel is set up
       const hotelResponse = await axios.get(
-        "http://localhost:5000/api/hotel/get-all"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get-all"
       );
       console.log(hotelResponse);
 
@@ -73,7 +72,7 @@ export default function Login() {
 
         // Upon successful login, fetch the default section name
         const response = await axios.get(
-          "http://localhost:5000/api/section/section/default"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section/section/default"
         );
         const defaultSectionName = response.data.name;
 

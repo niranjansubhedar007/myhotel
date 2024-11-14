@@ -26,7 +26,7 @@ const VatForm = () => {
   const handleConfirmDelete = async () => {
     try {
       // Send a delete request to the server
-      await axios.delete(`http://localhost:5000/api/purchaseVAT/vat/${deletingItemId}`);
+      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchaseVAT/vat/${deletingItemId}`);
       // Fetch the updated VAT list after deletion
       fetchVatList();
     } catch (error) {
@@ -44,7 +44,7 @@ const VatForm = () => {
 
   const fetchVatList = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/purchaseVAT/vat');
+      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchaseVAT/vat');
       setVatList(response.data || []);
     } catch (error) {
       console.error('Error fetching VAT list:', error.message);
@@ -59,7 +59,7 @@ const VatForm = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/purchaseVAT/vat', { vatPercentage });
+      await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchaseVAT/vat', { vatPercentage });
       fetchVatList();
       setVatPercentage('');
     } catch (error) {

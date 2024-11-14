@@ -55,7 +55,7 @@ const BarStockOut = () => {
 
   const fetchProductNames = async () => {
       try {
-          const response = await axios.get("http://localhost:5000/api/liquorBrand/barSubmenu/list");
+          const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/barSubmenu/list");
           setProductsWithSubmenus(response.data);
       } catch (error) {
           console.error("Error fetching product names:", error.response ? error.response.data : error.message);
@@ -68,7 +68,7 @@ const BarStockOut = () => {
 
   const fetchWaitersList = async () => {
       try {
-          const response = await axios.get("http://localhost:5000/api/waiter");
+          const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/waiter");
           setWaitersList(response.data);
       } catch (error) {
           console.error("Error fetching waiters list:", error.response ? error.response.data : error.message);
@@ -86,16 +86,16 @@ const BarStockOut = () => {
       try {
           if (name === "waiterName") {
               setWaiterName(value);
-              const response = await axios.get(`http://localhost:5000/api/waiter/waiter/mobile?name=${value}`);
+              const response = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/waiter/waiter/mobile?name=${value}`);
               setMobileNumber(response.data.mobileNumber);
           } else if (name === "productName") {
               setProductName(value);
               // Fetch and update available quantity based on the selected product name
-              const response = await axios.get(`http://localhost:5000/api/barStockOut/purchase/childMenuStockQty?name=${value}`);
+              const response = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barStockOut/purchase/childMenuStockQty?name=${value}`);
               setAvailableQuantity(response.data.stockQty || 0);
               setUnit(response.data.unit || "");
               // Fetch parentMenuId based on the selected product name
-              const parentMenuResponse = await axios.get(`http://localhost:5000/api/barStockOut/getParentMenuId?productName=${value}`);
+              const parentMenuResponse = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barStockOut/getParentMenuId?productName=${value}`);
               setParentMenuId(parentMenuResponse.data.parentMenuId);
           } else if (name === "stockQty") {
               setStockQty(Number(value)); // Ensure stockQty is a number
@@ -119,7 +119,7 @@ const BarStockOut = () => {
           const newAvailableQuantity = availableQuantity - requiredQuantity;
 
           // Make API call to add items to stock outward entries
-          const responseAddItems = await axios.post("http://localhost:5000/api/barStockOut/stockOut/addItems", {
+          const responseAddItems = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barStockOut/stockOut/addItems", {
               waiterName,
               productName,
               stockQty: requiredQuantity,
@@ -129,7 +129,7 @@ const BarStockOut = () => {
           console.log(responseAddItems.data);
 
           // Make API call to update stock quantity
-          const response = await axios.post("http://localhost:5000/api/barStockOut/barStockOut", {
+          const response = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barStockOut/barStockOut", {
               parentMenuId, // Use parentMenuId dynamically fetched
               requiredQuantity,
           });

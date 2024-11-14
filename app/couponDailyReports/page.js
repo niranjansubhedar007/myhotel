@@ -75,7 +75,7 @@ const CouponDailyReports = () => {
       try {
         // Fetch all hotels
         const allHotelsResponse = await axios.get(
-          "http://localhost:5000/api/hotel/get-all"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get-all"
         );
         const allHotels = allHotelsResponse.data;
 
@@ -85,7 +85,7 @@ const CouponDailyReports = () => {
         if (defaultHotelId) {
           // Fetch information for the first hotel
           const response = await axios.get(
-            `http://localhost:5000/api/hotel/get/${defaultHotelId}`
+            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get/${defaultHotelId}`
           );
           const hotelInfo = response.data;
 
@@ -106,7 +106,7 @@ const CouponDailyReports = () => {
         setLoading(true);
 
         const response = await axios.get(
-            `http://localhost:5000/api/coupon/coupon/date?startDate=${startDate}&endDate=${endDate}`
+            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/coupon/date?startDate=${startDate}&endDate=${endDate}`
         );
 
         setOrders(response.data); // Update orders state with fetched data
@@ -541,7 +541,7 @@ const CouponDailyReports = () => {
 
     try {
         // Make a request to the backend API to update orders with flag true
-        const response = await axios.put("http://localhost:5000/api/coupon/orders/flag");
+        const response = await axios.put("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/orders/flag");
         console.log(response); // Log the response to the console
     } catch (error) {
         // Handle error

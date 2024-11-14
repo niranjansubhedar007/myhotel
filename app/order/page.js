@@ -234,7 +234,7 @@ const Billing = ({ tableId, acPercentage }) => {
   //   const fetchAdmins = async () => {
   //     try {
   //       const response = await axios.get(
-  //         "http://localhost:5000/api/auth/admins"
+  //         "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admins"
   //       );
   //       const combinedAdmins = response.data.admins.concat(
   //         response.data.adminBars
@@ -255,7 +255,7 @@ const Billing = ({ tableId, acPercentage }) => {
     const fetchAdmins = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/auth/admins"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admins"
         );
         const combinedAdmins = response.data.admins.concat(
           response.data.adminBars
@@ -296,7 +296,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Call the API to get the tableId for the mainTableName
       const tableResponse = await axios.get(
-        `http://localhost:5000/api/table/tables/bySection/${sectionName}/${mainTableName}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/bySection/${sectionName}/${mainTableName}`
       );
       // console.log(tableResponse);
       const mainTableId = tableResponse.data._id;
@@ -308,7 +308,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const sectionResponse = await axios.get(
-        `http://localhost:5000/api/table/section/byName/${sectionName}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/section/byName/${sectionName}`
       );
       // console.log(sectionResponse);
       const sectionId = sectionResponse.data.sectionId;
@@ -321,7 +321,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Call the reset-subtables endpoint with the retrieved mainTableId and sectionId
       const response = await axios.put(
-        `http://localhost:5000/api/table/${sectionId}/${mainTableId}/reset-subtables`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/${sectionId}/${mainTableId}/reset-subtables`
       );
 
       if (response.status === 200) {
@@ -347,7 +347,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Call the API to get the tableId for the mainTableName
       const tableResponse = await axios.get(
-        `http://localhost:5000/api/table/tables/bySection/${sectionName}/${mainTableName}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/bySection/${sectionName}/${mainTableName}`
       );
       console.log(tableResponse);
       const mainTableId = tableResponse.data._id;
@@ -359,7 +359,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const sectionResponse = await axios.get(
-        `http://localhost:5000/api/table/section/byName/${sectionName}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/section/byName/${sectionName}`
       );
       console.log(sectionResponse);
       const sectionId = sectionResponse.data.sectionId;
@@ -372,7 +372,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Call the show-subtables endpoint with the retrieved mainTableId and numberOfSubtablesToShow
       const response = await axios.put(
-        `http://localhost:5000/api/table/${sectionId}/${mainTableId}/show-subtables`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/${sectionId}/${mainTableId}/show-subtables`,
         {
           numberOfSubtablesToShow: parseInt(numberOfSubtablesToShow),
         }
@@ -441,7 +441,7 @@ const Billing = ({ tableId, acPercentage }) => {
           });
         }
 
-        await axios.patch(`http://localhost:5000/api/kot/${tableId}`, {
+        await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/${tableId}`, {
           menuName: selectedItemName,
           quantityToCancel: quantityToCancel,
         });
@@ -564,7 +564,7 @@ const Billing = ({ tableId, acPercentage }) => {
           tableInfo,
           waiterName
         );
-        await axios.post("http://localhost:5000/print-kot", { kotContent }); // Send to KOT printer endpoint
+        await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-kot", { kotContent }); // Send to KOT printer endpoint
       }
 
       // Print BOT items on BOT printer
@@ -574,7 +574,7 @@ const Billing = ({ tableId, acPercentage }) => {
           tableInfo,
           waiterName
         );
-        await axios.post("http://localhost:5000/print-bot", { botContent }); // Send to BOT printer endpoint
+        await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-bot", { botContent }); // Send to BOT printer endpoint
       }
 
       console.log(
@@ -620,7 +620,7 @@ const Billing = ({ tableId, acPercentage }) => {
         }
 
         // Patch request to cancel the selected menu item
-        await axios.patch(`http://localhost:5000/api/kot/${tableId}`, {
+        await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/${tableId}`, {
           menuName: selectedItemName,
           quantityToCancel: quantityToCancel, // Use the user-specified quantity
         });
@@ -764,7 +764,7 @@ const Billing = ({ tableId, acPercentage }) => {
     const fetchTastes = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/taste/tastes"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/taste/tastes"
         );
         setTastes(response.data);
         // Set the selected option to the first taste in the list (change as needed)
@@ -828,7 +828,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
   const fetchWaitersList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/waiter");
+      const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/waiter");
       setWaitersList(response.data);
     } catch (error) {
       console.error(
@@ -862,7 +862,7 @@ const Billing = ({ tableId, acPercentage }) => {
     const fetchGreetings = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/greet/greet"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet"
         );
         setGreetings(response.data);
       } catch (error) {
@@ -878,7 +878,7 @@ const Billing = ({ tableId, acPercentage }) => {
     const fetchNextOrderNumber = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/order/get-next-order-number"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get-next-order-number"
         );
         const nextOrderNumber = response.data.nextOrderNumber;
         setOrderNumber(nextOrderNumber);
@@ -898,14 +898,14 @@ const Billing = ({ tableId, acPercentage }) => {
   const fetchLastAllOrders = async () => {
     try {
       const ordersResponse = await axios.get(
-        "http://localhost:5000/api/order/latest-orders"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/latest-orders"
       );
       const orders = ordersResponse.data;
 
       // Fetch table names for each order
       const tableNamesPromises = orders.map(async (order) => {
         const tableResponse = await axios.get(
-          `http://localhost:5000/api/table/tables/${order.tableId}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${order.tableId}`
         );
         const tableName = tableResponse.data?.tableName || "";
         return { ...order, tableName };
@@ -1003,7 +1003,7 @@ const Billing = ({ tableId, acPercentage }) => {
   const saveBillLan = async () => {
     try {
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -1141,7 +1141,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
 
@@ -1151,12 +1151,12 @@ const Billing = ({ tableId, acPercentage }) => {
         const orderIdToUpdate = existingBill[0]._id;
         existingItems = existingBill[0].items;
         const updateResponse = await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           orderData
         );
       } else {
         const createResponse = await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -1291,7 +1291,7 @@ const Billing = ({ tableId, acPercentage }) => {
       ) {
         // Make an API call to save the BOT
         const BOTResponse = await axios.post(
-          `http://localhost:5000/api/bot/botOrder/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/bot/botOrder/${tableId}`,
           kotData
         );
 
@@ -1307,7 +1307,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Make an API call to save the KOT
       const KOTResponse = await axios.post(
-        `http://localhost:5000/api/kot/kotOrder/${tableId}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kotOrder/${tableId}`,
         kotData
       );
 
@@ -1330,7 +1330,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
         try {
           // Send BOT content to backend for printing
-          const response = await axios.post("http://localhost:5000/print-bot", {
+          const response = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-bot", {
             botContent: botContent, // Pass the generated BOT content
           });
 
@@ -1357,7 +1357,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
         try {
           // Send KOT content to backend for printing
-          const response = await axios.post("http://localhost:5000/print-kot", {
+          const response = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-kot", {
             kotContent: kotContent, // Pass the generated KOT content
           });
 
@@ -1408,7 +1408,7 @@ const Billing = ({ tableId, acPercentage }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -1567,7 +1567,7 @@ const Billing = ({ tableId, acPercentage }) => {
   const saveBill = async () => {
     try {
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -1715,7 +1715,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
 
@@ -1725,12 +1725,12 @@ const Billing = ({ tableId, acPercentage }) => {
         const orderIdToUpdate = existingBill[0]._id;
         existingItems = existingBill[0].items;
         const updateResponse = await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           orderData
         );
       } else {
         const createResponse = await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -1865,7 +1865,7 @@ const Billing = ({ tableId, acPercentage }) => {
       ) {
         // Make an API call to save the BOT
         const BOTResponse = await axios.post(
-          `http://localhost:5000/api/bot/botOrder/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/bot/botOrder/${tableId}`,
           kotData
         );
 
@@ -1881,7 +1881,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Make an API call to save the KOT
       const KOTResponse = await axios.post(
-        `http://localhost:5000/api/kot/kotOrder/${tableId}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kotOrder/${tableId}`,
         kotData
       );
 
@@ -1969,7 +1969,7 @@ const Billing = ({ tableId, acPercentage }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -2196,7 +2196,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Check if there's an existing bill for the current table
       const existingKOTResponse = await axios.get(
-        `http://localhost:5000/api/kot/kot/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/${tableId}`
       );
       const existingKOT = existingKOTResponse.data;
       console.log(existingKOT);
@@ -2425,7 +2425,7 @@ const Billing = ({ tableId, acPercentage }) => {
         "Re-KOT"
       );
       // Send KOT content to the backend for printing
-      await axios.post("http://localhost:5000/print-kot", {
+      await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-kot", {
         kotContent: orderContent,
       });
 
@@ -2449,7 +2449,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Check if there's an existing bill for the current table
       const existingBOTResponse = await axios.get(
-        `http://localhost:5000/api/bot/bot/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/bot/bot/${tableId}`
       );
       const existingBOT = existingBOTResponse.data;
       console.log(existingBOT);
@@ -2653,7 +2653,7 @@ const Billing = ({ tableId, acPercentage }) => {
       );
 
       // Send the botContent to the backend for printing
-      const response = await axios.post("http://localhost:5000/print-bot", {
+      const response = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-bot", {
         botContent,
       });
       if (response.status === 200) {
@@ -2672,7 +2672,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Check if there's an existing bill for the current table
       const existingKOTResponse = await axios.get(
-        `http://localhost:5000/api/kot/kot/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/${tableId}`
       );
       const existingKOT = existingKOTResponse.data;
       console.log(existingKOT);
@@ -2861,7 +2861,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Check if there's an existing bill for the current table
       const existingBOTResponse = await axios.get(
-        `http://localhost:5000/api/bot/bot/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/bot/bot/${tableId}`
       );
       const existingBOT = existingBOTResponse.data;
       console.log(existingBOT);
@@ -3060,7 +3060,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -3149,7 +3149,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Check if there's an existing bill for the current table
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
 
@@ -3159,12 +3159,12 @@ const Billing = ({ tableId, acPercentage }) => {
         const orderIdToUpdate = existingBill[0]._id;
         existingItems = existingBill[0].items;
         await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           orderData
         );
       } else {
         await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -3196,7 +3196,7 @@ const Billing = ({ tableId, acPercentage }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -3239,7 +3239,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -3277,7 +3277,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -3359,16 +3359,16 @@ const Billing = ({ tableId, acPercentage }) => {
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://localhost:5000/api/kot/kot/settle/${tableId}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -3400,7 +3400,7 @@ const Billing = ({ tableId, acPercentage }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -3505,7 +3505,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }${NORMAL_SIZE}
       ${
         hotelInfo && hotelInfo.hotelLogo
-          ? `<img class="logo" src="http://localhost:5000/${hotelInfo.hotelLogo}" alt="Hotel Logo" style="max-height: 100px; max-width: 100px;" />`
+          ? `<img class="logo" src="http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${hotelInfo.hotelLogo}" alt="Hotel Logo" style="max-height: 100px; max-width: 100px;" />`
           : ""
       }
 ${CENTER_ALIGN}${BOLD_ON}${hotelInfo ? hotelInfo.address : "Address Not Found"}
@@ -3574,7 +3574,7 @@ ${index.message}`;
       // You can now pass `billContent` to your print function or display it.
       // Post the formatted bill content to the print API
       console.log(billContent);
-      const response = await axios.post("http://localhost:5000/print-bill", {
+      const response = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-bill", {
         billContent,
       });
 
@@ -3626,7 +3626,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -3664,7 +3664,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -3777,16 +3777,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://localhost:5000/api/kot/kot/settle/${tableId}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -3818,7 +3818,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -4275,7 +4275,7 @@ ${index.message}`;
 
     <h4>${hotelInfo ? hotelInfo.hotelName : "Hotel Not Found"}</h4>
   
-    <img class="logo" src="http://localhost:5000/${
+    <img class="logo" src="http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${
       hotelInfo.hotelLogo
     }" alt="Hotel Logo" style="max-height: 100px;max-width: 100px" />
 
@@ -4592,7 +4592,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -4630,7 +4630,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -4732,16 +4732,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://localhost:5000/api/kot/kot/settle/${tableId}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -4773,7 +4773,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -4819,7 +4819,7 @@ ${index.message}`;
 
       // Call API to update the order with cash payment
       await axios.patch(
-        `http://localhost:5000/api/order/update/update-order-by-cash/${orderIdToUpdate}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update/update-order-by-cash/${orderIdToUpdate}`,
         {
           items: orderData.items,
           subtotal: orderData.subtotal,
@@ -4910,7 +4910,7 @@ ${index.message}`;
       }${NORMAL_SIZE}
       ${
         hotelInfo && hotelInfo.hotelLogo
-          ? `<img class="logo" src="http://localhost:5000/${hotelInfo.hotelLogo}" alt="Hotel Logo" style="max-height: 100px; max-width: 100px;" />`
+          ? `<img class="logo" src="http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${hotelInfo.hotelLogo}" alt="Hotel Logo" style="max-height: 100px; max-width: 100px;" />`
           : ""
       }
 ${CENTER_ALIGN}${BOLD_ON}${hotelInfo ? hotelInfo.address : "Address Not Found"}
@@ -4979,7 +4979,7 @@ ${index.message}`;
       // You can now pass `billContent` to your print function or display it.
       // Post the formatted bill content to the print API
       console.log(billContent);
-      const response = await axios.post("http://localhost:5000/print-bill", {
+      const response = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-bill", {
         billContent,
       });
 
@@ -5015,7 +5015,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -5053,7 +5053,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -5164,16 +5164,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://localhost:5000/api/kot/kot/settle/${tableId}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -5205,7 +5205,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -5252,7 +5252,7 @@ ${index.message}`;
 
       // Call API to update the order with cash payment
       await axios.patch(
-        `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
         {
           items: orderData.items,
           subtotal: orderData.subtotal,
@@ -5348,7 +5348,7 @@ ${index.message}`;
       }${NORMAL_SIZE}
       ${
         hotelInfo && hotelInfo.hotelLogo
-          ? `<img class="logo" src="http://localhost:5000/${hotelInfo.hotelLogo}" alt="Hotel Logo" style="max-height: 100px; max-width: 100px;" />`
+          ? `<img class="logo" src="http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${hotelInfo.hotelLogo}" alt="Hotel Logo" style="max-height: 100px; max-width: 100px;" />`
           : ""
       }
 ${CENTER_ALIGN}${BOLD_ON}${hotelInfo ? hotelInfo.address : "Address Not Found"}
@@ -5417,7 +5417,7 @@ ${index.message}`;
       // You can now pass `billContent` to your print function or display it.
       // Post the formatted bill content to the print API
       console.log(billContent);
-      const response = await axios.post("http://localhost:5000/print-bill", {
+      const response = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/print-bill", {
         billContent,
       });
 
@@ -5448,7 +5448,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -5486,7 +5486,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -5597,16 +5597,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://localhost:5000/api/kot/kot/settle/${tableId}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -5638,7 +5638,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -5684,7 +5684,7 @@ ${index.message}`;
 
       // Call API to update the order with cash payment
       await axios.patch(
-        `http://localhost:5000/api/order/update/update-order-by-cash/${orderIdToUpdate}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update/update-order-by-cash/${orderIdToUpdate}`,
         {
           items: orderData.items,
           subtotal: orderData.subtotal,
@@ -6125,7 +6125,7 @@ ${index.message}`;
 
     <h4>${hotelInfo ? hotelInfo.hotelName : "Hotel Not Found"}</h4>
   
-    <img class="logo" src="http://localhost:5000/${
+    <img class="logo" src="http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${
       hotelInfo.hotelLogo
     }" alt="Hotel Logo" style="max-height: 100px;max-width: 100px" />
 
@@ -6428,7 +6428,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -6466,7 +6466,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -6577,16 +6577,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://localhost:5000/api/kot/kot/settle/${tableId}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -6618,7 +6618,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -6665,7 +6665,7 @@ ${index.message}`;
 
       // Call API to update the order with cash payment
       await axios.patch(
-        `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
         {
           items: orderData.items,
           subtotal: orderData.subtotal,
@@ -7107,7 +7107,7 @@ ${index.message}`;
 
     <h4>${hotelInfo ? hotelInfo.hotelName : "Hotel Not Found"}</h4>
   
-    <img class="logo" src="http://localhost:5000/${
+    <img class="logo" src="http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${
       hotelInfo.hotelLogo
     }" alt="Hotel Logo" style="max-height: 100px;max-width: 100px" />
 
@@ -7410,7 +7410,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://localhost:5000/api/liquorBrand/liquorBrand/stock"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -7508,23 +7508,23 @@ ${index.message}`;
 
       // Check if there's an existing bill for the current table
       const existingBillResponse = await axios.get(
-        `http://localhost:5000/api/order/order/${tableId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
 
       if (existingBill && existingBill.length > 0) {
         const orderIdToUpdate = existingBill[0]._id;
         await axios.patch(
-          `http://localhost:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
           orderData
         );
 
         await axios.patch(
-          `http://localhost:5000/api/kot/kot/settle/${tableId}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/kot/settle/${tableId}`
         );
       } else {
         await axios.post(
-          `http://localhost:5000/api/order/order/${tableId}`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -7558,7 +7558,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://localhost:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -7802,7 +7802,7 @@ ${index.message}`;
     }
     // Fetch categories
     axios
-      .get("http://localhost:5000/api/main/hide")
+      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main/hide")
       .then((response) => {
         setCategories(response.data);
       })
@@ -7811,7 +7811,7 @@ ${index.message}`;
       });
 
     axios
-      .get("http://localhost:5000/api/liquorCategory/barMenus")
+      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus")
       .then((response) => {
         setBarCategories(response.data);
       })
@@ -7821,7 +7821,7 @@ ${index.message}`;
 
     // Fetch products
     axios
-      .get("http://localhost:5000/api/menu/menus/list")
+      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list")
       .then((response) => {
         // console.log(response.data);
         const menusArray = response.data; // Ensure menus is an array
@@ -7832,7 +7832,7 @@ ${index.message}`;
       });
 
     // axios
-    //   .get("http://localhost:5000/api/liquorBrand/barSubmenu/list")
+    //   .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/barSubmenu/list")
     //   .then((response) => {
     //     console.log(response.data);
     //     const menusArray = response.data; // Ensure menus is an array
@@ -7844,13 +7844,13 @@ ${index.message}`;
 
     if (tableId) {
       axios
-        .get(`http://localhost:5000/api/table/tables/${tableId}`)
+        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`)
         .then((response) => {
           setTableInfo(response.data);
 
           // Fetch saved bills for the table from the API
           axios
-            .get(`http://localhost:5000/api/order/savedBills/${tableId}`)
+            .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/savedBills/${tableId}`)
             .then((response) => {
               const savedBills = response.data;
               if (savedBills.length > 0) {
@@ -7969,7 +7969,7 @@ ${index.message}`;
     // Fetch menus based on the selected category
     if (selectedCategory) {
       axios
-        .get(`http://localhost:5000/api/menu/${selectedCategory._id}`)
+        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/${selectedCategory._id}`)
         .then((response) => {
           console.log(response.data);
           const menusArray = response.data || []; // Ensure menus is an array
@@ -7985,7 +7985,7 @@ ${index.message}`;
     // Fetch menus based on the selected category
     if (selectedBarCategory) {
       axios
-        .get(`http://localhost:5000/api/liquorBrand/${selectedBarCategory._id}`)
+        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/${selectedBarCategory._id}`)
         .then((response) => {
           // console.log(response.data);
           const menusArray = response.data || []; // Ensure menus is an array
@@ -8008,7 +8008,7 @@ ${index.message}`;
     // If the category is null (All items), fetch all menus
     if (category === null) {
       axios
-        .get("http://localhost:5000/api/menu/menus/list")
+        .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list")
         .then((response) => {
           console.log(response.data);
           setMenus(response.data);
@@ -8019,7 +8019,7 @@ ${index.message}`;
     } else {
       // Fetch menus based on the selected category
       axios
-        .get(`http://localhost:5000/api/menu/menulist/${category._id}`)
+        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menulist/${category._id}`)
         .then((response) => {
           console.log(response.data);
           setMenus(response.data);
@@ -8044,7 +8044,7 @@ ${index.message}`;
     // If the category is null (All items), fetch all menus
     if (category === null) {
       axios
-        .get("http://localhost:5000/api/liquorBrand/barSubmenu/list")
+        .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/barSubmenu/list")
         .then((response) => {
           console.log(response.data);
           setBarMenus(response.data);
@@ -8055,7 +8055,7 @@ ${index.message}`;
     } else {
       // Fetch menus based on the selected category
       axios
-        .get(`http://localhost:5000/api/liquorBrand/${category._id}`)
+        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/${category._id}`)
         .then((response) => {
           console.log(response.data);
           setBarMenus(response.data);
@@ -8157,7 +8157,7 @@ ${index.message}`;
       try {
         // Fetch all hotels
         const allHotelsResponse = await axios.get(
-          "http://localhost:5000/api/hotel/get-all"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get-all"
         );
         const allHotels = allHotelsResponse.data;
 
@@ -8167,7 +8167,7 @@ ${index.message}`;
         if (defaultHotelId) {
           // Fetch information for the first hotel
           const response = await axios.get(
-            `http://localhost:5000/api/hotel/get/${defaultHotelId}`
+            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get/${defaultHotelId}`
           );
           const hotelInfo = response.data;
           // console.log(hotelInfo);
@@ -8201,7 +8201,7 @@ ${index.message}`;
     const fetchSections = async () => {
       try {
         const sectionsResponse = await axios.get(
-          "http://localhost:5000/api/section"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section"
         );
         setSections(sectionsResponse.data);
       } catch (error) {
@@ -8232,20 +8232,20 @@ ${index.message}`;
     try {
       // Perform a lookup in the Table collection to retrieve tableId for destinationTableName
       const destinationTableResponse = await axios.get(
-        `http://localhost:5000/api/table/table/bySectionAndName/${sectionId}/${destinationTableName}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/table/bySectionAndName/${sectionId}/${destinationTableName}`
       );
       const destinationTableId = destinationTableResponse.data._id;
       console.log(destinationTableId);
 
       // Perform a lookup in the Table collection to retrieve tableId for sourceTableName
       const sourceTableResponse = await axios.get(
-        `http://localhost:5000/api/table/table/bySectionAndName/${sectionId}/${sourceTableName}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/table/bySectionAndName/${sectionId}/${sourceTableName}`
       );
       const sourceTableId = sourceTableResponse.data._id;
 
       // Call the mergeTables endpoint with the retrieved tableIds
       const response = await axios.patch(
-        "http://localhost:5000/api/order/mergeTables",
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/mergeTables",
         {
           destinationTableId,
           sourceTableId,
@@ -8270,19 +8270,19 @@ ${index.message}`;
     try {
       // Perform a lookup in the Table collection to retrieve tableId for destinationTableName in destinationSectionId
       const destinationTableResponse = await axios.get(
-        `http://localhost:5000/api/table/table/bySectionAndName/${destinationSectionId}/${destinationTableName}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/table/bySectionAndName/${destinationSectionId}/${destinationTableName}`
       );
       const destinationTableId = destinationTableResponse.data._id;
 
       // Perform a lookup in the Table collection to retrieve tableId for sourceTableName in sourceSectionId
       const sourceTableResponse = await axios.get(
-        `http://localhost:5000/api/table/table/bySectionAndName/${sourceSectionId}/${sourceTableName}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/table/bySectionAndName/${sourceSectionId}/${sourceTableName}`
       );
       const sourceTableId = sourceTableResponse.data._id;
 
       // Call the shiftTables endpoint with the retrieved tableIds
       const response = await axios.patch(
-        "http://localhost:5000/api/order/shiftBills",
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/shiftBills",
         {
           destinationTableId,
           sourceTableId,
@@ -8579,7 +8579,7 @@ ${index.message}`;
                             <img
                               src={
                                 product.imageUrl
-                                  ? `http://localhost:5000/${product.imageUrl}`
+                                  ? `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${product.imageUrl}`
                                   : `/wine.jpg`
                               }
                               className={`object-cover rounded-md ${
@@ -8738,7 +8738,7 @@ ${index.message}`;
                             <img
                               src={
                                 product.imageUrl
-                                  ? `http://localhost:5000/${product.imageUrl}`
+                                  ? `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${product.imageUrl}`
                                   : `/wine.jpg`
                               }
                               className={`object-cover rounded-md ${
@@ -10022,7 +10022,7 @@ ${index.message}`;
                               <img
                                 src={
                                   product.imageUrl
-                                    ? `http://localhost:5000/${product.imageUrl}`
+                                    ? `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${product.imageUrl}`
                                     : `/tray.png`
                                 }
                                 className={`object-cover rounded-md ${
@@ -10084,7 +10084,7 @@ ${index.message}`;
                               <img
                                 src={
                                   product.imageUrl
-                                    ? `http://localhost:5000/${product.imageUrl}`
+                                    ? `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${product.imageUrl}`
                                     : `/wine.jpg`
                                 }
                                 className={`object-cover rounded-md ${
@@ -10250,7 +10250,7 @@ ${index.message}`;
                               <img
                                 src={
                                   product.imageUrl
-                                    ? `http://localhost:5000/${product.imageUrl}`
+                                    ? `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${product.imageUrl}`
                                     : `/wine.jpg`
                                 }
                                 className={`object-cover rounded-md ${

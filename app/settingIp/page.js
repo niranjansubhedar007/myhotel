@@ -29,7 +29,7 @@
 
 //   const fetchSettings = async () => {
 //     try {
-//       const response = await axios.get('http://localhost:5000/printerall');
+//       const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/printerall');
 //       setSavedData(response.data);
 //     } catch (error) {
 //       console.error('Error fetching settings:', error.message);
@@ -50,7 +50,7 @@
 //     e.preventDefault();
   
 //     try {
-//       await axios.post('http://localhost:5000/printer', {
+//       await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/printer', {
 //         printerIP: printerIp,
 //         printerPort,
 //         printerIPBOT: printerIPBOT,  // Assume you've created state for this
@@ -303,7 +303,7 @@ const IpPortSettings = () => {
 
   const fetchSettings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/printerall');
+      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/printerall');
       setSavedData(response.data);
     } catch (error) {
       console.error('Error fetching settings:', error.message);
@@ -324,7 +324,7 @@ const IpPortSettings = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/printer', {
+      await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/printer', {
         printerIP: printerIp,
         printerPort,
         printerIPBOT,

@@ -47,7 +47,7 @@ const CounterMainMenuList = () => {
   const handleViewMainCategory = async (mainCategory) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/main/${mainCategory._id}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main/${mainCategory._id}`
       );
       const mainCategoryData = response.data;
       console.log("Main Category Data:", mainCategoryData);
@@ -73,7 +73,7 @@ const CounterMainMenuList = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:5000/api/main",
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main",
         formData,
         {
           headers: {
@@ -122,7 +122,7 @@ const CounterMainMenuList = () => {
       }
 
       const response = await axios.delete(
-        `http://localhost:5000/api/main/${menu._id}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main/${menu._id}`
       );
 
       // Check if response.data and deletedMainCategory are not null or undefined
@@ -168,7 +168,7 @@ const CounterMainMenuList = () => {
       }
 
       const response = await axios.patch(
-        `http://localhost:5000/api/main/${editedMenu._id}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main/${editedMenu._id}`,
         formData,
         {
           headers: {
@@ -195,7 +195,7 @@ const CounterMainMenuList = () => {
       setIsEditModalOpen(false);
 
       // Fetch the updated list of menus
-      const updatedMenusResponse = await axios.get("http://localhost:5000/api/main");
+      const updatedMenusResponse = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main");
       setMenus(updatedMenusResponse.data);
     } catch (error) {
       console.error("Error updating main category:", error);
@@ -204,7 +204,7 @@ const CounterMainMenuList = () => {
 
 
   const handlePicturePreview = (mainImage) => {
-    const completeImageUrl = `http://localhost:5000/${mainImage}`;
+    const completeImageUrl = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${mainImage}`;
     setPreviewImageUrl(completeImageUrl);
     setIsPreviewModalOpen(true);
   };
@@ -212,7 +212,7 @@ const CounterMainMenuList = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/main");
+        const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main");
         setMenus(response.data);
 
         // Update searchResults based on the search input
@@ -665,7 +665,7 @@ const CounterMainMenuList = () => {
                   Image:
                   {mainCategoryToView?.mainImage ? (
                     <img
-                      src={`http://localhost:5000/${mainCategoryToView.mainImage}`}
+                      src={`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/${mainCategoryToView.mainImage}`}
                       alt="Main Category"
                       className="max-w-full max-h-32 mt-2"
                     />

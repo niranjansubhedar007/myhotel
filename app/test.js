@@ -127,12 +127,12 @@
 //     const fetchData = async () => {
 //       try {
 //         const sectionsResponse = await axios.get(
-//           "http://localhost:5000/api/section"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section"
 //         );
 //         setSections(sectionsResponse.data);
 
 //         const tablesResponse = await axios.get(
-//           "http://localhost:5000/api/table/tables"
+//           "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables"
 //         );
 //         setTables(tablesResponse.data);
 
@@ -147,7 +147,7 @@
 //         const billsData = await Promise.all(
 //           tablesResponse.data.map(async (table) => {
 //             const billsResponse = await axios.get(
-//               `http://localhost:5000/api/order/order/${table._id}`
+//               `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/${table._id}`
 //             );
 
 //             const temporaryBills = billsResponse.data.filter(
@@ -392,7 +392,7 @@
 
 //   const fetchMenuData = async () => {
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`);
+//       const res = await fetch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`);
 //       const data = await res.json();
 //       setMenuData(data);
 //     } catch (error) {
@@ -402,7 +402,7 @@
 
 //   const fetchPurchaseData = async () => {
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`);
+//       const res = await fetch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`);
 //       const data = await res.json();
 //       setPurchaseMenuData(data);
 //     } catch (error) {
@@ -412,7 +412,7 @@
 
 //   const fetchSellData = async () => {
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`);
+//       const res = await fetch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`);
 //       const data = await res.json();
 //       setSellMenuData(data);
 //     } catch (error) {

@@ -45,7 +45,7 @@ const CustomerPaymentReport = () => {
 
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/customer/customers");
+      const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers");
       // Filter customers who have credit balance but no debit amount
       const filteredCustomers = response.data.filter(customer => customer.creditBalance > 0 && customer.debit === 0);
       setCustomers(response.data);

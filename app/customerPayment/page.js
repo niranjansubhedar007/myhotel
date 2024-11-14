@@ -31,7 +31,7 @@ const CustomerPayment = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/customer/customers")
+      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers")
       .then((response) => setCustomers(response.data))
       .catch((error) => console.error("Error:", error));
   }, []);
@@ -39,7 +39,7 @@ const CustomerPayment = () => {
   useEffect(() => {
     if (selectedCustomer) {
       axios
-        .get(`http://localhost:5000/api/customer/customers/${selectedCustomer}`)
+        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers/${selectedCustomer}`)
         .then((response) => {
           setCustomerDetails(response.data);
           setCreditBalance(response.data.credit);
@@ -79,7 +79,7 @@ const CustomerPayment = () => {
   //   try {
   //     // Update the customer's balance on the server
   //     const response = await axios.put(
-  //       `http://localhost:5000/api/customer/updateBalance/${selectedCustomer}`,
+  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/updateBalance/${selectedCustomer}`,
   //       {
   //         debit: debitAmount,
   //       }
@@ -93,7 +93,7 @@ const CustomerPayment = () => {
 
   //     // Fetch updated date-wise records
   //     const recordsResponse = await axios.get(
-  //       `http://localhost:5000/api/customer/customers/${selectedCustomer}`
+  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers/${selectedCustomer}`
   //     );
   //     setDateWiseRecords((prevRecords) => [
   //       ...prevRecords,
@@ -130,7 +130,7 @@ const CustomerPayment = () => {
 
   //     // Update the customer's balance on the server
   //     const response = await axios.put(
-  //       `http://localhost:5000/api/customer/updateBalance/${selectedCustomer}`,
+  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/updateBalance/${selectedCustomer}`,
   //       {
   //         debit: debitAmount,
   //       }
@@ -144,7 +144,7 @@ const CustomerPayment = () => {
 
   //     // Fetch updated date-wise records
   //     const recordsResponse = await axios.get(
-  //       `http://localhost:5000/api/customer/customers/${selectedCustomer}`
+  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers/${selectedCustomer}`
   //     );
   //     setDateWiseRecords((prevRecords) => [
   //       ...prevRecords,
@@ -185,7 +185,7 @@ const CustomerPayment = () => {
     try {
       // Update the customer's balance on the server
       const response = await axios.put(
-        `http://localhost:5000/api/customer/updateBalance/${selectedCustomer}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/updateBalance/${selectedCustomer}`,
         { debit: debitAmount }
       );
   
@@ -206,7 +206,7 @@ const CustomerPayment = () => {
   
       // Fetch updated date-wise records from the server after submission
       const recordsResponse = await axios.get(
-        `http://localhost:5000/api/customer/customers/${selectedCustomer}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers/${selectedCustomer}`
       );
   
       // Update the date-wise records with the fresh data from the server
@@ -261,12 +261,12 @@ const CustomerPayment = () => {
 
   //     // Delete the record on the server
   //     await axios.delete(
-  //       `http://localhost:5000/api/customer/customers/${selectedCustomer}/dateWiseRecords/${recordId}`
+  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers/${selectedCustomer}/dateWiseRecords/${recordId}`
   //     );
 
   //     // Fetch updated customer details from the server
   //     const customerResponse = await axios.get(
-  //       `http://localhost:5000/api/customer/customers/${selectedCustomer}`
+  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers/${selectedCustomer}`
   //     );
 
   //     // Update the state with the updated customer details
@@ -284,7 +284,7 @@ const CustomerPayment = () => {
     try {
       // Delete the record on the server
       await axios.delete(
-        `http://localhost:5000/api/customer/customers/${selectedCustomer}/dateWiseRecords/${deleteRecordId}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customers/${selectedCustomer}/dateWiseRecords/${deleteRecordId}`
       );
 
       // Update the state after successful deletion

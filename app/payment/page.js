@@ -41,7 +41,7 @@ const PaymentModal = ({
   const fetchMobileNumbers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/customer/mobile-numbers"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/mobile-numbers"
       );
       setMobileNumbers(response.data);
     } catch (error) {
@@ -99,7 +99,7 @@ const PaymentModal = ({
       // Check if the customer already exists
       if (formData.mobileNumber) {
         const customerResponse = await axios.get(
-          `http://localhost:5000/api/customer/get-customer-by-mobile/${formData.mobileNumber}`
+          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/get-customer-by-mobile/${formData.mobileNumber}`
         );
         existingCustomer = customerResponse.data;
       }
@@ -114,7 +114,7 @@ const PaymentModal = ({
 
           if (updatedCreditBalance > 0) {
             await axios.patch(
-              `http://localhost:5000/api/customer/update-credit-balance/${existingCustomer._id}`,
+              `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/update-credit-balance/${existingCustomer._id}`,
               {
                 creditBalance: updatedCreditBalance,
                 orderNumber: formData.orderNumber,
@@ -135,7 +135,7 @@ const PaymentModal = ({
 
       // Update the order without checking for customerName and mobileNumber
       const response = await axios.patch(
-        `http://localhost:5000/api/order/update-order-by-id/${orderID}`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderID}`,
         {
           ...formData,
           items: items, // Pass the items prop properly
@@ -197,7 +197,7 @@ const PaymentModal = ({
     }
 
     const newCustomerResponse = await axios.post(
-      "http://localhost:5000/api/customer/customer/list/add-customer",
+      "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/customer/list/add-customer",
       {
         customerName: formData.customerName,
         mobileNumber: formData.mobileNumber,
@@ -243,7 +243,7 @@ const PaymentModal = ({
   const fetchCustomerDetails = async (mobileNumber) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/customer/get-customer-by-mobile/${mobileNumber}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/customer/get-customer-by-mobile/${mobileNumber}`
       );
       const customerData = response.data;
 
@@ -328,7 +328,7 @@ const PaymentModal = ({
     try {
       // Make API call to update flag to true
       await axios.put(
-        `http://localhost:5000/api/order/order/update-flag/${orderNumber}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/order/update-flag/${orderNumber}`
       );
       console.log("Flag updated successfully");
     } catch (error) {

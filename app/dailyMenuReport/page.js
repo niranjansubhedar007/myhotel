@@ -77,7 +77,7 @@ const DailyMenuReport = () => {
       try {
         // Fetch all hotels
         const allHotelsResponse = await axios.get(
-          "http://localhost:5000/api/hotel/get-all"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get-all"
         );
         const allHotels = allHotelsResponse.data;
 
@@ -87,7 +87,7 @@ const DailyMenuReport = () => {
         if (defaultHotelId) {
           // Fetch information for the first hotel
           const response = await axios.get(
-            `http://localhost:5000/api/hotel/get/${defaultHotelId}`
+            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get/${defaultHotelId}`
           );
           const hotelInfo = response.data;
 
@@ -108,13 +108,13 @@ const DailyMenuReport = () => {
       setLoading(true);
 
       const response = await axios.get(
-        `http://localhost:5000/api/order/ordersList/date?startDate=${startDate}&endDate=${endDate}`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/ordersList/date?startDate=${startDate}&endDate=${endDate}`
       );
 
       const ordersWithTableNames = await Promise.all(
         response.data.map(async (order) => {
           const tableResponse = await axios.get(
-            `http://localhost:5000/api/table/tables/${order.tableId}`
+            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${order.tableId}`
           );
           return {
             ...order,
@@ -595,7 +595,7 @@ const DailyMenuReport = () => {
 
     try {
       // Make a request to the backend API to update orders with flag true
-      const response = await axios.put("http://localhost:5000/api/order/orders/flag");
+      const response = await axios.put("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/orders/flag");
       console.log(response); // Log the response to the console
     } catch (error) {
       // Handle error

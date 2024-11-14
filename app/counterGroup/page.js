@@ -42,7 +42,7 @@ const CounterGroupMenu = () => {
     const fetchMainCategories = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/main");
+        const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main");
         setMainCategories(response.data);
         setLoading(false);
       } catch (error) {
@@ -59,7 +59,7 @@ const CounterGroupMenu = () => {
     const fetchCounterCategories = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/counter");
+        const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter");
         setCounterCategories(response.data);
         setLoading(false);
       } catch (error) {
@@ -111,7 +111,7 @@ const CounterGroupMenu = () => {
   const handleAddMenusToCategory = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/counter/${selectedCounterCategory}/assignmenus`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter/${selectedCounterCategory}/assignmenus`,
         {
           menuIds: selectedAddMenus,
         }
@@ -179,7 +179,7 @@ const CounterGroupMenu = () => {
   
       // If the main category is not assigned to any other counter, proceed with the API call
       const response = await axios.post(
-        `http://localhost:5000/api/counter/${selectedCounterCategory}/assignmaincategory`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter/${selectedCounterCategory}/assignmaincategory`,
         {
           mainCategory: {
             id: selectedMainCategory,
@@ -260,7 +260,7 @@ const CounterGroupMenu = () => {
   const fetchAllMenus = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/menu/menus/list"
+        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list"
       );
       const allMenus = response.data;
       // console.log(response.data);
@@ -316,7 +316,7 @@ const CounterGroupMenu = () => {
 
         // Adjusted URL to fetch main categories
         const mainCategoriesResponse = await axios.get(
-          "http://localhost:5000/api/main"
+          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main"
         );
 
         // Assuming mainCategoriesResponse.data contains main categories
@@ -345,7 +345,7 @@ const CounterGroupMenu = () => {
 
       // Adjust the API endpoint to match your backend route for fetching menus based on the counter category ID
       const response = await axios.get(
-        `http://localhost:5000/api/counter/${counterCategoryId}/menus`
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter/${counterCategoryId}/menus`
       );
 
       // Assuming response.data contains the menus for the selected counter category
@@ -407,7 +407,7 @@ const CounterGroupMenu = () => {
       setLoading(true);
 
       const response = await axios.delete(
-        `http://localhost:5000/api/counter/${selectedCounterCategory}/removemenus`,
+        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter/${selectedCounterCategory}/removemenus`,
         {
           data: { menuIds: selectedMenus },
         }
