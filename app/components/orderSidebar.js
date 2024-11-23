@@ -327,7 +327,7 @@ const OrderSidebar = () => {
     const fetchItems = async () => {
       try {
         const response = await fetch(
-          "http://172.188.99.139:5000/api/item/items/equal-low-stock"
+          "https://172.188.99.139:5001/api/item/items/equal-low-stock"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
@@ -403,7 +403,7 @@ const OrderSidebar = () => {
       try {
         // Fetch all hotels
         const response = await axios.get(
-          "http://172.188.99.139:5000/api/hotel/get-all"
+          "https://172.188.99.139:5001/api/hotel/get-all"
         );
 
         setHotelInfo(response.data);

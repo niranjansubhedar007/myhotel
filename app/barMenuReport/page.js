@@ -32,7 +32,7 @@ const BarStatisticsComponent = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://172.188.99.139:5000/api/order/bar-statistics${startDate && endDate
+          `https://172.188.99.139:5001/api/order/bar-statistics${startDate && endDate
             ? `?startDate=${startDate}&endDate=${endDate}`
             : ''
           }`
@@ -350,7 +350,7 @@ export default BarStatisticsComponent;
 //     const fetchData = async () => {
 //       try {
 //         const response = await axios.get(
-//           `http://172.188.99.139:5000/api/coupon/coupon/date?startDate=${startDate}&endDate=${endDate}`
+//           `https://172.188.99.139:5001/api/coupon/coupon/date?startDate=${startDate}&endDate=${endDate}`
 //         );
 //         console.log(response.data);
 //         setMenuItems(response.data);

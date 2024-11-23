@@ -21,7 +21,7 @@
 
 //   const fetchMenuData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`);
 //       const data = await res.json();
 //       setMenuData(data);
 //     } catch (error) {
@@ -31,7 +31,7 @@
 
 //   const fetchPurchaseData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`);
 //       const data = await res.json();
 //       setPurchaseMenuData(data);
 //     } catch (error) {
@@ -41,7 +41,7 @@
 
 //   const fetchSellData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`);
 //       const data = await res.json();
 //       setSellMenuData(data);
 //     } catch (error) {
@@ -51,7 +51,7 @@
 
 //   const fetchCloseData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/updateClosing`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/updateClosing`);
 //       const data = await res.json();
 //       console.log(data)
 //       setClosingData(data);
@@ -62,7 +62,7 @@
 
 //   const fetchCloseStockData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/order/closeStockQty/barmenus`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/order/closeStockQty/barmenus`);
 //       const data = await res.json();
 //       console.log(data)
 //       setClosingStockData(data);
@@ -526,7 +526,7 @@
 
 //   const fetchMenuData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`);
 //       const data = await res.json();
 //       setMenuData(data);
 //     } catch (error) {
@@ -536,7 +536,7 @@
 
 //   const fetchPurchaseData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`);
 //       const data = await res.json();
 //       setPurchaseMenuData(data);
 //     } catch (error) {
@@ -546,7 +546,7 @@
 
 //   const fetchSellData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`);
 //       const data = await res.json();
 //       setSellMenuData(data);
 //     } catch (error) {
@@ -556,7 +556,7 @@
 
 //   const fetchCloseData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/updateClosing`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/updateClosing`);
 //       const data = await res.json();
 //       console.log(data)
 //       setClosingData(data);
@@ -567,7 +567,7 @@
 
 //   const fetchCloseStockData = async () => {
 //     try {
-//       const res = await fetch(`http://172.188.99.139:5000/api/liquorBrand/order/closeStockQty/barmenus`);
+//       const res = await fetch(`https://172.188.99.139:5001/api/liquorBrand/order/closeStockQty/barmenus`);
 //       const data = await res.json();
 //       console.log(data)
 //       setClosingStockData(data);
@@ -808,15 +808,15 @@
 
 //   useEffect(() => {
 //     if (selectedDate) {
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`, setMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`, setPurchaseMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`, setSellMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/closeStockQty/barmenus?date=${selectedDate}`, setClosingStockData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`, setMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`, setPurchaseMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`, setSellMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/closeStockQty/barmenus?date=${selectedDate}`, setClosingStockData);
 //     }
 //   }, [selectedDate]);
 
 //   useEffect(() => {
-//     fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/updateClosing`, setClosingData);
+//     fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/updateClosing`, setClosingData);
 //   }, []);
 
 //   useEffect(() => {
@@ -1062,11 +1062,11 @@
 
 //   useEffect(() => {
 //     if (selectedDate) {
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`, setMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`, setPurchaseMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`, setSellMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/closeStockQty/barmenus?date=${selectedDate}`, setClosingStockData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/updateClosing`, setClosingData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`, setMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`, setPurchaseMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`, setSellMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/closeStockQty/barmenus?date=${selectedDate}`, setClosingStockData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/updateClosing`, setClosingData);
 //     }
 //   }, [selectedDate]);
 
@@ -1330,11 +1330,11 @@
 
 //   useEffect(() => {
 //     if (selectedDate) {
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`, setMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`, setPurchaseMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`, setSellMenuData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/closeStockQty/barmenus?date=${selectedDate}`, setClosingStockData);
-//       fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/updateClosing`, setClosingData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`, setMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`, setPurchaseMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`, setSellMenuData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/closeStockQty/barmenus?date=${selectedDate}`, setClosingStockData);
+//       fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/updateClosing`, setClosingData);
 //     }
 //   }, [selectedDate]);
 
@@ -1611,11 +1611,11 @@ const MenuList = () => {
 
   useEffect(() => {
     if (selectedDate) {
-      fetchData(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`, setMenuData);
-      fetchData(`http://172.188.99.139:5000/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`, setPurchaseMenuData);
-      fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`, setSellMenuData);
-      fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/closeStockQty/barmenus?date=${selectedDate}`, setClosingStockData);
-      fetchData(`http://172.188.99.139:5000/api/liquorBrand/order/stockQty/updateClosing`, setClosingData);
+      fetchData(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenus?date=${selectedDate}`, setMenuData);
+      fetchData(`https://172.188.99.139:5001/api/liquorBrand/stockQty/barmenu?date=${selectedDate}`, setPurchaseMenuData);
+      fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/sellQty?date=${selectedDate}`, setSellMenuData);
+      fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/closeStockQty/barmenus?date=${selectedDate}`, setClosingStockData);
+      fetchData(`https://172.188.99.139:5001/api/liquorBrand/order/stockQty/updateClosing`, setClosingData);
     }
   }, [selectedDate]);
 

@@ -37,7 +37,7 @@ const NewItemModal = ({ isOpen, onClose }) => {
     // Fetch the list of items when the component mounts
     const fetchItems = async () => {
       try {
-        const itemsResponse = await axios.get("http://172.188.99.139:5000/api/item/items");
+        const itemsResponse = await axios.get("https://172.188.99.139:5001/api/item/items");
         console.log(itemsResponse)
         setItems(itemsResponse.data);
       } catch (error) {
@@ -53,7 +53,7 @@ const NewItemModal = ({ isOpen, onClose }) => {
     // Fetch the list of units when the component mounts
     const fetchUnits = async () => {
       try {
-        const unitsResponse = await axios.get("http://172.188.99.139:5000/api/unit/units");
+        const unitsResponse = await axios.get("https://172.188.99.139:5001/api/unit/units");
         setUnits(unitsResponse.data);
       } catch (error) {
         console.error("Error fetching units:", error.message);
@@ -76,7 +76,7 @@ const NewItemModal = ({ isOpen, onClose }) => {
       // Fetch the details of the selected unit
       try {
         const unitDetailsResponse = await axios.get(
-          `http://172.188.99.139:5000/api/unit/units/${value}`
+          `https://172.188.99.139:5001/api/unit/units/${value}`
         );
         setSelectedUnitDetails(unitDetailsResponse.data); // Assuming the API returns the details of the unit
       } catch (error) {
@@ -120,14 +120,14 @@ const NewItemModal = ({ isOpen, onClose }) => {
       if (itemToEdit) {
         // If editing, make a PUT request
         response = await axios.put(
-          `http://172.188.99.139:5000/api/item/items/${itemToEdit._id}`,
+          `https://172.188.99.139:5001/api/item/items/${itemToEdit._id}`,
           formData
         );
 
         console.log("Edit Response:", response.data); // Log successful response
     } else {
       // If creating, make a POST request
-      response = await axios.post("http://172.188.99.139:5000/api/item/items", {
+      response = await axios.post("https://172.188.99.139:5001/api/item/items", {
         ...formData,
         unit: formData.unit || "",
         lessStock: formData.lessStock || 0,
@@ -368,7 +368,7 @@ const StockOutwardForm = () => {
       }
 
       // Make an API call to add items to stock outward entries
-      await axios.post("http://172.188.99.139:5000/api/stockOut/stockOut/addItems", {
+      await axios.post("https://172.188.99.139:5001/api/stockOut/stockOut/addItems", {
         waiterName,
         productName,
         stockQty,
@@ -376,7 +376,7 @@ const StockOutwardForm = () => {
       });
 
       // Make an API call to update available quantity
-      await axios.post("http://172.188.99.139:5000/api/item/items/updateQuantity", {
+      await axios.post("https://172.188.99.139:5001/api/item/items/updateQuantity", {
         productName,
         stockQty,
       });
@@ -405,13 +405,13 @@ const StockOutwardForm = () => {
       if (name === "waiterName") {
         setWaiterName(value);
         const response = await axios.get(
-          `http://172.188.99.139:5000/api/waiter/waiter/mobile?name=${value}`
+          `https://172.188.99.139:5001/api/waiter/waiter/mobile?name=${value}`
         );
         setMobileNumber(response.data.mobileNumber);
       } else if (name === "productName") {
         setProductName(value);
         const response = await axios.get(
-          `http://172.188.99.139:5000/api/item/items/quantity?productName=${value}`
+          `https://172.188.99.139:5001/api/item/items/quantity?productName=${value}`
         );
         setAvailableQuantity(response.data.availableQuantity);
         setUnit(response.data.unit); // Set unit
@@ -428,7 +428,7 @@ const StockOutwardForm = () => {
 
   const fetchProductNames = async () => {
     try {
-      const response = await axios.get("http://172.188.99.139:5000/api/item/items");
+      const response = await axios.get("https://172.188.99.139:5001/api/item/items");
       setProductNames(response.data);
     } catch (error) {
       console.error(
@@ -447,7 +447,7 @@ const StockOutwardForm = () => {
   const fetchStockOutwardList = async () => {
     try {
       const response = await axios.get(
-        "http://172.188.99.139:5000/api/stockOut/stockOut"
+        "https://172.188.99.139:5001/api/stockOut/stockOut"
       );
       setStockOutwardList(response.data);
     } catch (error) {
@@ -460,7 +460,7 @@ const StockOutwardForm = () => {
 
   const fetchWaitersList = async () => {
     try {
-      const response = await axios.get("http://172.188.99.139:5000/api/waiter");
+      const response = await axios.get("https://172.188.99.139:5001/api/waiter");
       setWaitersList(response.data);
     } catch (error) {
       console.error(

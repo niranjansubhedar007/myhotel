@@ -43,7 +43,7 @@ const EditModal = ({ isOpen, onCancel, onEdit, itemToEdit, units }) => {
   const handleEdit = async () => {
     try {
       await axios.put(
-        `http://172.188.99.139:5000/api/item/items/${itemToEdit._id}`,
+        `https://172.188.99.139:5001/api/item/items/${itemToEdit._id}`,
         formData
       );
 
@@ -228,7 +228,7 @@ const ItemPage = () => {
     try {
       // Assuming the API returns the deleted item
       await axios.delete(
-        `http://172.188.99.139:5000/api/item/items/${itemIdToDelete}`
+        `https://172.188.99.139:5001/api/item/items/${itemIdToDelete}`
       );
 
       // Update the state by removing the deleted item
@@ -249,7 +249,7 @@ const ItemPage = () => {
     try {
       // Make an API request using Axios to update the item data
       await axios.put(
-        `http://172.188.99.139:5000/api/item/items/${itemToEdit._id}`,
+        `https://172.188.99.139:5001/api/item/items/${itemToEdit._id}`,
         formData
       );
 
@@ -300,13 +300,13 @@ const ItemPage = () => {
     try {
       // Fetch the list of items
       const itemsResponse = await axios.get(
-        "http://172.188.99.139:5000/api/item/items"
+        "https://172.188.99.139:5001/api/item/items"
       );
       setItems(itemsResponse.data);
 
       // Fetch the list of units
       const unitsResponse = await axios.get(
-        "http://172.188.99.139:5000/api/unit/units"
+        "https://172.188.99.139:5001/api/unit/units"
       );
       setUnits(unitsResponse.data);
     } catch (error) {
@@ -333,7 +333,7 @@ const ItemPage = () => {
       // Fetch the details of the selected unit
       try {
         const unitDetailsResponse = await axios.get(
-          `http://172.188.99.139:5000/api/unit/units/${value}`
+          `https://172.188.99.139:5001/api/unit/units/${value}`
         );
         setSelectedUnitDetails(unitDetailsResponse.data);
       } catch (error) {
@@ -371,7 +371,7 @@ const ItemPage = () => {
     try {
      
         // If creating, make a POST request
-        await axios.post("http://172.188.99.139:5000/api/item/items", {
+        await axios.post("https://172.188.99.139:5001/api/item/items", {
           ...formData,
           unit: formData.unit || "",
           lessStock: formData.lessStock || 0,

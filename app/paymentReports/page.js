@@ -32,10 +32,10 @@ const PaymentList = () => {
         const fetchPayments = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://172.188.99.139:5000/api/payment/paymentsList');
+                const response = await axios.get('https://172.188.99.139:5001/api/payment/paymentsList');
                 const paymentsWithTableNames = await Promise.all(
                     response.data.map(async (payment) => {
-                        const tableResponse = await axios.get(`http://172.188.99.139:5000/api/table/tables/${payment.tableId}`);
+                        const tableResponse = await axios.get(`https://172.188.99.139:5001/api/table/tables/${payment.tableId}`);
                         return {
                             ...payment,
                             tableName: tableResponse.data.tableName || 'Unknown Table',

@@ -234,7 +234,7 @@ const Billing = ({ tableId, acPercentage }) => {
   //   const fetchAdmins = async () => {
   //     try {
   //       const response = await axios.get(
-  //         "http://172.188.99.139:5000/api/auth/admins"
+  //         "https://172.188.99.139:5001/api/auth/admins"
   //       );
   //       const combinedAdmins = response.data.admins.concat(
   //         response.data.adminBars
@@ -255,7 +255,7 @@ const Billing = ({ tableId, acPercentage }) => {
     const fetchAdmins = async () => {
       try {
         const response = await axios.get(
-          "http://172.188.99.139:5000/api/auth/admins"
+          "https://172.188.99.139:5001/api/auth/admins"
         );
         const combinedAdmins = response.data.admins.concat(
           response.data.adminBars
@@ -296,7 +296,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Call the API to get the tableId for the mainTableName
       const tableResponse = await axios.get(
-        `http://172.188.99.139:5000/api/table/tables/bySection/${sectionName}/${mainTableName}`
+        `https://172.188.99.139:5001/api/table/tables/bySection/${sectionName}/${mainTableName}`
       );
       // console.log(tableResponse);
       const mainTableId = tableResponse.data._id;
@@ -308,7 +308,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const sectionResponse = await axios.get(
-        `http://172.188.99.139:5000/api/table/section/byName/${sectionName}`
+        `https://172.188.99.139:5001/api/table/section/byName/${sectionName}`
       );
       // console.log(sectionResponse);
       const sectionId = sectionResponse.data.sectionId;
@@ -321,7 +321,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Call the reset-subtables endpoint with the retrieved mainTableId and sectionId
       const response = await axios.put(
-        `http://172.188.99.139:5000/api/table/${sectionId}/${mainTableId}/reset-subtables`
+        `https://172.188.99.139:5001/api/table/${sectionId}/${mainTableId}/reset-subtables`
       );
 
       if (response.status === 200) {
@@ -347,7 +347,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Call the API to get the tableId for the mainTableName
       const tableResponse = await axios.get(
-        `http://172.188.99.139:5000/api/table/tables/bySection/${sectionName}/${mainTableName}`
+        `https://172.188.99.139:5001/api/table/tables/bySection/${sectionName}/${mainTableName}`
       );
       console.log(tableResponse);
       const mainTableId = tableResponse.data._id;
@@ -359,7 +359,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const sectionResponse = await axios.get(
-        `http://172.188.99.139:5000/api/table/section/byName/${sectionName}`
+        `https://172.188.99.139:5001/api/table/section/byName/${sectionName}`
       );
       console.log(sectionResponse);
       const sectionId = sectionResponse.data.sectionId;
@@ -372,7 +372,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Call the show-subtables endpoint with the retrieved mainTableId and numberOfSubtablesToShow
       const response = await axios.put(
-        `http://172.188.99.139:5000/api/table/${sectionId}/${mainTableId}/show-subtables`,
+        `https://172.188.99.139:5001/api/table/${sectionId}/${mainTableId}/show-subtables`,
         {
           numberOfSubtablesToShow: parseInt(numberOfSubtablesToShow),
         }
@@ -441,7 +441,7 @@ const Billing = ({ tableId, acPercentage }) => {
           });
         }
 
-        await axios.patch(`http://172.188.99.139:5000/api/kot/${tableId}`, {
+        await axios.patch(`https://172.188.99.139:5001/api/kot/${tableId}`, {
           menuName: selectedItemName,
           quantityToCancel: quantityToCancel,
         });
@@ -620,7 +620,7 @@ const Billing = ({ tableId, acPercentage }) => {
         }
 
         // Patch request to cancel the selected menu item
-        await axios.patch(`http://172.188.99.139:5000/api/kot/${tableId}`, {
+        await axios.patch(`https://172.188.99.139:5001/api/kot/${tableId}`, {
           menuName: selectedItemName,
           quantityToCancel: quantityToCancel, // Use the user-specified quantity
         });
@@ -764,7 +764,7 @@ const Billing = ({ tableId, acPercentage }) => {
     const fetchTastes = async () => {
       try {
         const response = await axios.get(
-          "http://172.188.99.139:5000/api/taste/tastes"
+          "https://172.188.99.139:5001/api/taste/tastes"
         );
         setTastes(response.data);
         // Set the selected option to the first taste in the list (change as needed)
@@ -828,7 +828,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
   const fetchWaitersList = async () => {
     try {
-      const response = await axios.get("http://172.188.99.139:5000/api/waiter");
+      const response = await axios.get("https://172.188.99.139:5001/api/waiter");
       setWaitersList(response.data);
     } catch (error) {
       console.error(
@@ -862,7 +862,7 @@ const Billing = ({ tableId, acPercentage }) => {
     const fetchGreetings = async () => {
       try {
         const response = await axios.get(
-          "http://172.188.99.139:5000/api/greet/greet"
+          "https://172.188.99.139:5001/api/greet/greet"
         );
         setGreetings(response.data);
       } catch (error) {
@@ -878,7 +878,7 @@ const Billing = ({ tableId, acPercentage }) => {
     const fetchNextOrderNumber = async () => {
       try {
         const response = await axios.get(
-          "http://172.188.99.139:5000/api/order/get-next-order-number"
+          "https://172.188.99.139:5001/api/order/get-next-order-number"
         );
         const nextOrderNumber = response.data.nextOrderNumber;
         setOrderNumber(nextOrderNumber);
@@ -898,14 +898,14 @@ const Billing = ({ tableId, acPercentage }) => {
   const fetchLastAllOrders = async () => {
     try {
       const ordersResponse = await axios.get(
-        "http://172.188.99.139:5000/api/order/latest-orders"
+        "https://172.188.99.139:5001/api/order/latest-orders"
       );
       const orders = ordersResponse.data;
 
       // Fetch table names for each order
       const tableNamesPromises = orders.map(async (order) => {
         const tableResponse = await axios.get(
-          `http://172.188.99.139:5000/api/table/tables/${order.tableId}`
+          `https://172.188.99.139:5001/api/table/tables/${order.tableId}`
         );
         const tableName = tableResponse.data?.tableName || "";
         return { ...order, tableName };
@@ -1003,7 +1003,7 @@ const Billing = ({ tableId, acPercentage }) => {
   const saveBillLan = async () => {
     try {
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -1141,7 +1141,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
 
@@ -1151,12 +1151,12 @@ const Billing = ({ tableId, acPercentage }) => {
         const orderIdToUpdate = existingBill[0]._id;
         existingItems = existingBill[0].items;
         const updateResponse = await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           orderData
         );
       } else {
         const createResponse = await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -1291,7 +1291,7 @@ const Billing = ({ tableId, acPercentage }) => {
       ) {
         // Make an API call to save the BOT
         const BOTResponse = await axios.post(
-          `http://172.188.99.139:5000/api/bot/botOrder/${tableId}`,
+          `https://172.188.99.139:5001/api/bot/botOrder/${tableId}`,
           kotData
         );
 
@@ -1307,7 +1307,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Make an API call to save the KOT
       const KOTResponse = await axios.post(
-        `http://172.188.99.139:5000/api/kot/kotOrder/${tableId}`,
+        `https://172.188.99.139:5001/api/kot/kotOrder/${tableId}`,
         kotData
       );
 
@@ -1408,7 +1408,7 @@ const Billing = ({ tableId, acPercentage }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -1567,7 +1567,7 @@ const Billing = ({ tableId, acPercentage }) => {
   const saveBill = async () => {
     try {
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -1715,7 +1715,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
 
@@ -1725,12 +1725,12 @@ const Billing = ({ tableId, acPercentage }) => {
         const orderIdToUpdate = existingBill[0]._id;
         existingItems = existingBill[0].items;
         const updateResponse = await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           orderData
         );
       } else {
         const createResponse = await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -1865,7 +1865,7 @@ const Billing = ({ tableId, acPercentage }) => {
       ) {
         // Make an API call to save the BOT
         const BOTResponse = await axios.post(
-          `http://172.188.99.139:5000/api/bot/botOrder/${tableId}`,
+          `https://172.188.99.139:5001/api/bot/botOrder/${tableId}`,
           kotData
         );
 
@@ -1881,7 +1881,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Make an API call to save the KOT
       const KOTResponse = await axios.post(
-        `http://172.188.99.139:5000/api/kot/kotOrder/${tableId}`,
+        `https://172.188.99.139:5001/api/kot/kotOrder/${tableId}`,
         kotData
       );
 
@@ -1969,7 +1969,7 @@ const Billing = ({ tableId, acPercentage }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -2196,7 +2196,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Check if there's an existing bill for the current table
       const existingKOTResponse = await axios.get(
-        `http://172.188.99.139:5000/api/kot/kot/${tableId}`
+        `https://172.188.99.139:5001/api/kot/kot/${tableId}`
       );
       const existingKOT = existingKOTResponse.data;
       console.log(existingKOT);
@@ -2449,7 +2449,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Check if there's an existing bill for the current table
       const existingBOTResponse = await axios.get(
-        `http://172.188.99.139:5000/api/bot/bot/${tableId}`
+        `https://172.188.99.139:5001/api/bot/bot/${tableId}`
       );
       const existingBOT = existingBOTResponse.data;
       console.log(existingBOT);
@@ -2672,7 +2672,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Check if there's an existing bill for the current table
       const existingKOTResponse = await axios.get(
-        `http://172.188.99.139:5000/api/kot/kot/${tableId}`
+        `https://172.188.99.139:5001/api/kot/kot/${tableId}`
       );
       const existingKOT = existingKOTResponse.data;
       console.log(existingKOT);
@@ -2861,7 +2861,7 @@ const Billing = ({ tableId, acPercentage }) => {
     try {
       // Check if there's an existing bill for the current table
       const existingBOTResponse = await axios.get(
-        `http://172.188.99.139:5000/api/bot/bot/${tableId}`
+        `https://172.188.99.139:5001/api/bot/bot/${tableId}`
       );
       const existingBOT = existingBOTResponse.data;
       console.log(existingBOT);
@@ -3060,7 +3060,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -3149,7 +3149,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Check if there's an existing bill for the current table
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
 
@@ -3159,12 +3159,12 @@ const Billing = ({ tableId, acPercentage }) => {
         const orderIdToUpdate = existingBill[0]._id;
         existingItems = existingBill[0].items;
         await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           orderData
         );
       } else {
         await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -3196,7 +3196,7 @@ const Billing = ({ tableId, acPercentage }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -3239,7 +3239,7 @@ const Billing = ({ tableId, acPercentage }) => {
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -3277,7 +3277,7 @@ const Billing = ({ tableId, acPercentage }) => {
       }
 
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -3359,16 +3359,16 @@ const Billing = ({ tableId, acPercentage }) => {
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://172.188.99.139:5000/api/kot/kot/settle/${tableId}`
+          `https://172.188.99.139:5001/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -3400,7 +3400,7 @@ const Billing = ({ tableId, acPercentage }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -3626,7 +3626,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -3664,7 +3664,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -3777,16 +3777,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://172.188.99.139:5000/api/kot/kot/settle/${tableId}`
+          `https://172.188.99.139:5001/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -3818,7 +3818,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -4592,7 +4592,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -4630,7 +4630,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -4732,16 +4732,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://172.188.99.139:5000/api/kot/kot/settle/${tableId}`
+          `https://172.188.99.139:5001/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -4773,7 +4773,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -4819,7 +4819,7 @@ ${index.message}`;
 
       // Call API to update the order with cash payment
       await axios.patch(
-        `http://172.188.99.139:5000/api/order/update/update-order-by-cash/${orderIdToUpdate}`,
+        `https://172.188.99.139:5001/api/order/update/update-order-by-cash/${orderIdToUpdate}`,
         {
           items: orderData.items,
           subtotal: orderData.subtotal,
@@ -5015,7 +5015,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -5053,7 +5053,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -5164,16 +5164,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://172.188.99.139:5000/api/kot/kot/settle/${tableId}`
+          `https://172.188.99.139:5001/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -5205,7 +5205,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -5252,7 +5252,7 @@ ${index.message}`;
 
       // Call API to update the order with cash payment
       await axios.patch(
-        `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+        `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
         {
           items: orderData.items,
           subtotal: orderData.subtotal,
@@ -5448,7 +5448,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -5486,7 +5486,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -5597,16 +5597,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://172.188.99.139:5000/api/kot/kot/settle/${tableId}`
+          `https://172.188.99.139:5001/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -5638,7 +5638,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -5684,7 +5684,7 @@ ${index.message}`;
 
       // Call API to update the order with cash payment
       await axios.patch(
-        `http://172.188.99.139:5000/api/order/update/update-order-by-cash/${orderIdToUpdate}`,
+        `https://172.188.99.139:5001/api/order/update/update-order-by-cash/${orderIdToUpdate}`,
         {
           items: orderData.items,
           subtotal: orderData.subtotal,
@@ -6428,7 +6428,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -6466,7 +6466,7 @@ ${index.message}`;
       }
 
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
       console.log("Existing Bill:", existingBill);
@@ -6577,16 +6577,16 @@ ${index.message}`;
         const orderIdToUpdate = existingBill[temporaryOrderIndex]._id;
         console.log("Updating Order ID:", orderIdToUpdate);
         await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           { ...orderData, isTemporary: true, isPrint: 1 }
         );
         await axios.patch(
-          `http://172.188.99.139:5000/api/kot/kot/settle/${tableId}`
+          `https://172.188.99.139:5001/api/kot/kot/settle/${tableId}`
         );
       } else {
         console.log("Creating New Order");
         await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -6618,7 +6618,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -6665,7 +6665,7 @@ ${index.message}`;
 
       // Call API to update the order with cash payment
       await axios.patch(
-        `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+        `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
         {
           items: orderData.items,
           subtotal: orderData.subtotal,
@@ -7410,7 +7410,7 @@ ${index.message}`;
 
       // Fetch stock data
       const stockResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stock"
+        "https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stock"
       );
       const stockData = stockResponse.data;
 
@@ -7508,23 +7508,23 @@ ${index.message}`;
 
       // Check if there's an existing bill for the current table
       const existingBillResponse = await axios.get(
-        `http://172.188.99.139:5000/api/order/order/${tableId}`
+        `https://172.188.99.139:5001/api/order/order/${tableId}`
       );
       const existingBill = existingBillResponse.data;
 
       if (existingBill && existingBill.length > 0) {
         const orderIdToUpdate = existingBill[0]._id;
         await axios.patch(
-          `http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`,
+          `https://172.188.99.139:5001/api/order/update-order-by-id/${orderIdToUpdate}`,
           orderData
         );
 
         await axios.patch(
-          `http://172.188.99.139:5000/api/kot/kot/settle/${tableId}`
+          `https://172.188.99.139:5001/api/kot/kot/settle/${tableId}`
         );
       } else {
         await axios.post(
-          `http://172.188.99.139:5000/api/order/order/${tableId}`,
+          `https://172.188.99.139:5001/api/order/order/${tableId}`,
           orderData
         );
       }
@@ -7558,7 +7558,7 @@ ${index.message}`;
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `https://172.188.99.139:5001/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -7802,7 +7802,7 @@ ${index.message}`;
     }
     // Fetch categories
     axios
-      .get("http://172.188.99.139:5000/api/main/hide")
+      .get("https://172.188.99.139:5001/api/main/hide")
       .then((response) => {
         setCategories(response.data);
       })
@@ -7811,7 +7811,7 @@ ${index.message}`;
       });
 
     axios
-      .get("http://172.188.99.139:5000/api/liquorCategory/barMenus")
+      .get("https://172.188.99.139:5001/api/liquorCategory/barMenus")
       .then((response) => {
         setBarCategories(response.data);
       })
@@ -7821,7 +7821,7 @@ ${index.message}`;
 
     // Fetch products
     axios
-      .get("http://172.188.99.139:5000/api/menu/menus/list")
+      .get("https://172.188.99.139:5001/api/menu/menus/list")
       .then((response) => {
         // console.log(response.data);
         const menusArray = response.data; // Ensure menus is an array
@@ -7832,7 +7832,7 @@ ${index.message}`;
       });
 
     // axios
-    //   .get("http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list")
+    //   .get("https://172.188.99.139:5001/api/liquorBrand/barSubmenu/list")
     //   .then((response) => {
     //     console.log(response.data);
     //     const menusArray = response.data; // Ensure menus is an array
@@ -7844,13 +7844,13 @@ ${index.message}`;
 
     if (tableId) {
       axios
-        .get(`http://172.188.99.139:5000/api/table/tables/${tableId}`)
+        .get(`https://172.188.99.139:5001/api/table/tables/${tableId}`)
         .then((response) => {
           setTableInfo(response.data);
 
           // Fetch saved bills for the table from the API
           axios
-            .get(`http://172.188.99.139:5000/api/order/savedBills/${tableId}`)
+            .get(`https://172.188.99.139:5001/api/order/savedBills/${tableId}`)
             .then((response) => {
               const savedBills = response.data;
               if (savedBills.length > 0) {
@@ -7969,7 +7969,7 @@ ${index.message}`;
     // Fetch menus based on the selected category
     if (selectedCategory) {
       axios
-        .get(`http://172.188.99.139:5000/api/menu/${selectedCategory._id}`)
+        .get(`https://172.188.99.139:5001/api/menu/${selectedCategory._id}`)
         .then((response) => {
           console.log(response.data);
           const menusArray = response.data || []; // Ensure menus is an array
@@ -7985,7 +7985,7 @@ ${index.message}`;
     // Fetch menus based on the selected category
     if (selectedBarCategory) {
       axios
-        .get(`http://172.188.99.139:5000/api/liquorBrand/${selectedBarCategory._id}`)
+        .get(`https://172.188.99.139:5001/api/liquorBrand/${selectedBarCategory._id}`)
         .then((response) => {
           // console.log(response.data);
           const menusArray = response.data || []; // Ensure menus is an array
@@ -8008,7 +8008,7 @@ ${index.message}`;
     // If the category is null (All items), fetch all menus
     if (category === null) {
       axios
-        .get("http://172.188.99.139:5000/api/menu/menus/list")
+        .get("https://172.188.99.139:5001/api/menu/menus/list")
         .then((response) => {
           console.log(response.data);
           setMenus(response.data);
@@ -8019,7 +8019,7 @@ ${index.message}`;
     } else {
       // Fetch menus based on the selected category
       axios
-        .get(`http://172.188.99.139:5000/api/menu/menulist/${category._id}`)
+        .get(`https://172.188.99.139:5001/api/menu/menulist/${category._id}`)
         .then((response) => {
           console.log(response.data);
           setMenus(response.data);
@@ -8044,7 +8044,7 @@ ${index.message}`;
     // If the category is null (All items), fetch all menus
     if (category === null) {
       axios
-        .get("http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list")
+        .get("https://172.188.99.139:5001/api/liquorBrand/barSubmenu/list")
         .then((response) => {
           console.log(response.data);
           setBarMenus(response.data);
@@ -8055,7 +8055,7 @@ ${index.message}`;
     } else {
       // Fetch menus based on the selected category
       axios
-        .get(`http://172.188.99.139:5000/api/liquorBrand/${category._id}`)
+        .get(`https://172.188.99.139:5001/api/liquorBrand/${category._id}`)
         .then((response) => {
           console.log(response.data);
           setBarMenus(response.data);
@@ -8157,7 +8157,7 @@ ${index.message}`;
       try {
         // Fetch all hotels
         const allHotelsResponse = await axios.get(
-          "http://172.188.99.139:5000/api/hotel/get-all"
+          "https://172.188.99.139:5001/api/hotel/get-all"
         );
         const allHotels = allHotelsResponse.data;
 
@@ -8167,7 +8167,7 @@ ${index.message}`;
         if (defaultHotelId) {
           // Fetch information for the first hotel
           const response = await axios.get(
-            `http://172.188.99.139:5000/api/hotel/get/${defaultHotelId}`
+            `https://172.188.99.139:5001/api/hotel/get/${defaultHotelId}`
           );
           const hotelInfo = response.data;
           // console.log(hotelInfo);
@@ -8201,7 +8201,7 @@ ${index.message}`;
     const fetchSections = async () => {
       try {
         const sectionsResponse = await axios.get(
-          "http://172.188.99.139:5000/api/section"
+          "https://172.188.99.139:5001/api/section"
         );
         setSections(sectionsResponse.data);
       } catch (error) {
@@ -8232,20 +8232,20 @@ ${index.message}`;
     try {
       // Perform a lookup in the Table collection to retrieve tableId for destinationTableName
       const destinationTableResponse = await axios.get(
-        `http://172.188.99.139:5000/api/table/table/bySectionAndName/${sectionId}/${destinationTableName}`
+        `https://172.188.99.139:5001/api/table/table/bySectionAndName/${sectionId}/${destinationTableName}`
       );
       const destinationTableId = destinationTableResponse.data._id;
       console.log(destinationTableId);
 
       // Perform a lookup in the Table collection to retrieve tableId for sourceTableName
       const sourceTableResponse = await axios.get(
-        `http://172.188.99.139:5000/api/table/table/bySectionAndName/${sectionId}/${sourceTableName}`
+        `https://172.188.99.139:5001/api/table/table/bySectionAndName/${sectionId}/${sourceTableName}`
       );
       const sourceTableId = sourceTableResponse.data._id;
 
       // Call the mergeTables endpoint with the retrieved tableIds
       const response = await axios.patch(
-        "http://172.188.99.139:5000/api/order/mergeTables",
+        "https://172.188.99.139:5001/api/order/mergeTables",
         {
           destinationTableId,
           sourceTableId,
@@ -8270,19 +8270,19 @@ ${index.message}`;
     try {
       // Perform a lookup in the Table collection to retrieve tableId for destinationTableName in destinationSectionId
       const destinationTableResponse = await axios.get(
-        `http://172.188.99.139:5000/api/table/table/bySectionAndName/${destinationSectionId}/${destinationTableName}`
+        `https://172.188.99.139:5001/api/table/table/bySectionAndName/${destinationSectionId}/${destinationTableName}`
       );
       const destinationTableId = destinationTableResponse.data._id;
 
       // Perform a lookup in the Table collection to retrieve tableId for sourceTableName in sourceSectionId
       const sourceTableResponse = await axios.get(
-        `http://172.188.99.139:5000/api/table/table/bySectionAndName/${sourceSectionId}/${sourceTableName}`
+        `https://172.188.99.139:5001/api/table/table/bySectionAndName/${sourceSectionId}/${sourceTableName}`
       );
       const sourceTableId = sourceTableResponse.data._id;
 
       // Call the shiftTables endpoint with the retrieved tableIds
       const response = await axios.patch(
-        "http://172.188.99.139:5000/api/order/shiftBills",
+        "https://172.188.99.139:5001/api/order/shiftBills",
         {
           destinationTableId,
           sourceTableId,

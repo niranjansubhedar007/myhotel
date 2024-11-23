@@ -41,7 +41,7 @@ const CreateHotelForm = () => {
   const fetchHotels = async () => {
     try {
       const response = await axios.get(
-        "http://172.188.99.139:5000/api/hotel/get-all"
+        "https://172.188.99.139:5001/api/hotel/get-all"
       );
       setHotels(response.data);
     } catch (error) {
@@ -78,7 +78,7 @@ const CreateHotelForm = () => {
   const handleEdit = async (hotelId) => {
     try {
       const response = await axios.get(
-        `http://172.188.99.139:5000/api/hotel/get/${hotelId}`
+        `https://172.188.99.139:5001/api/hotel/get/${hotelId}`
       );
       const hotelDetails = response.data;
 
@@ -147,7 +147,7 @@ const CreateHotelForm = () => {
       });
 
       const response = await axios.patch(
-        `http://172.188.99.139:5000/api/hotel/edit/${editFormData._id}`,
+        `https://172.188.99.139:5001/api/hotel/edit/${editFormData._id}`,
         formDataForUpload
       );
       console.log("Hotel edited successfully:", response.data);
@@ -161,7 +161,7 @@ const CreateHotelForm = () => {
 
   // const handleDelete = async (hotelId) => {
   //   try {
-  //     await axios.delete(`http://172.188.99.139:5000/api/hotel/delete/${hotelId}`);
+  //     await axios.delete(`https://172.188.99.139:5001/api/hotel/delete/${hotelId}`);
   //     console.log('Hotel deleted successfully.');
   //     fetchHotels(); // Refresh the list after deletion
   //   } catch (error) {
@@ -181,7 +181,7 @@ const CreateHotelForm = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://172.188.99.139:5000/api/hotel/delete/${deleteHotelId}`
+        `https://172.188.99.139:5001/api/hotel/delete/${deleteHotelId}`
       );
       console.log("Hotel deleted successfully.");
       fetchHotels(); // Refresh the list after deletion
@@ -287,7 +287,7 @@ const CreateHotelForm = () => {
       });
 
       const response = await axios.post(
-        "http://172.188.99.139:5000/api/hotel/create",
+        "https://172.188.99.139:5001/api/hotel/create",
         formDataForUpload
       );
       console.log("Hotel created successfully:", response.data);

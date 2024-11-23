@@ -21,7 +21,7 @@ export default function Login1() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://172.188.99.139:5000/api/counterAdmin/login', { username, password });
+      const response = await axios.post('https://172.188.99.139:5001/api/counterAdmin/login', { username, password });
       // Handle successful login, save token to localStorage, redirect, etc.
       console.log(response.data);
       const token = response.data.token;

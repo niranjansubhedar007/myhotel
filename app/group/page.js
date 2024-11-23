@@ -53,7 +53,7 @@ const GroupMenu = () => {
       }
 
       const response = await axios.post(
-        `http://172.188.99.139:5000/api/menu/${selectedMainCategory}/assignmenus`,
+        `https://172.188.99.139:5001/api/menu/${selectedMainCategory}/assignmenus`,
         {
           menuIds: selectedAddMenus,
         }
@@ -121,7 +121,7 @@ const GroupMenu = () => {
   const fetchAllMenus = async () => {
     try {
       const response = await axios.get(
-        "http://172.188.99.139:5000/api/menu/menus/list"
+        "https://172.188.99.139:5001/api/menu/menus/list"
       );
       const allMenus = response.data;
 
@@ -176,7 +176,7 @@ const GroupMenu = () => {
         setLoading(true);
 
         const mainCategoriesResponse = await axios.get(
-          "http://172.188.99.139:5000/api/main"
+          "https://172.188.99.139:5001/api/main"
         );
         setMainCategories(mainCategoriesResponse.data);
 
@@ -194,7 +194,7 @@ const GroupMenu = () => {
   const fetchMenusForCategory = async () => {
     try {
       const response = await axios.get(
-        `http://172.188.99.139:5000/api/main/${selectedMainCategory}`
+        `https://172.188.99.139:5001/api/main/${selectedMainCategory}`
       );
       const mainCategory = response.data;
 
@@ -220,7 +220,7 @@ const GroupMenu = () => {
       setLoading(true);
 
       const response = await axios.delete(
-        `http://172.188.99.139:5000/api/menu/${selectedMainCategory}/removemenus`,
+        `https://172.188.99.139:5001/api/menu/${selectedMainCategory}/removemenus`,
         {
           data: { menuIds: selectedMenus },
         }

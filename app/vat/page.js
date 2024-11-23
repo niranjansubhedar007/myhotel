@@ -15,7 +15,7 @@ const VATForm = ({ onSubmit }) => {
     useEffect(() => {
         const fetchHotelAndVATPercentage = async () => {
             try {
-                const hotelsResponse = await axios.get('http://172.188.99.139:5000/api/hotel/get-all');
+                const hotelsResponse = await axios.get('https://172.188.99.139:5001/api/hotel/get-all');
 
                 if (hotelsResponse.data.length > 0) {
                     setHotel(hotelsResponse.data[0]);
@@ -41,7 +41,7 @@ const VATForm = ({ onSubmit }) => {
         const fetchVATPercentage = async () => {
             try {
                 if (hotel._id) {
-                    const vatResponse = await axios.get(`http://172.188.99.139:5000/api/hotel/get/${hotel._id}`);
+                    const vatResponse = await axios.get(`https://172.188.99.139:5001/api/hotel/get/${hotel._id}`);
                     setVATPercentage(vatResponse.data.vatPercentage.toString());
                 }
             } catch (error) {
@@ -56,7 +56,7 @@ const VATForm = ({ onSubmit }) => {
         e.preventDefault();
         if (hotel._id && vatPercentage !== '') {
             try {
-                await axios.patch(`http://172.188.99.139:5000/api/hotel/vat/${hotel._id}`, {
+                await axios.patch(`https://172.188.99.139:5001/api/hotel/vat/${hotel._id}`, {
                     vatPercentage: parseFloat(vatPercentage),
                 });
                 setSuccessMessage('VAT Percentage added successfully');

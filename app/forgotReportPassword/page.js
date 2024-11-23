@@ -10,7 +10,7 @@ const ForgotReportPassword = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://172.188.99.139:5000/api/superAdmin/forgotPassword', { username });
+      const response = await axios.post('https://172.188.99.139:5001/api/superAdmin/forgotPassword', { username });
 
       if (response.status === 200) {
         alert(response.data.message); // You can replace this with a toast or a modal

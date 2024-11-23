@@ -30,7 +30,7 @@ const TasteList = () => {
   useEffect(() => {
     const fetchTastes = async () => {
       try {
-        const response = await axios.get('http://172.188.99.139:5000/api/taste/tastes');
+        const response = await axios.get('https://172.188.99.139:5001/api/taste/tastes');
         setTastes(response.data);
       } catch (error) {
         console.error('Error fetching tastes:', error);
@@ -69,12 +69,12 @@ const TasteList = () => {
 
     try {
       // Make an API request using Axios to update the taste
-      await axios.patch(`http://172.188.99.139:5000/api/taste/tastes/${selectedTaste._id}`, {
+      await axios.patch(`https://172.188.99.139:5001/api/taste/tastes/${selectedTaste._id}`, {
         taste: selectedTaste.taste,
       });
 
       // Fetch the updated list of tastes
-      const response = await axios.get('http://172.188.99.139:5000/api/taste/tastes');
+      const response = await axios.get('https://172.188.99.139:5001/api/taste/tastes');
       setTastes(response.data);
 
       // Close the edit modal
@@ -87,7 +87,7 @@ const TasteList = () => {
   const handleDeleteSubmit = async () => {
     try {
       // Make an API request using Axios to delete the taste
-      await axios.delete(`http://172.188.99.139:5000/api/taste/tastes/${selectedTaste._id}`);
+      await axios.delete(`https://172.188.99.139:5001/api/taste/tastes/${selectedTaste._id}`);
 
       // Remove the deleted taste from the local state
       setTastes((prevTastes) => prevTastes.filter((taste) => taste._id !== selectedTaste._id));
@@ -116,10 +116,10 @@ const TasteList = () => {
 
     try {
       // Make an API request using Axios to post the new taste
-      await axios.post('http://172.188.99.139:5000/api/taste/tastes', { taste: newTaste });
+      await axios.post('https://172.188.99.139:5001/api/taste/tastes', { taste: newTaste });
 
       // Fetch the updated list of tastes
-      const response = await axios.get('http://172.188.99.139:5000/api/taste/tastes');
+      const response = await axios.get('https://172.188.99.139:5001/api/taste/tastes');
       setTastes(response.data);
 
       // Reset the new taste input field

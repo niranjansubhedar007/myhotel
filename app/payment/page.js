@@ -41,7 +41,7 @@ const PaymentModal = ({
   const fetchMobileNumbers = async () => {
     try {
       const response = await axios.get(
-        "http://172.188.99.139:5000/api/customer/mobile-numbers"
+        "https://172.188.99.139:5001/api/customer/mobile-numbers"
       );
       setMobileNumbers(response.data);
     } catch (error) {
@@ -99,7 +99,7 @@ const PaymentModal = ({
       // Check if the customer already exists
       if (formData.mobileNumber) {
         const customerResponse = await axios.get(
-          `http://172.188.99.139:5000/api/customer/get-customer-by-mobile/${formData.mobileNumber}`
+          `https://172.188.99.139:5001/api/customer/get-customer-by-mobile/${formData.mobileNumber}`
         );
         existingCustomer = customerResponse.data;
       }
@@ -114,7 +114,7 @@ const PaymentModal = ({
 
           if (updatedCreditBalance > 0) {
             await axios.patch(
-              `http://172.188.99.139:5000/api/customer/update-credit-balance/${existingCustomer._id}`,
+              `https://172.188.99.139:5001/api/customer/update-credit-balance/${existingCustomer._id}`,
               {
                 creditBalance: updatedCreditBalance,
                 orderNumber: formData.orderNumber,
@@ -135,7 +135,7 @@ const PaymentModal = ({
 
       // Update the order without checking for customerName and mobileNumber
       const response = await axios.patch(
-        `http://172.188.99.139:5000/api/order/update-order-by-id/${orderID}`,
+        `https://172.188.99.139:5001/api/order/update-order-by-id/${orderID}`,
         {
           ...formData,
           items: items, // Pass the items prop properly
@@ -197,7 +197,7 @@ const PaymentModal = ({
     }
 
     const newCustomerResponse = await axios.post(
-      "http://172.188.99.139:5000/api/customer/customer/list/add-customer",
+      "https://172.188.99.139:5001/api/customer/customer/list/add-customer",
       {
         customerName: formData.customerName,
         mobileNumber: formData.mobileNumber,
@@ -243,7 +243,7 @@ const PaymentModal = ({
   const fetchCustomerDetails = async (mobileNumber) => {
     try {
       const response = await axios.get(
-        `http://172.188.99.139:5000/api/customer/get-customer-by-mobile/${mobileNumber}`
+        `https://172.188.99.139:5001/api/customer/get-customer-by-mobile/${mobileNumber}`
       );
       const customerData = response.data;
 
@@ -328,7 +328,7 @@ const PaymentModal = ({
     try {
       // Make API call to update flag to true
       await axios.put(
-        `http://172.188.99.139:5000/api/order/order/update-flag/${orderNumber}`
+        `https://172.188.99.139:5001/api/order/order/update-flag/${orderNumber}`
       );
       console.log("Flag updated successfully");
     } catch (error) {

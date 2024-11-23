@@ -15,7 +15,7 @@ const GSTForm = ({ onSubmit }) => {
     useEffect(() => {
         const fetchHotelAndGSTPercentage = async () => {
             try {
-                const hotelsResponse = await axios.get('http://172.188.99.139:5000/api/hotel/get-all');
+                const hotelsResponse = await axios.get('https://172.188.99.139:5001/api/hotel/get-all');
 
                 if (hotelsResponse.data.length > 0) {
                     setHotel(hotelsResponse.data[0]);
@@ -41,7 +41,7 @@ const GSTForm = ({ onSubmit }) => {
         const fetchGSTPercentage = async () => {
             try {
                 if (hotel._id) {
-                    const gstResponse = await axios.get(`http://172.188.99.139:5000/api/hotel/get/${hotel._id}`);
+                    const gstResponse = await axios.get(`https://172.188.99.139:5001/api/hotel/get/${hotel._id}`);
                     setGSTPercentage(gstResponse.data.gstPercentage.toString());
                 }
             } catch (error) {
@@ -56,7 +56,7 @@ const GSTForm = ({ onSubmit }) => {
         e.preventDefault();
         if (hotel._id && gstPercentage !== '') {
             try {
-                await axios.patch(`http://172.188.99.139:5000/api/hotel/gst/${hotel._id}`, {
+                await axios.patch(`https://172.188.99.139:5001/api/hotel/gst/${hotel._id}`, {
                     gstPercentage: parseFloat(gstPercentage),
                 });
                 setSuccessMessage('GST Percentage added successfully');

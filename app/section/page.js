@@ -36,7 +36,7 @@
 //   useEffect(() => {
 //     const fetchSections = async () => {
 //       try {
-//         const response = await axios.get("http://172.188.99.139:5000/api/section");
+//         const response = await axios.get("https://172.188.99.139:5001/api/section");
 //         setSections(response.data);
 //         filterSections(response.data);
 //       } catch (error) {
@@ -65,7 +65,7 @@
 //     try {
 //       // Send the updated sections to the server
 //       await axios.patch(
-//         `http://172.188.99.139:5000/api/section/${sectionToEdit._id}`,
+//         `https://172.188.99.139:5001/api/section/${sectionToEdit._id}`,
 //         {
 //           name: sectionToEdit.name,
 //           isDefault: sectionToEdit.isDefault,
@@ -90,7 +90,7 @@
 //       setIsEditModalOpen(false);
 
 //       // Refetch the sections to update the display
-//       const response = await axios.get("http://172.188.99.139:5000/api/section");
+//       const response = await axios.get("https://172.188.99.139:5001/api/section");
 //       setSections(response.data);
 //       filterSections(response.data);
 //     } catch (error) {
@@ -109,7 +109,7 @@
 
 //     try {
 //       await axios.delete(
-//         `http://172.188.99.139:5000/api/section/${sectionToDelete._id}`
+//         `https://172.188.99.139:5001/api/section/${sectionToDelete._id}`
 //       );
 
 //       // Remove the deleted section from the state
@@ -120,7 +120,7 @@
 
 //       // Refetch the sections to update the display
 //       const sectionsResponse = await axios.get(
-//         "http://172.188.99.139:5000/api/section"
+//         "https://172.188.99.139:5001/api/section"
 //       );
 //       setSections(sectionsResponse.data);
 //       filterSections(sectionsResponse.data);
@@ -135,7 +135,7 @@
 //       formData.append("name", newSection.name);
 
 //       const response = await axios.post(
-//         "http://172.188.99.139:5000/api/section/create",
+//         "https://172.188.99.139:5001/api/section/create",
 //         formData,
 //         {
 //           headers: {
@@ -161,7 +161,7 @@
 
 //       // Refetch the sections to update the display
 //       const sectionsResponse = await axios.get(
-//         "http://172.188.99.139:5000/api/section"
+//         "https://172.188.99.139:5001/api/section"
 //       );
 //       setSections(sectionsResponse.data);
 //       filterSections(sectionsResponse.data);
@@ -186,7 +186,7 @@
 //   useEffect(() => {
 //     const fetchsections = async () => {
 //       try {
-//         const response = await axios.get("http://172.188.99.139:5000/api/section");
+//         const response = await axios.get("https://172.188.99.139:5001/api/section");
 //         setSections(response.data);
 //       } catch (error) {
 //         console.error("Error fetching sections:", error);
@@ -608,7 +608,7 @@ const Section = () => {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const response = await axios.get("http://172.188.99.139:5000/api/section");
+        const response = await axios.get("https://172.188.99.139:5001/api/section");
         setSections(response.data);
         filterSections(response.data);
       } catch (error) {
@@ -637,7 +637,7 @@ const Section = () => {
     try {
       // Send the updated sections to the server
       await axios.patch(
-        `http://172.188.99.139:5000/api/section/${sectionToEdit._id}`,
+        `https://172.188.99.139:5001/api/section/${sectionToEdit._id}`,
         {
           name: sectionToEdit.name,
           isDefault: sectionToEdit.isDefault,
@@ -662,7 +662,7 @@ const Section = () => {
       setIsEditModalOpen(false);
 
       // Refetch the sections to update the display
-      const response = await axios.get("http://172.188.99.139:5000/api/section");
+      const response = await axios.get("https://172.188.99.139:5001/api/section");
       setSections(response.data);
       filterSections(response.data);
     } catch (error) {
@@ -681,7 +681,7 @@ const Section = () => {
 
     try {
       await axios.delete(
-        `http://172.188.99.139:5000/api/section/${sectionToDelete._id}`
+        `https://172.188.99.139:5001/api/section/${sectionToDelete._id}`
       );
 
       // Remove the deleted section from the state
@@ -692,7 +692,7 @@ const Section = () => {
 
       // Refetch the sections to update the display
       const sectionsResponse = await axios.get(
-        "http://172.188.99.139:5000/api/section"
+        "https://172.188.99.139:5001/api/section"
       );
       setSections(sectionsResponse.data);
       filterSections(sectionsResponse.data);
@@ -704,7 +704,7 @@ const Section = () => {
   const handleAddSubmit = async () => {
     try {
         const response = await axios.post(
-            "http://172.188.99.139:5000/api/section/create",
+            "https://172.188.99.139:5001/api/section/create",
             { name: newSection.name },
             {
                 headers: {
@@ -747,7 +747,7 @@ const Section = () => {
   useEffect(() => {
     const fetchsections = async () => {
       try {
-        const response = await axios.get("http://172.188.99.139:5000/api/section");
+        const response = await axios.get("https://172.188.99.139:5001/api/section");
         setSections(response.data);
       } catch (error) {
         console.error("Error fetching sections:", error);

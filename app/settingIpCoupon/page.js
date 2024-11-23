@@ -40,7 +40,7 @@ const IpSettings = () => {
   useEffect(() => {
     const fetchCounterAdmins = async () => {
       try {
-        const response = await axios.get('http://172.188.99.139:5000/api/counteradmin/counteradmins');
+        const response = await axios.get('https://172.188.99.139:5001/api/counteradmin/counteradmins');
         setCounterAdmins(response.data.counterAdmins); // Set the fetched counter admins
       } catch (error) {
         console.error('Error fetching counter admins:', error.message);
@@ -80,7 +80,7 @@ const IpSettings = () => {
   const handleCounterAdminLanBillToggleChange = async (counterAdminId, currentStatus) => {
     try {
       const newValue = !currentStatus;
-      const response = await axios.patch(`http://172.188.99.139:5000/api/counteradmin/counteradmin/${counterAdminId}/lanbill`, {
+      const response = await axios.patch(`https://172.188.99.139:5001/api/counteradmin/counteradmin/${counterAdminId}/lanbill`, {
         islanBill: newValue
       });
   

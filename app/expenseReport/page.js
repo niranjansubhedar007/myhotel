@@ -31,7 +31,7 @@ const ExpensesReport = () => {
   useEffect(() => {
     const fetchExpensesData = async () => {
       try {
-        const response = await axios.get("http://172.188.99.139:5000/api/expensesForm");
+        const response = await axios.get("https://172.188.99.139:5001/api/expensesForm");
         setExpensesData(response.data); // Assuming response.data is an array of expenses
       } catch (error) {
         console.error("Error fetching expenses data:", error);
@@ -40,7 +40,7 @@ const ExpensesReport = () => {
 
     const fetchExpenseTypes = async () => {
       try {
-        const response = await axios.get("http://172.188.99.139:5000/api/expense/expenses");
+        const response = await axios.get("https://172.188.99.139:5001/api/expense/expenses");
         setExpenseTypes(response.data); // Assuming response.data is an array of expense types
       } catch (error) {
         console.error("Error fetching expense types:", error);

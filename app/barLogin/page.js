@@ -24,9 +24,9 @@ export default function BarLogin() {
   // const handleLogin = async () => {
   //   try {
   //     // Call the API to write stock data to JSON file
-  //     await axios.post('http://172.188.99.139:5000/api/liquorBrand/updateStock');
+  //     await axios.post('https://172.188.99.139:5001/api/liquorBrand/updateStock');
 
-  //     const response = await axios.post('http://172.188.99.139:5000/api/auth/login', { username, password });
+  //     const response = await axios.post('https://172.188.99.139:5001/api/auth/login', { username, password });
   //     // Handle successful login, save token to localStorage, redirect, etc.
   //     console.log(response.data);
   //     const token = response.data.token;
@@ -46,10 +46,10 @@ export default function BarLogin() {
   const handleLogin = async () => {
     try {
       // Call the API to write stock data to JSON file
-      await axios.post('http://172.188.99.139:5000/api/liquorBrand/updateStock');
+      await axios.post('https://172.188.99.139:5001/api/liquorBrand/updateStock');
 
       // Authenticate the user
-      const response = await axios.post('http://172.188.99.139:5000/api/auth/loginBar', { username, password });
+      const response = await axios.post('https://172.188.99.139:5001/api/auth/loginBar', { username, password });
       const token = response.data.token;
 
       // Save token to localStorage
@@ -58,7 +58,7 @@ export default function BarLogin() {
       setMessage('Login successful');
 
       // Check if the hotel is set up
-      const hotelResponse = await axios.get('http://172.188.99.139:5000/api/hotel/get-all');
+      const hotelResponse = await axios.get('https://172.188.99.139:5001/api/hotel/get-all');
       console.log(hotelResponse);
 
       const hotels = hotelResponse.data; // Assuming the response data is an array

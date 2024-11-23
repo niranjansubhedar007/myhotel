@@ -30,14 +30,14 @@ const SupplierPayment = () => {
 
 
   useEffect(() => {
-    axios.get('http://172.188.99.139:5000/api/supplier/suppliers')
+    axios.get('https://172.188.99.139:5001/api/supplier/suppliers')
       .then(response => setSuppliers(response.data))
       .catch(error => console.error('Error:', error));
   }, []);
 
   useEffect(() => {
     if (selectedSupplier) {
-      axios.get(`http://172.188.99.139:5000/api/supplier/suppliers/${selectedSupplier}`)
+      axios.get(`https://172.188.99.139:5001/api/supplier/suppliers/${selectedSupplier}`)
         .then(response => {
           setSupplierDetails(response.data);
           setCreditBalance(response.data.credit);
@@ -77,14 +77,14 @@ const SupplierPayment = () => {
     if (debitAmount <= creditBalance && !loading) {
       setLoading(true);
 
-      axios.put(`http://172.188.99.139:5000/api/supplier/updateBalance/${selectedSupplier}`, {
+      axios.put(`https://172.188.99.139:5001/api/supplier/updateBalance/${selectedSupplier}`, {
         debit: debitAmount,
       })
         .then(response => {
           const updatedSupplier = response.data;
           setSupplierDetails(updatedSupplier);
           setShowSuccessPopup(true);
-          axios.get(`http://172.188.99.139:5000/api/supplier/suppliers/${selectedSupplier}`)
+          axios.get(`https://172.188.99.139:5001/api/supplier/suppliers/${selectedSupplier}`)
             .then(response => {
               setDateWiseRecords(prevRecords => [
                 ...prevRecords,
@@ -137,7 +137,7 @@ const SupplierPayment = () => {
   const handleDeleteConfirmed = async () => {
     try {
       // Make a DELETE request to delete the record
-      await axios.delete(`http://172.188.99.139:5000/api/supplier/suppliers/${selectedSupplier}/dateWiseRecords/${recordIdToDelete}`);
+      await axios.delete(`https://172.188.99.139:5001/api/supplier/suppliers/${selectedSupplier}/dateWiseRecords/${recordIdToDelete}`);
   
       // Update the local state to reflect the deletion
       setDateWiseRecords(prevRecords => prevRecords.filter(record => record._id !== recordIdToDelete));

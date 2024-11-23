@@ -19,7 +19,7 @@
 //   }, []);
 
 //   const handleLogout = async () => {
-//     await axios.post('http://172.188.99.139:5000/api/liquorBrand/updateClosing');
+//     await axios.post('https://172.188.99.139:5001/api/liquorBrand/updateClosing');
 
 //     localStorage.removeItem("EmployeeAuthToken");
 //     router.push("/login");
@@ -166,7 +166,7 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://172.188.99.139:5000/api/liquorBrand/updateClosing");
+      await axios.post("https://172.188.99.139:5001/api/liquorBrand/updateClosing");
       localStorage.removeItem("EmployeeAuthToken");
       router.push("/login");
     } catch (error) {
@@ -178,7 +178,7 @@ const Dashboard = () => {
     try {
       const newIsBarState = !isBar;
       const response = await axios.post(
-        "http://172.188.99.139:5000/api/auth/updateBarState",
+        "https://172.188.99.139:5001/api/auth/updateBarState",
         { email, isBar: newIsBarState }
       );
       if (response.status === 200) {

@@ -77,7 +77,7 @@ const DailyBarReport = () => {
       try {
         // Fetch all hotels
         const allHotelsResponse = await axios.get(
-          "http://172.188.99.139:5000/api/hotel/get-all"
+          "https://172.188.99.139:5001/api/hotel/get-all"
         );
         const allHotels = allHotelsResponse.data;
 
@@ -87,7 +87,7 @@ const DailyBarReport = () => {
         if (defaultHotelId) {
           // Fetch information for the first hotel
           const response = await axios.get(
-            `http://172.188.99.139:5000/api/hotel/get/${defaultHotelId}`
+            `https://172.188.99.139:5001/api/hotel/get/${defaultHotelId}`
           );
           const hotelInfo = response.data;
 
@@ -108,13 +108,13 @@ const DailyBarReport = () => {
       setLoading(true);
 
       const response = await axios.get(
-        `http://172.188.99.139:5000/api/order/ordersListBar/date?startDate=${startDate}&endDate=${endDate}`
+        `https://172.188.99.139:5001/api/order/ordersListBar/date?startDate=${startDate}&endDate=${endDate}`
       );
 
       const ordersWithTableNames = await Promise.all(
         response.data.map(async (order) => {
           const tableResponse = await axios.get(
-            `http://172.188.99.139:5000/api/table/tables/${order.tableId}`
+            `https://172.188.99.139:5001/api/table/tables/${order.tableId}`
           );
           return {
             ...order,
@@ -595,7 +595,7 @@ const DailyBarReport = () => {
 
     try {
       // Make a request to the backend API to update orders with flag true
-      const response = await axios.put("http://172.188.99.139:5000/api/order/orders/flag");
+      const response = await axios.put("https://172.188.99.139:5001/api/order/orders/flag");
       console.log(response); // Log the response to the console
     } catch (error) {
       // Handle error

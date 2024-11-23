@@ -36,7 +36,7 @@ const CounterHotelForm = () => {
 
   const fetchHotels = async () => {
     try {
-      const response = await axios.get('http://172.188.99.139:5000/api/counterHotel/get-all');
+      const response = await axios.get('https://172.188.99.139:5001/api/counterHotel/get-all');
       setHotels(response.data);
     } catch (error) {
       console.error('Error fetching hotels:', error);
@@ -70,7 +70,7 @@ const CounterHotelForm = () => {
   const handleEdit = async (hotelId) => {
     try {
 
-      const response = await axios.get(`http://172.188.99.139:5000/api/counterHotel/get/${hotelId}`);
+      const response = await axios.get(`https://172.188.99.139:5001/api/counterHotel/get/${hotelId}`);
       const hotelDetails = response.data;
 
       setEditFormData(hotelDetails);
@@ -136,7 +136,7 @@ const handleEditInputChange = (e) => {
         formDataForUpload.append(key, value);
       });
 
-      const response = await axios.patch(`http://172.188.99.139:5000/api/counterHotel/edit/${editFormData._id}`, formDataForUpload);
+      const response = await axios.patch(`https://172.188.99.139:5001/api/counterHotel/edit/${editFormData._id}`, formDataForUpload);
       console.log('Hotel edited successfully:', response.data);
 
       setIsEditModalOpen(false); // Close the edit modal
@@ -150,7 +150,7 @@ const handleEditInputChange = (e) => {
 
   // const handleDelete = async (hotelId) => {
   //   try {
-  //     await axios.delete(`http://172.188.99.139:5000/api/hotel/delete/${hotelId}`);
+  //     await axios.delete(`https://172.188.99.139:5001/api/hotel/delete/${hotelId}`);
   //     console.log('Hotel deleted successfully.');
   //     fetchHotels(); // Refresh the list after deletion
   //   } catch (error) {
@@ -169,7 +169,7 @@ const handleEditInputChange = (e) => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await axios.delete(`http://172.188.99.139:5000/api/counterHotel/delete/${deleteHotelId}`);
+      await axios.delete(`https://172.188.99.139:5001/api/counterHotel/delete/${deleteHotelId}`);
       console.log('Hotel deleted successfully.');
       fetchHotels(); // Refresh the list after deletion
     resetFormSubmission(); // Reset form submission state
@@ -261,7 +261,7 @@ const handleEditInputChange = (e) => {
         formDataForUpload.append(key, value);
       });
 
-      const response = await axios.post('http://172.188.99.139:5000/api/counterHotel/create', formDataForUpload);
+      const response = await axios.post('https://172.188.99.139:5001/api/counterHotel/create', formDataForUpload);
       console.log('Hotel created successfully:', response.data);
 
       resetForm(); // Clear form data

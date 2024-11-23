@@ -16,7 +16,7 @@ const CancelKotReport = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://172.188.99.139:5000/api/kot/cancel-items${startDate && endDate
+        const response = await axios.get(`https://172.188.99.139:5001/api/kot/cancel-items${startDate && endDate
           ? `?startDate=${startDate}&endDate=${endDate}`
           : ''
           }`);

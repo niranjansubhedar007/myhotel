@@ -66,10 +66,10 @@
 
 //   const fetchData = async () => {
 //     try {
-//       const expenseResponse = await axios.get('http://172.188.99.139:5000/api/expense/expenses');
+//       const expenseResponse = await axios.get('https://172.188.99.139:5001/api/expense/expenses');
 //       setExpenses(expenseResponse.data);
 
-//       const bankResponse = await axios.get('http://172.188.99.139:5000/api/bankName/bankNames');
+//       const bankResponse = await axios.get('https://172.188.99.139:5001/api/bankName/bankNames');
 //       setBankNames(bankResponse.data);
 //     } catch (error) {
 //       console.error('Error fetching data:', error);
@@ -89,7 +89,7 @@
 
 //   const fetchDataForTable = async () => {
 //     try {
-//       const tableResponse = await axios.get('http://172.188.99.139:5000/api/expensesForm');
+//       const tableResponse = await axios.get('https://172.188.99.139:5001/api/expensesForm');
 //       setTableData(tableResponse.data);
 //     } catch (error) {
 //       console.error('Error fetching table data:', error);
@@ -127,7 +127,7 @@
 //     }
 //     try {
 //       const response = await axios.patch(
-//         `http://172.188.99.139:5000/api/expensesForm/${editExpense._id}`,
+//         `https://172.188.99.139:5001/api/expensesForm/${editExpense._id}`,
 //         {
 //           date: expenseDate,
 //           expenseTitle: newExpense,
@@ -181,7 +181,7 @@
 //     e.preventDefault();
 
 //     try {
-//       const response = await axios.post('http://172.188.99.139:5000/api/expensesForm', {
+//       const response = await axios.post('https://172.188.99.139:5001/api/expensesForm', {
 //         date: expenseDate,
 //         expenseType: selectedExpense,
 //         description: description,
@@ -245,7 +245,7 @@
 //   // Function to handle actual deletion
 //   const handleDeleteConfirm = async () => {
 //     try {
-//       await axios.delete(`http://172.188.99.139:5000/api/expensesForm/${deleteExpense._id}`);
+//       await axios.delete(`https://172.188.99.139:5001/api/expensesForm/${deleteExpense._id}`);
 
 //       // Update the expenses state by removing the deleted expense
 //       setExpenses((prevExpenses) =>
@@ -856,7 +856,7 @@ const NewExpenseModal = ({ isOpen, onClose }) => {
     const fetchExpenses = async () => {
       try {
         const response = await axios.get(
-          "http://172.188.99.139:5000/api/expense/expenses"
+          "https://172.188.99.139:5001/api/expense/expenses"
         );
         setExpenses(response.data);
       } catch (error) {
@@ -884,14 +884,14 @@ const NewExpenseModal = ({ isOpen, onClose }) => {
 
     try {
       await axios.patch(
-        `http://172.188.99.139:5000/api/expense/expenses/${selectedExpense._id}`,
+        `https://172.188.99.139:5001/api/expense/expenses/${selectedExpense._id}`,
         {
           expense: selectedExpense.expense,
         }
       );
 
       const response = await axios.get(
-        "http://172.188.99.139:5000/api/expense/expenses"
+        "https://172.188.99.139:5001/api/expense/expenses"
       );
       setExpenses(response.data);
 
@@ -904,7 +904,7 @@ const NewExpenseModal = ({ isOpen, onClose }) => {
   const handleDeleteSubmit = async () => {
     try {
       await axios.delete(
-        `http://172.188.99.139:5000/api/expense/expenses/${selectedExpense._id}`
+        `https://172.188.99.139:5001/api/expense/expenses/${selectedExpense._id}`
       );
 
       setExpenses((prevExpenses) =>
@@ -921,12 +921,12 @@ const NewExpenseModal = ({ isOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      await axios.post("http://172.188.99.139:5000/api/expense/expenses", {
+      await axios.post("https://172.188.99.139:5001/api/expense/expenses", {
         expense: newExpense,
       });
 
       const response = await axios.get(
-        "http://172.188.99.139:5000/api/expense/expenses"
+        "https://172.188.99.139:5001/api/expense/expenses"
       );
       setExpenses(response.data);
 
@@ -1193,12 +1193,12 @@ const ExpenseFormList = () => {
   const fetchData = async () => {
     try {
       const expenseResponse = await axios.get(
-        "http://172.188.99.139:5000/api/expense/expenses"
+        "https://172.188.99.139:5001/api/expense/expenses"
       );
       setExpenses(expenseResponse.data);
 
       const bankResponse = await axios.get(
-        "http://172.188.99.139:5000/api/bankName/bankNames"
+        "https://172.188.99.139:5001/api/bankName/bankNames"
       );
       setBankNames(bankResponse.data);
     } catch (error) {
@@ -1218,7 +1218,7 @@ const ExpenseFormList = () => {
   const fetchDataForTable = async () => {
     try {
       const tableResponse = await axios.get(
-        "http://172.188.99.139:5000/api/expensesForm"
+        "https://172.188.99.139:5001/api/expensesForm"
       );
       setTableData(tableResponse.data);
     } catch (error) {
@@ -1252,7 +1252,7 @@ const ExpenseFormList = () => {
     }
     try {
       const response = await axios.patch(
-        `http://172.188.99.139:5000/api/expensesForm/${editExpense._id}`,
+        `https://172.188.99.139:5001/api/expensesForm/${editExpense._id}`,
         {
           date: expenseDate,
           expenseTitle: newExpense,
@@ -1306,7 +1306,7 @@ const ExpenseFormList = () => {
 
     try {
       const response = await axios.post(
-        "http://172.188.99.139:5000/api/expensesForm",
+        "https://172.188.99.139:5001/api/expensesForm",
         {
           date: expenseDate,
           expenseType: selectedExpense,
@@ -1373,7 +1373,7 @@ const ExpenseFormList = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://172.188.99.139:5000/api/expensesForm/${deleteExpense._id}`
+        `https://172.188.99.139:5001/api/expensesForm/${deleteExpense._id}`
       );
 
       // Update the expenses state by removing the deleted expense

@@ -34,7 +34,7 @@ const BotReport = () => {
     const fetchData = async () => {
       try {
         const params = {};
-        const response = await axios.get(`http://172.188.99.139:5000/api/bot/items${startDate && endDate
+        const response = await axios.get(`https://172.188.99.139:5001/api/bot/items${startDate && endDate
           ? `?startDate=${startDate}&endDate=${endDate}`
           : ''
           }`);

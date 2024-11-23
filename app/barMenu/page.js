@@ -21,7 +21,7 @@ const NewEditModal = ({ isOpen, onClose, onMenuUpdate }) => {
 
   useEffect(() => {
     axios
-      .get(`http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list`)
+      .get(`https://172.188.99.139:5001/api/liquorBrand/barSubmenu/list`)
       .then((response) => {
         setLiquorBrands(response.data);
       })
@@ -33,7 +33,7 @@ const NewEditModal = ({ isOpen, onClose, onMenuUpdate }) => {
   useEffect(() => {
     if (selectedLiquorBrand) {
       axios
-        .get(`http://172.188.99.139:5000/api/liquorBrand/getMenu/${selectedLiquorBrand}`)
+        .get(`https://172.188.99.139:5001/api/liquorBrand/getMenu/${selectedLiquorBrand}`)
         .then((response) => {
           setFormData(response.data);
         })
@@ -80,7 +80,7 @@ const NewEditModal = ({ isOpen, onClose, onMenuUpdate }) => {
 
     try {
       await axios.put(
-        `http://172.188.99.139:5000/api/liquorBrand/barSubmenu/${selectedLiquorBrand}`,
+        `https://172.188.99.139:5001/api/liquorBrand/barSubmenu/${selectedLiquorBrand}`,
         formData
       );
 
@@ -530,7 +530,7 @@ const BarList = () => {
     try {
       // Proceed with the delete operation
       const response = await axios.delete(
-        `http://172.188.99.139:5000/api/liquorBrand/barSubmenu/${menuToDelete._id}`
+        `https://172.188.99.139:5001/api/liquorBrand/barSubmenu/${menuToDelete._id}`
       );
       console.log("Menu deleted successfully:", response.data);
 
@@ -610,7 +610,7 @@ const BarList = () => {
   const fetchMenus = async () => {
     try {
       const response = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list"
+        "https://172.188.99.139:5001/api/liquorBrand/barSubmenu/list"
       );
       setMenus(response.data);
     } catch (error) {
@@ -658,7 +658,7 @@ const BarList = () => {
       formData.append("lessStockData", JSON.stringify(lessStockData));
 
       const response = await axios.post(
-        "http://172.188.99.139:5000/api/liquorBrand/barSubmenu",
+        "https://172.188.99.139:5001/api/liquorBrand/barSubmenu",
         formData
       );
 
@@ -727,7 +727,7 @@ const BarList = () => {
     const fetchMenus = async () => {
       try {
         const response = await axios.get(
-          "http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list"
+          "https://172.188.99.139:5001/api/liquorBrand/barSubmenu/list"
         );
         setMenus(response.data);
       } catch (error) {
@@ -742,7 +742,7 @@ const BarList = () => {
   useEffect(() => {
     // Fetch barCategory values from backend API when the component mounts
     axios
-      .get('http://172.188.99.139:5000/api/liquorBrand/barCategory/list')
+      .get('https://172.188.99.139:5001/api/liquorBrand/barCategory/list')
       .then((response) => {
         // Update the barCategories state with the received values
         setBarCategories(response.data);
@@ -764,7 +764,7 @@ const BarList = () => {
 
       // Make a POST request to upload the Excel file
       const response = await axios.post(
-        "http://172.188.99.139:5000/api/liquorBrand/upload-excel",
+        "https://172.188.99.139:5001/api/liquorBrand/upload-excel",
         formData
       );
 
@@ -772,7 +772,7 @@ const BarList = () => {
 
       // Fetch the updated list of menus after successful upload
       const updatedMenusResponse = await axios.get(
-        "http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list"
+        "https://172.188.99.139:5001/api/liquorBrand/barSubmenu/list"
       );
 
       // Update the menus state with the updated list of menus
@@ -780,7 +780,7 @@ const BarList = () => {
 
       setIsSuccessPopupOpen(true);
 
-      const stock = await axios.post('http://172.188.99.139:5000/api/liquorBrand/updateStock');
+      const stock = await axios.post('https://172.188.99.139:5001/api/liquorBrand/updateStock');
       console.log(stock)
       // Set a timeout to automatically close the success popup after 3 seconds (adjust as needed)
       // setTimeout(() => {

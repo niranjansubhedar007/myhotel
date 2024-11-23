@@ -33,7 +33,7 @@ const OrderHistoryList = () => {
     const fetchOrderHistory = async () => {
       try {
         const response = await axios.get(
-          "http://172.188.99.139:5000/api/logHistory/order-history"
+          "https://172.188.99.139:5001/api/logHistory/order-history"
         );
         setOrderHistory(response.data);
       } catch (error) {

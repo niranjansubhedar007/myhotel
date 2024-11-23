@@ -33,7 +33,7 @@ const StockOutwardTable = () => {
 
   const fetchStockOutwardList = async (start, end) => {
     try {
-      const response = await axios.get('http://172.188.99.139:5000/api/stockOut/stockOut', {
+      const response = await axios.get('https://172.188.99.139:5001/api/stockOut/stockOut', {
         params: {
           startDate: start,
           endDate: end,
@@ -51,7 +51,7 @@ const StockOutwardTable = () => {
       const formattedStartDate = getFormattedDate(new Date(startDate));
       const formattedEndDate = getFormattedDate(new Date(endDate));
 
-      const response = await axios.get('http://172.188.99.139:5000/api/stockOut/stockOut', {
+      const response = await axios.get('https://172.188.99.139:5001/api/stockOut/stockOut', {
         params: {
           startDate: formattedStartDate,
           endDate: formattedEndDate,
@@ -157,9 +157,9 @@ const StockOutwardTable = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://172.188.99.139:5000/api/item/items');
+      const response = await axios.get('https://172.188.99.139:5001/api/item/items');
       const itemsWithPrice = await Promise.all(response.data.map(async (item) => {
-        const purchaseBillsResponse = await axios.get('http://172.188.99.139:5000/api/purchase/purchases', {
+        const purchaseBillsResponse = await axios.get('https://172.188.99.139:5001/api/purchase/purchases', {
           params: {
             itemName: item.itemName
           }

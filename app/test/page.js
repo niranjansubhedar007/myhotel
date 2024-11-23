@@ -81,10 +81,10 @@ const Try = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const sectionsResponse = await axios.get("http://172.188.99.139:5000/api/section");
+        const sectionsResponse = await axios.get("https://172.188.99.139:5001/api/section");
         setSections(sectionsResponse.data);
 
-        const tablesResponse = await axios.get("http://172.188.99.139:5000/api/table/tables");
+        const tablesResponse = await axios.get("https://172.188.99.139:5001/api/table/tables");
         setTables(tablesResponse.data);
 
         // Retrieve saved section from localStorage
@@ -105,7 +105,7 @@ const Try = () => {
         // Fetch bills data
         const billsData = await Promise.all(
           tablesResponse.data.map(async (table) => {
-            const billsResponse = await axios.get(`http://172.188.99.139:5000/api/order/order/${table._id}`);
+            const billsResponse = await axios.get(`https://172.188.99.139:5001/api/order/order/${table._id}`);
             const temporaryBills = billsResponse.data.filter((bill) => bill.isTemporary);
             const latestBill = temporaryBills.length > 0 ? temporaryBills[0] : null;
             return { [table._id]: latestBill };

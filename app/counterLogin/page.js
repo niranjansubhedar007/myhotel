@@ -22,7 +22,7 @@ export default function CounterLogin() {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://172.188.99.139:5000/api/counterLogin/login",
+        "https://172.188.99.139:5001/api/counterLogin/login",
         { username, password }
       );
       // Handle successful login, save token to localStorage, redirect, etc.

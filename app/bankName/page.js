@@ -30,7 +30,7 @@ const BankNameList = () => {
   useEffect(() => {
     const fetchBankNames = async () => {
       try {
-        const response = await axios.get('http://172.188.99.139:5000/api/bankName/bankNames');
+        const response = await axios.get('https://172.188.99.139:5001/api/bankName/bankNames');
         setBankNames(response.data);
       } catch (error) {
         console.error('Error fetching bank names:', error);
@@ -56,7 +56,7 @@ const BankNameList = () => {
     e.preventDefault();
 
     try {
-      await axios.patch(`http://172.188.99.139:5000/api/bankName/bankNames/${selectedBankName._id}`, {
+      await axios.patch(`https://172.188.99.139:5001/api/bankName/bankNames/${selectedBankName._id}`, {
         bankName: selectedBankName.bankName,
       });
 
@@ -77,7 +77,7 @@ const BankNameList = () => {
 
   const handleDeleteSubmit = async () => {
     try {
-      await axios.delete(`http://172.188.99.139:5000/api/bankName/bankNames/${selectedBankName._id}`);
+      await axios.delete(`https://172.188.99.139:5001/api/bankName/bankNames/${selectedBankName._id}`);
 
       setBankNames((prevBankNames) => prevBankNames.filter((bn) => bn._id !== selectedBankName._id));
 
@@ -91,9 +91,9 @@ const BankNameList = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://172.188.99.139:5000/api/bankName/bankNames', { bankName: newBankName });
+      await axios.post('https://172.188.99.139:5001/api/bankName/bankNames', { bankName: newBankName });
 
-      const response = await axios.get('http://172.188.99.139:5000/api/bankName/bankNames');
+      const response = await axios.get('https://172.188.99.139:5001/api/bankName/bankNames');
       setBankNames(response.data);
 
       setNewBankName('');

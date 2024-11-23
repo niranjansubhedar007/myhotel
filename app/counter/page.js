@@ -46,7 +46,7 @@ const CounterList = () => {
   const updateCounter = async () => {
     try {
       const response = await axios.patch(
-        `http://172.188.99.139:5000/api/counter/${editCounter._id}`,
+        `https://172.188.99.139:5001/api/counter/${editCounter._id}`,
         {
           countername: editCounter.countername,
         }
@@ -72,7 +72,7 @@ const CounterList = () => {
 
   const fetchCounters = async () => {
     try {
-      const response = await axios.get("http://172.188.99.139:5000/api/counter");
+      const response = await axios.get("https://172.188.99.139:5001/api/counter");
       setCounters(response.data);
     } catch (error) {
       console.error("Error fetching counters:", error);
@@ -81,7 +81,7 @@ const CounterList = () => {
 
   const addCounter = async () => {
     try {
-      const response = await axios.post("http://172.188.99.139:5000/api/counter", {
+      const response = await axios.post("https://172.188.99.139:5001/api/counter", {
         countername: newCounterName,
       });
       setCounters([...counters, response.data]);
@@ -95,7 +95,7 @@ const CounterList = () => {
   const deleteCounter = async () => {
     try {
       const response = await axios.delete(
-        `http://172.188.99.139:5000/api/counter/${counterToDeleteId}`
+        `https://172.188.99.139:5001/api/counter/${counterToDeleteId}`
       );
       if (response.status === 200) {
         setCounters(
