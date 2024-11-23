@@ -56,7 +56,7 @@ const StockOutwardTable = () => {
 
   const fetchStockOutwardList = async (start, end) => {
     try {
-      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/stockOut/stockOut', {
+      const response = await axios.get('http://172.188.99.139:5000/api/stockOut/stockOut', {
         params: {
           startDate: start,
           endDate: end,
@@ -74,7 +74,7 @@ const StockOutwardTable = () => {
       const formattedStartDate = getFormattedDate(new Date(startDate));
       const formattedEndDate = getFormattedDate(new Date(endDate));
 
-      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/stockOut/stockOut', {
+      const response = await axios.get('http://172.188.99.139:5000/api/stockOut/stockOut', {
         params: {
           startDate: formattedStartDate,
           endDate: formattedEndDate,
@@ -166,7 +166,7 @@ const StockOutwardTable = () => {
   };
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items');
+      const response = await axios.get('http://172.188.99.139:5000/api/item/items');
       setItemList(response.data);
     } catch (error) {
       console.error('Error fetching items:', error.response ? error.response.data : error.message);

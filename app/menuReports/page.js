@@ -34,7 +34,7 @@ const MenuStatisticsComponent = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/menu-statistics${startDate && endDate
+          `http://172.188.99.139:5000/api/order/menu-statistics${startDate && endDate
             ? `?startDate=${startDate}&endDate=${endDate}`
             : ''
           }`
@@ -352,7 +352,7 @@ export default MenuStatisticsComponent;
 //     const fetchData = async () => {
 //       try {
 //         const response = await axios.get(
-//           `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/coupon/date?startDate=${startDate}&endDate=${endDate}`
+//           `http://172.188.99.139:5000/api/coupon/coupon/date?startDate=${startDate}&endDate=${endDate}`
 //         );
 //         console.log(response.data);
 //         setMenuItems(response.data);

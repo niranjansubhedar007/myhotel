@@ -74,7 +74,7 @@ const CounterPaymentModal = ({
     try {
      
       const response = await axios.patch(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/update/${orderNumber}`,
+        `http://172.188.99.139:5000/api/coupon/update/${orderNumber}`,
         {
           ...formData,
          

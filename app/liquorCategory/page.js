@@ -18,7 +18,7 @@
 //   useEffect(() => {
 //     // Fetch all BarMenus on component mount
 //     axios
-//       .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus")
+//       .get("http://172.188.99.139:5000/api/liquorCategory/barMenus")
 //       .then((response) => setBarMenus(response.data));
 //   }, []);
 
@@ -27,7 +27,7 @@
 //       // Update existing BarMenu
 //       axios
 //         .put(
-//           `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus/${editId}`,
+//           `http://172.188.99.139:5000/api/liquorCategory/barMenus/${editId}`,
 //           newBarMenu
 //         )
 //         .then((response) => {
@@ -43,7 +43,7 @@
 //     } else {
 //       // Create a new BarMenu
 //       axios
-//         .post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory", newBarMenu)
+//         .post("http://172.188.99.139:5000/api/liquorCategory", newBarMenu)
 //         .then((response) => {
 //           setBarMenus((prevBarMenus) => [...prevBarMenus, response.data]);
 //           setNewBarMenu({ liquorCategory: "" });
@@ -64,7 +64,7 @@
 //   const confirmDelete = () => {
 //     // Delete a BarMenu by ID
 //     axios
-//       .delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus/${deleteId}`)
+//       .delete(`http://172.188.99.139:5000/api/liquorCategory/barMenus/${deleteId}`)
 //       .then(() => {
 //         setBarMenus((prevBarMenus) =>
 //           prevBarMenus.filter((barMenu) => barMenu._id !== deleteId)
@@ -218,13 +218,13 @@ const LiquorCategory = () => {
   // useEffect(() => {
   //   // Fetch all BarMenus on component mount
   //   axios
-  //     .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus")
+  //     .get("http://172.188.99.139:5000/api/liquorCategory/barMenus")
   //     .then((response) => setBarMenus(response.data));
   // }, []);
 
   const fetchliquor = async () => {
     try {
-      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus');
+      const response = await axios.get('http://172.188.99.139:5000/api/liquorCategory/barMenus');
       setBarMenus(response.data);
     } catch (error) {
       console.error('Error fetching waiters:', error);
@@ -241,7 +241,7 @@ const LiquorCategory = () => {
       // Update existing BarMenu
       axios
         .put(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus/${editId}`,
+          `http://172.188.99.139:5000/api/liquorCategory/barMenus/${editId}`,
           newBarMenu
         )
         .then((response) => {
@@ -270,7 +270,7 @@ const LiquorCategory = () => {
     } else {
       // Create a new BarMenu
       axios
-        .post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory", newBarMenu)
+        .post("http://172.188.99.139:5000/api/liquorCategory", newBarMenu)
         .then((response) => {
           setBarMenus((prevBarMenus) => [...prevBarMenus, response.data]);
           setNewBarMenu({ liquorCategory: "" });
@@ -294,7 +294,7 @@ const LiquorCategory = () => {
   const confirmDelete = () => {
     // Delete a BarMenu by ID
     axios
-      .delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus/${deleteId}`)
+      .delete(`http://172.188.99.139:5000/api/liquorCategory/barMenus/${deleteId}`)
       .then(() => {
         setBarMenus((prevBarMenus) =>
           prevBarMenus.filter((barMenu) => barMenu._id !== deleteId)

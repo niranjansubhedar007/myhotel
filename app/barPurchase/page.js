@@ -40,7 +40,7 @@ const NewUnitModal = ({ isOpen, onClose }) => {
       const fetchUnits = async () => {
         try {
           const response = await axios.get(
-            "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units"
+            "http://172.188.99.139:5000/api/unit/units"
           );
           setUnits(response.data);
         } catch (error) {
@@ -81,7 +81,7 @@ const NewUnitModal = ({ isOpen, onClose }) => {
       try {
         // Make an API request using Axios to update the unit
         await axios.patch(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${selectedUnit._id}`,
+          `http://172.188.99.139:5000/api/unit/units/${selectedUnit._id}`,
           {
             unit: updatedUnit.unit, // Use 'unit' instead of 'updatedUnit.units'
           }
@@ -103,7 +103,7 @@ const NewUnitModal = ({ isOpen, onClose }) => {
     const handleDeleteSubmit = async () => {
       try {
         await axios.delete(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${selectedUnit._id}`
+          `http://172.188.99.139:5000/api/unit/units/${selectedUnit._id}`
         );
         // Remove the deleted unit from the local state
         setUnits((prevUnits) =>
@@ -121,12 +121,12 @@ const NewUnitModal = ({ isOpen, onClose }) => {
   
       try {
         // Make an API request using Axios to post the new unit
-        await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units", {
+        await axios.post("http://172.188.99.139:5000/api/unit/units", {
           unit: newUnit,
         });
   
         // Fetch the updated list of units
-        const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units");
+        const response = await axios.get("http://172.188.99.139:5000/api/unit/units");
         setUnits(response.data);
   
         // Reset the new unit input field
@@ -353,7 +353,7 @@ const VatModal = ({ isOpen, onClose }) => {
     const handleConfirmDelete = async () => {
         try {
             // Send a delete request to the server
-            await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchaseVAT/vat/${deletingItemId}`);
+            await axios.delete(`http://172.188.99.139:5000/api/purchaseVAT/vat/${deletingItemId}`);
             // Fetch the updated VAT list after deletion
             fetchVatList();
         } catch (error) {
@@ -371,7 +371,7 @@ const VatModal = ({ isOpen, onClose }) => {
 
     const fetchVatList = async () => {
         try {
-            const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchaseVAT/vat');
+            const response = await axios.get('http://172.188.99.139:5000/api/purchaseVAT/vat');
             setVatList(response.data || []);
         } catch (error) {
             console.error('Error fetching VAT list:', error.message);
@@ -386,7 +386,7 @@ const VatModal = ({ isOpen, onClose }) => {
         e.preventDefault();
 
         try {
-            await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchaseVAT/vat', { vatPercentage });
+            await axios.post('http://172.188.99.139:5000/api/purchaseVAT/vat', { vatPercentage });
             fetchVatList();
             setVatPercentage('');
         } catch (error) {
@@ -602,7 +602,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
   
         // Make POST request to add supplier
         const response = await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers",
+          "http://172.188.99.139:5000/api/supplier/suppliers",
           formData
         );
   
@@ -611,7 +611,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
   
         // Fetch updated list of suppliers
         const updatedSuppliersResponse = await axios.get(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
+          "http://172.188.99.139:5000/api/supplier/suppliers"
         );
         setSuppliers(updatedSuppliersResponse.data);
   
@@ -645,7 +645,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
       const fetchSuppliers = async () => {
         try {
           const response = await axios.get(
-            "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
+            "http://172.188.99.139:5000/api/supplier/suppliers"
           );
           setSuppliers(response.data);
         } catch (error) {
@@ -684,7 +684,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
       //     return; // Exit the function early if validation fails
       //   }
       //   const response = await axios.patch(
-      //     `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`,
+      //     `http://172.188.99.139:5000/api/supplier/suppliers/${editedSupplier._id}`,
       //     editedSupplier
       //   );
   
@@ -720,7 +720,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
         }
   
         const response = await axios.patch(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`,
+          `http://172.188.99.139:5000/api/supplier/suppliers/${editedSupplier._id}`,
           editedSupplier
         );
   
@@ -745,7 +745,7 @@ const NewVendorModal = ({ isOpen, onClose }) => {
       try {
         // Assuming the API returns the deleted supplier
         await axios.delete(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers/${editedSupplier._id}`
+          `http://172.188.99.139:5000/api/supplier/suppliers/${editedSupplier._id}`
         );
   
         // Update the state by removing the deleted supplier
@@ -1564,7 +1564,7 @@ const BarPurchaseForm = () => {
         const fetchVendors = async () => {
             try {
                 const response = await axios.get(
-                    "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers"
+                    "http://172.188.99.139:5000/api/supplier/suppliers"
                 );
                 const sortedVendors = response.data.sort((a, b) =>
                     a.vendorName.localeCompare(b.vendorName)
@@ -1590,7 +1590,7 @@ const BarPurchaseForm = () => {
         const fetchCategories = async () => {
             try {
                 const response = await axios.get(
-                    "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/barSubmenu/all"
+                    "http://172.188.99.139:5000/api/liquorBrand/barSubmenu/all"
                 );
                 setCategories(response.data);
             } catch (error) {
@@ -1606,7 +1606,7 @@ const BarPurchaseForm = () => {
         const fetchChildMenuNames = async () => {
             try {
                 const response = await axios.get(
-                    `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/childmenus/list`
+                    `http://172.188.99.139:5000/api/liquorBrand/childmenus/list`
                 );
 
                 console.log(response.data)
@@ -1626,7 +1626,7 @@ const BarPurchaseForm = () => {
     useEffect(() => {
         const fetchGSTList = async () => {
             try {
-                const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchaseVAT/vat");
+                const response = await axios.get("http://172.188.99.139:5000/api/purchaseVAT/vat");
                 setVats(response.data);
                 console.log(response.data);
             } catch (error) {
@@ -1642,7 +1642,7 @@ const BarPurchaseForm = () => {
         const fetchUnitList = async () => {
             try {
                 const response = await axios.get(
-                    "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units"
+                    "http://172.188.99.139:5000/api/unit/units"
                 );
                 setUnits(response.data);
                 console.log(response.data);
@@ -1674,7 +1674,7 @@ const BarPurchaseForm = () => {
         const fetchStockQty = async () => {
             try {
                 const response = await axios.get(
-                    `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barPurchase/purchase/childMenuStockQty?name=${formData.name}`
+                    `http://172.188.99.139:5000/api/barPurchase/purchase/childMenuStockQty?name=${formData.name}`
                 );
                 console.log("stock Quantity", response.data.stockQtyMl);
                 setStockQty(response.data.stockQty);
@@ -2130,7 +2130,7 @@ const BarPurchaseForm = () => {
 
             // Make a POST request to save the bill
             const response = await axios.post(
-                "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barPurchase/bar/purchase/savebill",
+                "http://172.188.99.139:5000/api/barPurchase/bar/purchase/savebill",
                 data
             );
 
@@ -2141,13 +2141,13 @@ const BarPurchaseForm = () => {
 
             if (parseFloat(data.total) > 0) {
                 // If there is a paid amount, update the supplier's debit balance
-                await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/supplier/debit", {
+                await axios.post("http://172.188.99.139:5000/api/supplier/supplier/debit", {
                     vendorName,
                     amount: parseFloat(data.paidAmount),
                 });
             } else {
                 // If there is no paid amount, update the supplier's credit balance
-                await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/supplier/credit", {
+                await axios.post("http://172.188.99.139:5000/api/supplier/supplier/credit", {
                     vendorName,
                     amount: parseFloat(data.balance),
                 });

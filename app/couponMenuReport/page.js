@@ -33,7 +33,7 @@ const CouponMenuReport = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/coupons/date?startDate=${startDate}&endDate=${endDate}`
+          `http://172.188.99.139:5000/api/coupon/coupons/date?startDate=${startDate}&endDate=${endDate}`
         );
         console.log(response.data); // Log the entire response to see its structure
         if (response.data && Array.isArray(response.data)) {

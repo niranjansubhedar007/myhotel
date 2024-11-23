@@ -52,7 +52,7 @@ const BarGroupMenu = () => {
       }
 
       const response = await axios.post(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/${selectedMainCategory}/assignmenus`,
+        `http://172.188.99.139:5000/api/liquorBrand/${selectedMainCategory}/assignmenus`,
         {
           menuIds: selectedAddMenus,
         }
@@ -120,7 +120,7 @@ const BarGroupMenu = () => {
   const fetchAllMenus = async () => {
     try {
       const response = await axios.get(
-        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/barSubmenu/list"
+        "http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list"
       );
       console.log(response.data);
       const allMenus = response.data;
@@ -172,7 +172,7 @@ const BarGroupMenu = () => {
         setLoading(true);
 
         const mainCategoriesResponse = await axios.get(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus"
+          "http://172.188.99.139:5000/api/liquorCategory/barMenus"
         );
         console.log(mainCategoriesResponse);
         setMainCategories(mainCategoriesResponse.data);
@@ -191,7 +191,7 @@ const BarGroupMenu = () => {
   const fetchMenusForCategory = async () => {
     try {
       const response = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus/${selectedMainCategory}`
+        `http://172.188.99.139:5000/api/liquorCategory/barMenus/${selectedMainCategory}`
       );
       console.log(response)
       const mainCategory = response.data;
@@ -219,7 +219,7 @@ const BarGroupMenu = () => {
       setLoading(true);
 
       const response = await axios.delete(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/${selectedMainCategory}/removemenus`,
+        `http://172.188.99.139:5000/api/liquorBrand/${selectedMainCategory}/removemenus`,
         {
           data: { menuIds: selectedMenus },
         }

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash, faTimes, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
@@ -51,7 +51,7 @@ const Greetings = () => {
 
   const getGreetings = async () => {
     try {
-      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet');
+      const response = await axios.get('http://172.188.99.139:5000/api/greet/greet');
       setGreetings(response.data);
     } catch (error) {
       console.error('Error retrieving greetings:', error);
@@ -86,7 +86,7 @@ const Greetings = () => {
     }
     try {
       const response = await axios.patch(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${editedGreet.id}`,
+        `http://172.188.99.139:5000/api/greet/greet/${editedGreet.id}`,
         { greet: editedGreet.greet, message: editedGreet.message }
       );
       const updatedGreet = response.data;
@@ -108,7 +108,7 @@ const Greetings = () => {
 
   // const handleDeleteConfirmed = async () => {
   //   try {
-  //     await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${itemIdToDelete}`);
+  //     await axios.delete(`http://172.188.99.139:5000/api/greet/greet/${itemIdToDelete}`);
   //     setGreetings((prevGreetings) => prevGreetings.filter((greet) => greet._id !== itemIdToDelete));
   //     setIsDeleteConfirmationModalOpen(false);
   //   } catch (error) {
@@ -118,7 +118,7 @@ const Greetings = () => {
 
   const handleDeleteConfirmed = async () => {
     try {
-      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${itemIdToDelete}`);
+      await axios.delete(`http://172.188.99.139:5000/api/greet/greet/${itemIdToDelete}`);
       setGreetings((prevGreetings) => prevGreetings.filter((greet) => greet._id !== itemIdToDelete));
       setIsDeleteConfirmationModalOpen(false);
       // Set dataAdded flag to false after successful deletion
@@ -131,7 +131,7 @@ const Greetings = () => {
 
   // const handleDeleteConfirmed = async () => {
   //   try {
-  //     await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${itemIdToDelete}`);
+  //     await axios.delete(`http://172.188.99.139:5000/api/greet/greet/${itemIdToDelete}`);
   //     setGreetings((prevGreetings) => prevGreetings.filter((greet) => greet._id !== itemIdToDelete));
   //     setIsDeleteConfirmationModalOpen(false);
   //     // Reload the page after successful deletion
@@ -157,7 +157,7 @@ const Greetings = () => {
 
   //   try {
   //     if (!dataAdded) {
-  //       const response = await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet', {
+  //       const response = await axios.post('http://172.188.99.139:5000/api/greet/greet', {
   //         greet: trimmedGreet,
   //         message: trimmedMessage
   //       });
@@ -186,7 +186,7 @@ const Greetings = () => {
     }
   
     try {
-      const response = await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet', {
+      const response = await axios.post('http://172.188.99.139:5000/api/greet/greet', {
         greet: trimmedGreet,
         message: trimmedMessage
       });
@@ -215,7 +215,7 @@ const Greetings = () => {
     }
 
     try {
-      const response = await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet/${greetId}`, updateGreetData);
+      const response = await axios.patch(`http://172.188.99.139:5000/api/greet/greet/${greetId}`, updateGreetData);
       setUpdateGreetData({ id: '', greet: '', message: '' });
       getGreetings();
     } catch (error) {
@@ -225,12 +225,16 @@ const Greetings = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="max-w-5xl container mx-auto mt-16 p-4 shadow-md rounded-md font-sans">
+      <Sidebar />
+      <div className="max-w-3xl container mx-auto mt-48 p-4 shadow-md rounded-md font-sans">
         <div className="mb-8 mt-4">
           {/* Create Greet */}
-          <h2 className="text-xl font-bold font-sans mb-2 md:mb-0 text-orange-500">Greeting Master</h2>
-          <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 mt-4">
+          <h2 className="text-xl font-bold font-sans mb-2 md:mb-0 "
+          style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR }}
+
+          
+          >Greeting Master</h2>
+          <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 mt-4 w-full">
             <input
               type="text"
               placeholder="Greet"
@@ -246,8 +250,28 @@ const Greetings = () => {
               onChange={(e) => setCreateGreetData({ ...createGreetData, message: capitalizeFirstLetter(e.target.value) })}
               />
           </div>
-          <div className="flex justify-center md:justify-start mt-1">
-            <button className="bg-orange-100 hover:bg-orange-200 text-orange-600 font-bold py-2 px-4 rounded-full w-72 mt-1 mx-auto" onClick={createGreet}>
+          <div className="flex justify-center md:justify-start mt-5">
+            <button className="  py-2 px-4 rounded-full w-72 mt-1 mx-auto
+            text-gray font-semibold p-2 lg:w-72 transition duration-300 ease-in-out
+            " onClick={createGreet}
+            
+            style={{
+              color: process.env.NEXT_PUBLIC_FOURTH_COLOR,
+              backgroundColor: process.env.NEXT_PUBLIC_FIRST_COLOR,
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor =
+                process.env.NEXT_PUBLIC_THIRD_COLOR; // Hover color
+              e.target.style.color = process.env.NEXT_PUBLIC_FIRST_COLOR; // Hover color
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor =
+                process.env.NEXT_PUBLIC_FIRST_COLOR; // Original color
+              e.target.style.color = process.env.NEXT_PUBLIC_THIRD_COLOR; // Original color
+            }}
+ 
+          
+            >
               Create
             </button>
           </div>

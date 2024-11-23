@@ -46,7 +46,7 @@ const CounterList = () => {
   const updateCounter = async () => {
     try {
       const response = await axios.patch(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter/${editCounter._id}`,
+        `http://172.188.99.139:5000/api/counter/${editCounter._id}`,
         {
           countername: editCounter.countername,
         }
@@ -72,7 +72,7 @@ const CounterList = () => {
 
   const fetchCounters = async () => {
     try {
-      const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter");
+      const response = await axios.get("http://172.188.99.139:5000/api/counter");
       setCounters(response.data);
     } catch (error) {
       console.error("Error fetching counters:", error);
@@ -81,7 +81,7 @@ const CounterList = () => {
 
   const addCounter = async () => {
     try {
-      const response = await axios.post("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter", {
+      const response = await axios.post("http://172.188.99.139:5000/api/counter", {
         countername: newCounterName,
       });
       setCounters([...counters, response.data]);
@@ -95,7 +95,7 @@ const CounterList = () => {
   const deleteCounter = async () => {
     try {
       const response = await axios.delete(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter/${counterToDeleteId}`
+        `http://172.188.99.139:5000/api/counter/${counterToDeleteId}`
       );
       if (response.status === 200) {
         setCounters(

@@ -32,10 +32,10 @@ const PaymentList = () => {
         const fetchPayments = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/payment/paymentsList');
+                const response = await axios.get('http://172.188.99.139:5000/api/payment/paymentsList');
                 const paymentsWithTableNames = await Promise.all(
                     response.data.map(async (payment) => {
-                        const tableResponse = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${payment.tableId}`);
+                        const tableResponse = await axios.get(`http://172.188.99.139:5000/api/table/tables/${payment.tableId}`);
                         return {
                             ...payment,
                             tableName: tableResponse.data.tableName || 'Unknown Table',

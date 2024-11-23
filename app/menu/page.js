@@ -89,7 +89,7 @@
 //             // formData.append("mainCategoryId", editedMenuData.mainCategoryId);
 
 //             const response = await axios.patch(
-//                 `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/${menuToEdit._id}`,
+//                 `http://172.188.99.139:5000/api/menu/menus/${menuToEdit._id}`,
 //                 formData
 //             );
 
@@ -376,7 +376,7 @@
 //         try {
 //             // Proceed with the delete operation
 //             const response = await axios.delete(
-//                 `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/${menuToDelete._id}`
+//                 `http://172.188.99.139:5000/api/menu/menus/${menuToDelete._id}`
 //             );
 //             console.log("Menu deleted successfully:", response.data);
 
@@ -451,7 +451,7 @@
 //             formData.append("uniqueId", newMenuData.uniqueId);
 
 //             const response = await axios.post(
-//                 "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menu",
+//                 "http://172.188.99.139:5000/api/menu/menu",
 //                 formData
 //             );
 
@@ -511,7 +511,7 @@
 //         const fetchMenus = async () => {
 //             try {
 //                 const response = await axios.get(
-//                     "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list"
+//                     "http://172.188.99.139:5000/api/menu/menus/list"
 //                 );
 //                 setMenus(response.data);
 //             } catch (error) {
@@ -534,7 +534,7 @@
 
 //             // Make a POST request to the backend endpoint
 //             const response = await axios.post(
-//                 "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/upload-excel",
+//                 "http://172.188.99.139:5000/api/menu/upload-excel",
 //                 formData
 //             );
 
@@ -1061,7 +1061,7 @@ const EditModal = ({ isOpen, onCancel, onEdit, menuToEdit }) => {
             // formData.append("mainCategoryId", editedMenuData.mainCategoryId);
 
             const response = await axios.patch(
-                `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/${menuToEdit._id}`,
+                `http://172.188.99.139:5000/api/menu/menus/${menuToEdit._id}`,
                 formData
             );
 
@@ -1344,7 +1344,7 @@ const exportToExcel = (isExportMenu) => {
         try {
             // Proceed with the delete operation
             const response = await axios.delete(
-                `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/${menuToDelete._id}`
+                `http://172.188.99.139:5000/api/menu/menus/${menuToDelete._id}`
             );
             console.log("Menu deleted successfully:", response.data);
 
@@ -1419,7 +1419,7 @@ const exportToExcel = (isExportMenu) => {
             formData.append("uniqueId", newMenuData.uniqueId);
 
             const response = await axios.post(
-                "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menu",
+                "http://172.188.99.139:5000/api/menu/menu",
                 formData
             );
 
@@ -1479,7 +1479,7 @@ const exportToExcel = (isExportMenu) => {
         const fetchMenus = async () => {
             try {
                 const response = await axios.get(
-                    "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list"
+                    "http://172.188.99.139:5000/api/menu/menus/list"
                 );
                 setMenus(response.data);
             } catch (error) {
@@ -1502,7 +1502,7 @@ const exportToExcel = (isExportMenu) => {
 
             // Make a POST request to the backend endpoint
             const response = await axios.post(
-                "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/upload-excel",
+                "http://172.188.99.139:5000/api/menu/upload-excel",
                 formData
             );
 

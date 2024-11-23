@@ -26,7 +26,7 @@ const GSTForm = () => {
   const handleConfirmDelete = async () => {
     try {
       // Send a delete request to the server
-      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/gst/${deletingItemId}`);
+      await axios.delete(`http://172.188.99.139:5000/api/gst/gst/${deletingItemId}`);
       // Fetch the updated GST list after deletion
       fetchGSTList();
     } catch (error) {
@@ -44,7 +44,7 @@ const GSTForm = () => {
 
   const fetchGSTList = async () => {
     try {
-      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/list');
+      const response = await axios.get('http://172.188.99.139:5000/api/gst/list');
       setGSTList(response.data || []);
     } catch (error) {
       console.error('Error fetching GST list:', error.message);
@@ -59,7 +59,7 @@ const GSTForm = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/gst/create', { gstPercentage });
+      await axios.post('http://172.188.99.139:5000/api/gst/create', { gstPercentage });
       fetchGSTList();
       setGSTPercentage('');
     } catch (error) {

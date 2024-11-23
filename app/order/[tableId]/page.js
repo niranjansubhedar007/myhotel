@@ -43,11 +43,11 @@ const OrderPage = ({ params }) => {
         const fetchACPercentage = async () => {
             try {
                 // Fetch the table information to get the associated section ID
-                const tableResponse = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`);
+                const tableResponse = await axios.get(`http://172.188.99.139:5000/api/table/tables/${tableId}`);
                 const table = tableResponse.data;
 
                 // Fetch the section information using the section ID
-                const sectionResponse = await axios.get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section/${table.section._id}`);
+                const sectionResponse = await axios.get(`http://172.188.99.139:5000/api/section/${table.section._id}`);
                 const section = sectionResponse.data;
                 console.log(section.acPercentage)
                 // Use the section information to get acPercentage

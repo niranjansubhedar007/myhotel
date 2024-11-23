@@ -23,7 +23,7 @@
 
 //   // const fetchAdmins = async () => {
 //   //   try {
-//   //     const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admins');
+//   //     const response = await axios.get('http://172.188.99.139:5000/api/auth/admins');
 //   //     setAdmins(response.data.admins.concat(response.data.adminBars)); // Combine both results
 //   //   } catch (error) {
 //   //     console.error('Error fetching admins:', error.message);
@@ -35,7 +35,7 @@
 //     // Declare the fetchAdmins function inside useEffect
 //     const fetchAdmins = async () => {
 //       try {
-//         const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admins');
+//         const response = await axios.get('http://172.188.99.139:5000/api/auth/admins');
 //         const combinedAdmins = response.data.admins.concat(response.data.adminBars); // Combine both Admin and AdminBar data
 
 //         setAdmins(combinedAdmins); // Set the combined admins
@@ -62,7 +62,7 @@
 //       const newValue = !currentStatus; // Toggle the current status
 
 //       // Send a PATCH request to update isDirect
-//       const response = await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admin/${adminId}/direct`, {
+//       const response = await axios.patch(`http://172.188.99.139:5000/api/auth/admin/${adminId}/direct`, {
 //         isDirect: newValue
 //       });
 
@@ -158,7 +158,7 @@ const AdminSettings = () => {
   useEffect(() => {
     const fetchAdmins = async () => {
       try {
-        const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admins');
+        const response = await axios.get('http://172.188.99.139:5000/api/auth/admins');
         const combinedAdmins = response.data.admins.concat(response.data.adminBars);
         setAdmins(combinedAdmins); // Set the combined admins
       } catch (error) {
@@ -172,7 +172,7 @@ const AdminSettings = () => {
   const handleDirectToggleChange = async (adminId, currentStatus) => {
     try {
       const newValue = !currentStatus;
-      const response = await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admin/${adminId}/direct`, {
+      const response = await axios.patch(`http://172.188.99.139:5000/api/auth/admin/${adminId}/direct`, {
         isDirect: newValue
       });
 
@@ -194,7 +194,7 @@ const AdminSettings = () => {
   const handleLanToggleChange = async (adminId, currentStatus) => {
     try {
       const newValue = !currentStatus;
-      const response = await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admin/${adminId}/lan`, {
+      const response = await axios.patch(`http://172.188.99.139:5000/api/auth/admin/${adminId}/lan`, {
         isLan: newValue
       });
 
@@ -216,7 +216,7 @@ const AdminSettings = () => {
   const handleLanBillToggleChange = async (adminId, currentStatus) => {
     try {
       const newValue = !currentStatus;
-      const response = await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admin/${adminId}/lanbill`, {
+      const response = await axios.patch(`http://172.188.99.139:5000/api/auth/admin/${adminId}/lanbill`, {
         islanBill: newValue
       });
 

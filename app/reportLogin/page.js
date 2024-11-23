@@ -21,7 +21,7 @@ export default function Login1() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/superAdmin/login', { username, password });
+      const response = await axios.post('http://172.188.99.139:5000/api/superAdmin/login', { username, password });
       // Handle successful login, save token to localStorage, redirect, etc.
       console.log(response.data);
       const token = response.data.token;

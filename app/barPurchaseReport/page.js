@@ -37,7 +37,7 @@ const BarPurchaseReport = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barPurchase/barpurchase/all?startDate=${startDate}&endDate=${endDate}`
+                    `http://172.188.99.139:5000/api/barPurchase/barpurchase/all?startDate=${startDate}&endDate=${endDate}`
                 );
                 setPurchaseData(response.data);
                 setLoading(false);
@@ -53,7 +53,7 @@ const BarPurchaseReport = () => {
     useEffect(() => {
         const fetchVendors = async () => {
             try {
-                const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers");
+                const response = await axios.get("http://172.188.99.139:5000/api/supplier/suppliers");
                 setVendors(response.data);
                 setLoading(false);
             } catch (error) {
@@ -95,7 +95,7 @@ const BarPurchaseReport = () => {
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/barPurchase/barpurchase/all", {
+            const response = await axios.get("http://172.188.99.139:5000/api/barPurchase/barpurchase/all", {
                 params: {
                     startDate,
                     endDate,

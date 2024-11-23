@@ -16,7 +16,7 @@ const UpdateMenu = () => {
 
   useEffect(() => {
     axios
-      .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/barSubmenu/list`)
+      .get(`http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list`)
       .then((response) => {
         setLiquorBrands(response.data);
       })
@@ -29,7 +29,7 @@ const UpdateMenu = () => {
     if (selectedLiquorBrand) {
       axios
         .get(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/getMenu/${selectedLiquorBrand}`
+          `http://172.188.99.139:5000/api/liquorBrand/getMenu/${selectedLiquorBrand}`
         )
         .then((response) => {
           setFormData(response.data);
@@ -64,7 +64,7 @@ const UpdateMenu = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/barSubmenu/${selectedLiquorBrand}`,
+        `http://172.188.99.139:5000/api/liquorBrand/barSubmenu/${selectedLiquorBrand}`,
         formData
       );
       console.log("Menu updated successfully");

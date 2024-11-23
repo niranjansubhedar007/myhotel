@@ -10,7 +10,7 @@ const Dishes = () => {
         // Fetch data from the backend API
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/kot/items/quantity');
+                const response = await axios.get('http://172.188.99.139:5000/api/kot/items/quantity');
                 setTopDishes(response.data.items);
             } catch (error) {
                 console.error('Error fetching data:', error);

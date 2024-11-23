@@ -16,7 +16,7 @@ const Flag = () => {
 
         try {
             // Make a request to the backend API to update orders with flag true
-            const response = await axios.put("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/orders/flag");
+            const response = await axios.put("http://172.188.99.139:5000/api/order/orders/flag");
             console.log(response); // Log the response to the console
 
             // Handle success

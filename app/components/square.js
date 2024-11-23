@@ -17,31 +17,31 @@ const Square = () => {
         const fetchData = async () => {
             try {
                 // Fetch data for existing counts
-                const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/counts');
+                const response = await axios.get('http://172.188.99.139:5000/api/hotel/counts');
                 setCounts(response.data);
 
                 // Fetch data for temporary orders count
-                const temporaryOrdersResponse = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/temporary-orders-count');
+                const temporaryOrdersResponse = await axios.get('http://172.188.99.139:5000/api/order/temporary-orders-count');
                 setCounts(prevCounts => ({
                     ...prevCounts,
                     temporaryOrdersCount: temporaryOrdersResponse.data.temporaryOrdersCount,
                 }));
 
                 // Fetch data for total amount for the current date
-                const totalForCurrentDateResponse = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/total-amount-for-current-date');
+                const totalForCurrentDateResponse = await axios.get('http://172.188.99.139:5000/api/order/total-amount-for-current-date');
                 setCounts(prevCounts => ({
                     ...prevCounts,
                     totalForCurrentDate: totalForCurrentDateResponse.data.totalForCurrentDate,
                 }));
 
                 // Fetch data for total amount for the previous month
-                const totalForPreviousMonthResponse = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/total-amount-for-previous-month');
+                const totalForPreviousMonthResponse = await axios.get('http://172.188.99.139:5000/api/order/total-amount-for-previous-month');
                 setCounts(prevCounts => ({
                     ...prevCounts,
                     totalForPreviousMonth: totalForPreviousMonthResponse.data.totalForPreviousMonth,
                 }));
 
-                const totalBalanceResponse = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchase/purchases-total');
+                const totalBalanceResponse = await axios.get('http://172.188.99.139:5000/api/purchase/purchases-total');
                 setCounts(prevCounts => ({
                     ...prevCounts,
                     totalBalance: totalBalanceResponse.data.totalBalance,

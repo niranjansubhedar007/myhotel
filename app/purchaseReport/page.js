@@ -174,15 +174,15 @@ const PurchaseReport = () => {
 
     const fetchData = async () => {
       try {
-        const purchasesResponse = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/purchase/purchases");
+        const purchasesResponse = await axios.get("http://172.188.99.139:5000/api/purchase/purchases");
         setPurchases(purchasesResponse.data);
         console.log(purchasesResponse.data)
         setFilteredPurchases(purchasesResponse.data);
 
-        const itemsResponse = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items");
+        const itemsResponse = await axios.get("http://172.188.99.139:5000/api/item/items");
         setItems(itemsResponse.data);
 
-        const vendorsResponse = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/supplier/suppliers");
+        const vendorsResponse = await axios.get("http://172.188.99.139:5000/api/supplier/suppliers");
         setVendors(vendorsResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);

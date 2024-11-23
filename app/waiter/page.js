@@ -35,7 +35,7 @@ const Waiter = () => {
 
   const fetchWaiters = async () => {
     try {
-      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/waiter');
+      const response = await axios.get('http://172.188.99.139:5000/api/waiter');
       setWaiters(response.data);
     } catch (error) {
       console.error('Error fetching waiters:', error);
@@ -89,7 +89,7 @@ const Waiter = () => {
       return; // Exit the function early if validation fails
     }
 
-      const response = await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/waiter', waiterData);
+      const response = await axios.post('http://172.188.99.139:5000/api/waiter', waiterData);
       console.log(response);
       setWaiters([...waiters, response.data]);
       setWaiterData({
@@ -122,7 +122,7 @@ const Waiter = () => {
 
   // const handleEditWaiter = async (waiterId) => {
   //   try {
-  //     const response = await axios.put(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/waiter/${waiterId}`, waiterData);
+  //     const response = await axios.put(`http://172.188.99.139:5000/api/waiter/${waiterId}`, waiterData);
   //     const updatedWaiters = waiters.map((waiter) =>
   //       waiter._id === waiterId ? response.data : waiter
   //     );
@@ -171,7 +171,7 @@ const Waiter = () => {
 
       } else {
         // Proceed with the edit if Unique ID is unique
-        const response = await axios.put(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/waiter/${waiterId}`, waiterData);
+        const response = await axios.put(`http://172.188.99.139:5000/api/waiter/${waiterId}`, waiterData);
         const updatedWaiters = waiters.map((waiter) =>
           waiter._id === waiterId ? response.data : waiter
         );
@@ -197,7 +197,7 @@ const Waiter = () => {
 
   const confirmDeleteWaiter = async () => {
     try {
-      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/waiter/${deletingWaiterId}`);
+      await axios.delete(`http://172.188.99.139:5000/api/waiter/${deletingWaiterId}`);
       const updatedWaiters = waiters.filter((waiter) => waiter._id !== deletingWaiterId);
       setWaiters(updatedWaiters);
       closeDeleteModal();

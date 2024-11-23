@@ -112,7 +112,7 @@ const Coupon = () => {
     const fetchGreetings = async () => {
       try {
         const response = await axios.get(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet"
+          "http://172.188.99.139:5000/api/greet/greet"
         );
         setGreetings(response.data);
       } catch (error) {
@@ -126,7 +126,7 @@ const Coupon = () => {
   useEffect(() => {
     const fetchCounterAdmin = async () => {
         try {
-            const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counteradmin/counteradmins");
+            const response = await axios.get("http://172.188.99.139:5000/api/counteradmin/counteradmins");
 
             // Check if the response data contains an array of CounterAdmins
             if (response.data.counterAdmins && response.data.counterAdmins.length > 0) {
@@ -390,7 +390,7 @@ const Coupon = () => {
       try {
         // Fetch all hotels
         const allHotelsResponse = await axios.get(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counterHotel/get-all"
+          "http://172.188.99.139:5000/api/counterHotel/get-all"
         );
 
         const allHotels = allHotelsResponse.data;
@@ -399,7 +399,7 @@ const Coupon = () => {
         if (defaultHotelId) {
           // Fetch information for the first hotel
           const response = await axios.get(
-            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counterHotel/getHotel/${defaultHotelId}`
+            `http://172.188.99.139:5000/api/counterHotel/getHotel/${defaultHotelId}`
           );
           const hotelInfo = response.data;
 
@@ -420,8 +420,8 @@ const Coupon = () => {
   const handlePrintBillLan = async () => {
     try {
       const [couponResponse, counterResponse] = await Promise.all([
-        axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/coupon/latest"),
-        axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter"),
+        axios.get("http://172.188.99.139:5000/api/coupon/coupon/latest"),
+        axios.get("http://172.188.99.139:5000/api/counter"),
       ]);
   
       console.log(couponResponse.data);
@@ -566,9 +566,9 @@ AB Software Solution: 8888732973
   const handlePrintBill = async () => {
     try {
       const [couponResponse, counterResponse] = await Promise.all([
-        axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/coupon/latest"),
+        axios.get("http://172.188.99.139:5000/api/coupon/coupon/latest"),
 
-        axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter"),
+        axios.get("http://172.188.99.139:5000/api/counter"),
       ]);
 
       console.log(couponResponse.data)
@@ -1081,7 +1081,7 @@ AB Software Solution: 8888732973
      
   //     const counterHotelResponse = await axios.get(
        
-  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counterHotel/getHotel/661e0d39092937c54273c154`
+  //       `http://172.188.99.139:5000/api/counterHotel/getHotel/661e0d39092937c54273c154`
        
   //       // Replace the ID with the appropriate ID for your hotel
   //     );
@@ -1114,14 +1114,14 @@ AB Software Solution: 8888732973
   //     };
 
   //     const saveCouponResponse = await axios.post(
-  //       "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/billCouponOrder",
+  //       "http://172.188.99.139:5000/api/coupon/billCouponOrder",
   //       saveData
   //     );
 
   //     const { orderNumber } = saveCouponResponse.data;
 
   //     const getCouponResponse = await axios.get(
-  //       `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/orderNumber/${orderNumber}`
+  //       `http://172.188.99.139:5000/api/coupon/orderNumber/${orderNumber}`
   //     );
 
   //     const fetchedCouponData = getCouponResponse.data;
@@ -1137,14 +1137,14 @@ AB Software Solution: 8888732973
   const handleCounterCoupon = async () => {
     try {
       const allHotelsResponse = await axios.get(
-        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counterHotel/get-all"
+        "http://172.188.99.139:5000/api/counterHotel/get-all"
       );
  
       const allHotels = allHotelsResponse.data;
       const defaultHotelId = allHotelsResponse.data[0]._id;
       if (defaultHotelId) {
         const counterHotelResponse = await axios.get(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counterHotel/getHotel/${defaultHotelId}`
+          `http://172.188.99.139:5000/api/counterHotel/getHotel/${defaultHotelId}`
         );
  
         const counterHotelData = counterHotelResponse.data;
@@ -1172,14 +1172,14 @@ AB Software Solution: 8888732973
         };
  
         const saveCouponResponse = await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/billCouponOrder",
+          "http://172.188.99.139:5000/api/coupon/billCouponOrder",
           saveData
         );
  
         const { orderNumber } = saveCouponResponse.data;
  
         const getCouponResponse = await axios.get(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/orderNumber/${orderNumber}`
+          `http://172.188.99.139:5000/api/coupon/orderNumber/${orderNumber}`
         );
  
         const fetchedCouponData = getCouponResponse.data;
@@ -1200,7 +1200,7 @@ AB Software Solution: 8888732973
 
   useEffect(() => {
     axios
-      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter")
+      .get("http://172.188.99.139:5000/api/counter")
       .then((response) => {
         setCategories(response.data);
       })
@@ -1209,7 +1209,7 @@ AB Software Solution: 8888732973
       });
 
     axios
-      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list")
+      .get("http://172.188.99.139:5000/api/menu/menus/list")
       .then((response) => {
         console.log(response);
         setMenus(response.data);
@@ -1219,7 +1219,7 @@ AB Software Solution: 8888732973
       });
 
     axios
-      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables")
+      .get("http://172.188.99.139:5000/api/table/tables")
       .then((response) => {
         // Process table information
       })
@@ -1237,7 +1237,7 @@ AB Software Solution: 8888732973
   useEffect(() => {
     if (selectedCategory) {
       axios
-        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter/${selectedCategory._id}`)
+        .get(`http://172.188.99.139:5000/api/counter/${selectedCategory._id}`)
         .then((response) => {
           const menusArray = response.data || [];
           setMenus(menusArray);
@@ -1254,7 +1254,7 @@ AB Software Solution: 8888732973
 
     if (category === null) {
       axios
-        .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list")
+        .get("http://172.188.99.139:5000/api/menu/menus/list")
         .then((response) => {
           setMenus(response.data);
         })
@@ -1263,7 +1263,7 @@ AB Software Solution: 8888732973
         });
     } else {
       axios
-        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menulist/${category._id}`)
+        .get(`http://172.188.99.139:5000/api/menu/menulist/${category._id}`)
         .then((response) => {
           setMenus(response.data);
         })
@@ -1292,11 +1292,11 @@ AB Software Solution: 8888732973
       saveData.menus = saveData.items.map((item) => item.name);
   
       // Fetch counters data from the API
-      const countersResponse = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter");
+      const countersResponse = await axios.get("http://172.188.99.139:5000/api/counter");
       const counters = countersResponse.data;
   
       // Fetch the latest coupon record from the API based on CouponDate
-      const latestCouponResponse = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/coupon/latest");
+      const latestCouponResponse = await axios.get("http://172.188.99.139:5000/api/coupon/coupon/latest");
       const latestCoupon = latestCouponResponse.data;
   
       const currentDate = new Date()
@@ -1429,13 +1429,13 @@ AB Software Solution: 8888732973
 
       // Fetch counters data from the API
       const countersResponse = await axios.get(
-        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/counter"
+        "http://172.188.99.139:5000/api/counter"
       );
       const counters = countersResponse.data; // Assuming the response contains an array of counters
 
       // Fetch the latest coupon record from the API based on CouponDate
       const latestCouponResponse = await axios.get(
-        "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/coupon/coupon/latest"
+        "http://172.188.99.139:5000/api/coupon/coupon/latest"
       );
       const latestCoupon = latestCouponResponse.data; // Assuming the response contains the latest coupon record
 

@@ -29,7 +29,7 @@ const UnitList = () => {
   useEffect(() => {
     const fetchUnits = async () => {
       try {
-        const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units');
+        const response = await axios.get('http://172.188.99.139:5000/api/unit/units');
         setUnits(response.data);
       } catch (error) {
         console.error('Error fetching units:', error);
@@ -68,7 +68,7 @@ const UnitList = () => {
 
     try {
       // Make an API request using Axios to update the unit
-      await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${selectedUnit._id}`, {
+      await axios.patch(`http://172.188.99.139:5000/api/unit/units/${selectedUnit._id}`, {
         unit: updatedUnit.unit, // Use 'unit' instead of 'updatedUnit.units'
       });
 
@@ -85,7 +85,7 @@ const UnitList = () => {
 
   const handleDeleteSubmit = async () => {
     try {
-      await axios.delete(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units/${selectedUnit._id}`);
+      await axios.delete(`http://172.188.99.139:5000/api/unit/units/${selectedUnit._id}`);
       // Remove the deleted unit from the local state
       setUnits((prevUnits) => prevUnits.filter((unit) => unit._id !== selectedUnit._id));
     } catch (error) {
@@ -112,10 +112,10 @@ const UnitList = () => {
 
     try {
       // Make an API request using Axios to post the new unit
-      await axios.post('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units', { unit: newUnit });
+      await axios.post('http://172.188.99.139:5000/api/unit/units', { unit: newUnit });
 
       // Fetch the updated list of units
-      const response = await axios.get('http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/unit/units');
+      const response = await axios.get('http://172.188.99.139:5000/api/unit/units');
       setUnits(response.data);
 
       // Reset the new unit input field

@@ -156,7 +156,7 @@ const EditOrderPage = ({ params, tableId }) => {
     const fetchGreetings = async () => {
       try {
         const response = await axios.get(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/greet/greet"
+          "http://172.188.99.139:5000/api/greet/greet"
         );
         setGreetings(response.data);
         console.log(response.data);
@@ -183,7 +183,7 @@ const EditOrderPage = ({ params, tableId }) => {
   //   const fetchAdmins = async () => {
   //     try {
   //       const response = await axios.get(
-  //         "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admins"
+  //         "http://172.188.99.139:5000/api/auth/admins"
   //       );
   //       const combinedAdmins = response.data.admins.concat(
   //         response.data.adminBars
@@ -203,7 +203,7 @@ const EditOrderPage = ({ params, tableId }) => {
   useEffect(() => {
     const fetchAdmins = async () => {
       try {
-        const response = await axios.get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/auth/admins");
+        const response = await axios.get("http://172.188.99.139:5000/api/auth/admins");
         const combinedAdmins = response.data.admins.concat(response.data.adminBars);
 
         // Set isDirect, isLan, and lanBill states from the first combined admin
@@ -225,7 +225,7 @@ const EditOrderPage = ({ params, tableId }) => {
         if (orderNumber) {
           console.log(orderNumber);
           const orderResponse = await axios.get(
-            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+            `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
           );
           const orderData = orderResponse.data;
           const TotalAC = orderData.acPercentage;
@@ -235,7 +235,7 @@ const EditOrderPage = ({ params, tableId }) => {
 
           // Fetch the section information based on the tableId
           const sectionResponse = await axios.get(
-            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/section/sectionlist/${tableId}`
+            `http://172.188.99.139:5000/api/section/sectionlist/${tableId}`
           );
           const sectionInfo = sectionResponse.data;
 
@@ -465,7 +465,7 @@ const EditOrderPage = ({ params, tableId }) => {
       }
 
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -474,7 +474,7 @@ const EditOrderPage = ({ params, tableId }) => {
         initialItemsMap.set(item.name, item.quantity);
       });
 
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user",
         timestamp: new Date(),
@@ -515,7 +515,7 @@ const EditOrderPage = ({ params, tableId }) => {
       if (itemsForStockIn.length > 0) {
         // Make the stockIn API call with only decreased quantities
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -523,7 +523,7 @@ const EditOrderPage = ({ params, tableId }) => {
       }
 
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log(orderData);
@@ -531,11 +531,11 @@ const EditOrderPage = ({ params, tableId }) => {
 
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       const orderDataToUpdate = {
         tableId: tableInfo._id,
@@ -586,7 +586,7 @@ const EditOrderPage = ({ params, tableId }) => {
       console.log("Request Body:", { selectedParentIds, selectedMenusList });
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponse.data;
       console.log(existingBill);
@@ -625,7 +625,7 @@ const EditOrderPage = ({ params, tableId }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -633,7 +633,7 @@ const EditOrderPage = ({ params, tableId }) => {
         );
       }
 
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user",
         timestamp: new Date(),
@@ -662,7 +662,7 @@ const EditOrderPage = ({ params, tableId }) => {
   useEffect(() => {
     if (tableId) {
       axios
-        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`)
+        .get(`http://172.188.99.139:5000/api/table/tables/${tableId}`)
         .then((response) => {
           setTableInfo(response.data);
         })
@@ -724,7 +724,7 @@ const EditOrderPage = ({ params, tableId }) => {
 
       // Fetch the initial order data
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -767,7 +767,7 @@ const EditOrderPage = ({ params, tableId }) => {
       if (itemsForStockIn.length > 0) {
         // Make the stockIn API call with only decreased quantities
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -775,7 +775,7 @@ const EditOrderPage = ({ params, tableId }) => {
       }
 
       // Log the initial state of the order before any updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -784,7 +784,7 @@ const EditOrderPage = ({ params, tableId }) => {
 
       // Fetch the order again if needed
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log("Order data after fetching:", orderData);
@@ -793,12 +793,12 @@ const EditOrderPage = ({ params, tableId }) => {
       // Fetch the tableId from the order data
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
       // Construct the API endpoint for updating the order based on order number
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       // Use the tableId from the order data
       const orderDataToUpdate = {
@@ -833,7 +833,7 @@ const EditOrderPage = ({ params, tableId }) => {
       await axios.patch(updateOrderEndpoint, orderDataToUpdate);
 
       const updatedOrderResponsed = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponsed.data;
       console.log(existingBill);
@@ -869,7 +869,7 @@ const EditOrderPage = ({ params, tableId }) => {
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -878,7 +878,7 @@ const EditOrderPage = ({ params, tableId }) => {
       }
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
 
       const updatedOrderData = updatedOrderResponse.data;
@@ -901,7 +901,7 @@ const EditOrderPage = ({ params, tableId }) => {
       };
 
       // Log the updated state of the order after updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -1076,7 +1076,7 @@ ${index.message}`;}).join("")}---------------------------------------------
 
       // Fetch the initial order data
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -1119,7 +1119,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       if (itemsForStockIn.length > 0) {
         // Make the stockIn API call with only decreased quantities
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -1127,7 +1127,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       }
 
       // Log the initial state of the order before any updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -1136,7 +1136,7 @@ ${index.message}`;}).join("")}---------------------------------------------
 
       // Fetch the order again if needed
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log("Order data after fetching:", orderData);
@@ -1145,12 +1145,12 @@ ${index.message}`;}).join("")}---------------------------------------------
       // Fetch the tableId from the order data
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
       // Construct the API endpoint for updating the order based on order number
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       // Use the tableId from the order data
       const orderDataToUpdate = {
@@ -1185,7 +1185,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       await axios.patch(updateOrderEndpoint, orderDataToUpdate);
 
       const updatedOrderResponsed = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponsed.data;
       console.log(existingBill);
@@ -1221,7 +1221,7 @@ ${index.message}`;}).join("")}---------------------------------------------
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -1230,7 +1230,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       }
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
 
       const updatedOrderData = updatedOrderResponse.data;
@@ -1253,7 +1253,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       };
 
       // Log the updated state of the order after updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -2078,7 +2078,7 @@ updateDateTime();
 
       // Fetch the initial order data
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -2121,7 +2121,7 @@ updateDateTime();
       if (itemsForStockIn.length > 0) {
         // Make the stockIn API call with only decreased quantities
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -2129,7 +2129,7 @@ updateDateTime();
       }
 
       // Log the initial state of the order before any updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -2138,7 +2138,7 @@ updateDateTime();
 
       // Fetch the order again if needed
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log("Order data after fetching:", orderData);
@@ -2146,12 +2146,12 @@ updateDateTime();
       // Fetch the tableId from the order data
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
       // Construct the API endpoint for updating the order based on order number
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       // Use the tableId from the order data
       const orderDataToUpdate = {
@@ -2186,7 +2186,7 @@ updateDateTime();
       await axios.patch(updateOrderEndpoint, orderDataToUpdate);
 
       const updatedOrderResponsed = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponsed.data;
       console.log(existingBill);
@@ -2218,7 +2218,7 @@ updateDateTime();
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -2227,7 +2227,7 @@ updateDateTime();
       }
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
 
       const updatedOrderData = updatedOrderResponse.data;
@@ -2250,7 +2250,7 @@ updateDateTime();
       };
 
       // Log the updated state of the order after updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -2425,7 +2425,7 @@ ${index.message}`;}).join("")}---------------------------------------------
 
       // Fetch the initial order data
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -2468,7 +2468,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       if (itemsForStockIn.length > 0) {
         // Make the stockIn API call with only decreased quantities
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -2476,7 +2476,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       }
 
       // Log the initial state of the order before any updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -2485,7 +2485,7 @@ ${index.message}`;}).join("")}---------------------------------------------
 
       // Fetch the order again if needed
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log("Order data after fetching:", orderData);
@@ -2493,12 +2493,12 @@ ${index.message}`;}).join("")}---------------------------------------------
       // Fetch the tableId from the order data
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
       // Construct the API endpoint for updating the order based on order number
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       // Use the tableId from the order data
       const orderDataToUpdate = {
@@ -2533,7 +2533,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       await axios.patch(updateOrderEndpoint, orderDataToUpdate);
 
       const updatedOrderResponsed = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponsed.data;
       console.log(existingBill);
@@ -2565,7 +2565,7 @@ ${index.message}`;}).join("")}---------------------------------------------
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -2574,7 +2574,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       }
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
 
       const updatedOrderData = updatedOrderResponse.data;
@@ -2597,7 +2597,7 @@ ${index.message}`;}).join("")}---------------------------------------------
       };
 
       // Log the updated state of the order after updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -3405,7 +3405,7 @@ updateDateTime();
 
       // Fetch the initial order data
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -3448,7 +3448,7 @@ updateDateTime();
       if (itemsForStockIn.length > 0) {
         // Make the stockIn API call with only decreased quantities
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -3456,7 +3456,7 @@ updateDateTime();
       }
 
       // Log the initial state of the order before any updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -3465,7 +3465,7 @@ updateDateTime();
 
       // Fetch the order again if needed
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log("Order data after fetching:", orderData);
@@ -3473,12 +3473,12 @@ updateDateTime();
       // Fetch the tableId from the order data
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
       // Construct the API endpoint for updating the order based on order number
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       // Use the tableId from the order data
       const orderDataToUpdate = {
@@ -3513,7 +3513,7 @@ updateDateTime();
       await axios.patch(updateOrderEndpoint, orderDataToUpdate);
 
       const updatedOrderResponsed = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponsed.data;
       console.log(existingBill);
@@ -3545,7 +3545,7 @@ updateDateTime();
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -3554,7 +3554,7 @@ updateDateTime();
       }
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
 
       const updatedOrderData = updatedOrderResponse.data;
@@ -3578,7 +3578,7 @@ updateDateTime();
 
       console.log(printOrderData);
       // Log the updated state of the order after updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -3713,7 +3713,7 @@ updateDateTime();
    const onlinePaymentAmount = calculateTotal().grandTotal; // Cash amount is the grand total
   
    // Call API to update the order with cash payment
-   await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`, {
+   await axios.patch(`http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`, {
      items: existingBill.items,
      subtotal: existingBill.subtotal,
      barSubtotal: existingBill.barSubtotal,
@@ -3775,7 +3775,7 @@ updateDateTime();
   
       // Fetch the initial order data
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -3821,7 +3821,7 @@ updateDateTime();
       // Only make stockIn API call if itemsForStockIn is not empty
       if (itemsForStockIn.length > 0) {
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -3829,7 +3829,7 @@ updateDateTime();
       }
   
       // Log the initial state of the order before any updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -3837,7 +3837,7 @@ updateDateTime();
       });
       // Fetch the order again if needed
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log("Order data after fetching:", orderData);
@@ -3845,12 +3845,12 @@ updateDateTime();
       // Fetch the tableId from the order data
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
       // Construct the API endpoint for updating the order based on order number
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       // Use the tableId from the order data
       const orderDataToUpdate = {
@@ -3885,7 +3885,7 @@ updateDateTime();
       await axios.patch(updateOrderEndpoint, orderDataToUpdate);
 
       const updatedOrderResponsed = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponsed.data;
       console.log(existingBill);
@@ -3917,7 +3917,7 @@ updateDateTime();
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -3926,7 +3926,7 @@ updateDateTime();
       }
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
 
       const updatedOrderData = updatedOrderResponse.data;
@@ -3950,7 +3950,7 @@ updateDateTime();
 
       console.log(printOrderData);
       // Log the updated state of the order after updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -3982,7 +3982,7 @@ updateDateTime();
    const onlinePaymentAmount = calculateTotal().grandTotal; // Cash amount is the grand total
   
    // Call API to update the order with cash payment
-   await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`, {
+   await axios.patch(`http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`, {
      items: existingBill.items,
      subtotal: existingBill.subtotal,
      barSubtotal: existingBill.barSubtotal,
@@ -4044,7 +4044,7 @@ updateDateTime();
 
       // Fetch the initial order data
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -4087,7 +4087,7 @@ updateDateTime();
       if (itemsForStockIn.length > 0) {
         // Make the stockIn API call with only decreased quantities
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -4095,7 +4095,7 @@ updateDateTime();
       }
 
       // Log the initial state of the order before any updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -4104,7 +4104,7 @@ updateDateTime();
 
       // Fetch the order again if needed
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log("Order data after fetching:", orderData);
@@ -4112,12 +4112,12 @@ updateDateTime();
       // Fetch the tableId from the order data
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
       // Construct the API endpoint for updating the order based on order number
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       // Use the tableId from the order data
       const orderDataToUpdate = {
@@ -4152,7 +4152,7 @@ updateDateTime();
       await axios.patch(updateOrderEndpoint, orderDataToUpdate);
 
       const updatedOrderResponsed = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponsed.data;
       console.log(existingBill);
@@ -4184,7 +4184,7 @@ updateDateTime();
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -4193,7 +4193,7 @@ updateDateTime();
       }
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
 
       const updatedOrderData = updatedOrderResponse.data;
@@ -4217,7 +4217,7 @@ updateDateTime();
 
       console.log(printOrderData);
       // Log the updated state of the order after updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -4352,7 +4352,7 @@ updateDateTime();
    const cashAmount = calculateTotal().grandTotal; // Cash amount is the grand total
   
    // Call API to update the order with cash payment
-   await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`, {
+   await axios.patch(`http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`, {
      items: existingBill.items,
      subtotal: existingBill.subtotal,
      barSubtotal: existingBill.barSubtotal,
@@ -4421,7 +4421,7 @@ updateDateTime();
   
       // Fetch the initial order data
       const initialOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const initialOrderData = initialOrderResponse.data;
       const initialItemsMap = new Map();
@@ -4465,7 +4465,7 @@ updateDateTime();
       // Only call stockIn API if there are valid items (with non-null barCategory)
       if (itemsForStockIn.length > 0) {
         await axios.post(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockIn",
+          "http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockIn",
           {
             items: itemsForStockIn,
           }
@@ -4473,7 +4473,7 @@ updateDateTime();
       }
   
       // Log the initial state of the order before any updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -4481,7 +4481,7 @@ updateDateTime();
       });  
       // Fetch the order again if needed
       const orderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const orderData = orderResponse.data;
       console.log("Order data after fetching:", orderData);
@@ -4489,12 +4489,12 @@ updateDateTime();
       // Fetch the tableId from the order data
       const tableId = orderData.tableId;
       const tableResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`
+        `http://172.188.99.139:5000/api/table/tables/${tableId}`
       );
       const tableInfo = tableResponse.data;
 
       // Construct the API endpoint for updating the order based on order number
-      const updateOrderEndpoint = `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-number/${orderNumber}`;
+      const updateOrderEndpoint = `http://172.188.99.139:5000/api/order/update-order-by-number/${orderNumber}`;
 
       // Use the tableId from the order data
       const orderDataToUpdate = {
@@ -4529,7 +4529,7 @@ updateDateTime();
       await axios.patch(updateOrderEndpoint, orderDataToUpdate);
 
       const updatedOrderResponsed = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
       const existingBill = updatedOrderResponsed.data;
       console.log(existingBill);
@@ -4561,7 +4561,7 @@ updateDateTime();
         selectedMenusList.length > 0
       ) {
         await axios.post(
-          `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/liquorBrand/stockOut`,
+          `http://172.188.99.139:5000/api/liquorBrand/liquorBrand/stockOut`,
           {
             selectedParentIds,
             selectedMenusList,
@@ -4570,7 +4570,7 @@ updateDateTime();
       }
 
       const updatedOrderResponse = await axios.get(
-        `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+        `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
       );
 
       const updatedOrderData = updatedOrderResponse.data;
@@ -4594,7 +4594,7 @@ updateDateTime();
 
       console.log(printOrderData);
       // Log the updated state of the order after updates
-      await axios.post(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/logHistory/log-history`, {
+      await axios.post(`http://172.188.99.139:5000/api/logHistory/log-history`, {
         orderNumber: orderNumber,
         updatedBy: "user", // You can replace this with the actual user information
         timestamp: new Date(),
@@ -4626,7 +4626,7 @@ updateDateTime();
    const cashAmount = calculateTotal().grandTotal; // Cash amount is the grand total
   
    // Call API to update the order with cash payment
-   await axios.patch(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/update-order-by-id/${orderIdToUpdate}`, {
+   await axios.patch(`http://172.188.99.139:5000/api/order/update-order-by-id/${orderIdToUpdate}`, {
      items: existingBill.items,
      subtotal: existingBill.subtotal,
      barSubtotal: existingBill.barSubtotal,
@@ -4689,7 +4689,7 @@ updateDateTime();
 
   useEffect(() => {
     axios
-      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main")
+      .get("http://172.188.99.139:5000/api/main")
       .then((response) => {
         console.log(response.data);
         setCategories(response.data);
@@ -4699,7 +4699,7 @@ updateDateTime();
       });
 
     axios
-      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list")
+      .get("http://172.188.99.139:5000/api/menu/menus/list")
       .then((response) => {
         const menusArray = response.data;
         setMenus(menusArray);
@@ -4715,7 +4715,7 @@ updateDateTime();
     }
     // Fetch categories
     axios
-      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/main/hide")
+      .get("http://172.188.99.139:5000/api/main/hide")
       .then((response) => {
         setCategories(response.data);
       })
@@ -4724,7 +4724,7 @@ updateDateTime();
       });
 
     axios
-      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorCategory/barMenus")
+      .get("http://172.188.99.139:5000/api/liquorCategory/barMenus")
       .then((response) => {
         console.log(response.data);
         setBarCategories(response.data);
@@ -4735,7 +4735,7 @@ updateDateTime();
 
     // Fetch products
     axios
-      .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list")
+      .get("http://172.188.99.139:5000/api/menu/menus/list")
       .then((response) => {
         console.log(response.data);
         const menusArray = response.data; // Ensure menus is an array
@@ -4747,7 +4747,7 @@ updateDateTime();
 
     if (tableId) {
       axios
-        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/table/tables/${tableId}`)
+        .get(`http://172.188.99.139:5000/api/table/tables/${tableId}`)
         .then((response) => {
           setTableInfo(response.data);
         })
@@ -4791,7 +4791,7 @@ updateDateTime();
     // Fetch menus based on the selected category
     if (selectedCategory) {
       axios
-        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/${selectedCategory._id}`)
+        .get(`http://172.188.99.139:5000/api/menu/${selectedCategory._id}`)
         .then((response) => {
           console.log(response.data);
           const menusArray = response.data || []; // Ensure menus is an array
@@ -4814,7 +4814,7 @@ updateDateTime();
     // If the category is null (All items), fetch all menus
     if (category === null) {
       axios
-        .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menus/list")
+        .get("http://172.188.99.139:5000/api/menu/menus/list")
         .then((response) => {
           console.log(response.data);
           setMenus(response.data);
@@ -4825,7 +4825,7 @@ updateDateTime();
     } else {
       // Fetch menus based on the selected category
       axios
-        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/menu/menulist/${category._id}`)
+        .get(`http://172.188.99.139:5000/api/menu/menulist/${category._id}`)
         .then((response) => {
           console.log(response.data);
           setMenus(response.data);
@@ -4850,7 +4850,7 @@ updateDateTime();
     // If the category is null (All items), fetch all menus
     if (category === null) {
       axios
-        .get("http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/barSubmenu/list")
+        .get("http://172.188.99.139:5000/api/liquorBrand/barSubmenu/list")
         .then((response) => {
           console.log(response.data);
           setBarMenus(response.data);
@@ -4861,7 +4861,7 @@ updateDateTime();
     } else {
       // Fetch menus based on the selected category
       axios
-        .get(`http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/liquorBrand/${category._id}`)
+        .get(`http://172.188.99.139:5000/api/liquorBrand/${category._id}`)
         .then((response) => {
           console.log(response.data);
           setBarMenus(response.data);
@@ -4981,7 +4981,7 @@ updateDateTime();
       try {
         // Fetch all hotels
         const allHotelsResponse = await axios.get(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get-all"
+          "http://172.188.99.139:5000/api/hotel/get-all"
         );
         const allHotels = allHotelsResponse.data;
 
@@ -4991,7 +4991,7 @@ updateDateTime();
         if (defaultHotelId) {
           // Fetch information for the first hotel
           const response = await axios.get(
-            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/hotel/get/${defaultHotelId}`
+            `http://172.188.99.139:5000/api/hotel/get/${defaultHotelId}`
           );
           const hotelInfo = response.data;
 
@@ -4999,7 +4999,7 @@ updateDateTime();
 
           // Fetch current order and calculate total CGST
           const updatedOrderResponse = await axios.get(
-            `http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/order/get/order/${orderNumber}`
+            `http://172.188.99.139:5000/api/order/get/order/${orderNumber}`
           );
           const updatedOrderData = updatedOrderResponse.data;
           const currentOrder = updatedOrderData;

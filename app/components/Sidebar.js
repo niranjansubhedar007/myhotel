@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { jwtDecode } from "jwt-decode";
 
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 import {
   faTruckMoving,
@@ -26,6 +27,8 @@ import {
   faRightFromBracket,
   faBars,
   faCircleInfo,
+  faOutdent,
+  faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
@@ -51,6 +54,8 @@ const Sidebar = () => {
     useState(false);
   const [isVendorMasterDropdownOpen, setIsVendorMasterDropdownOpen] =
     useState(false);
+  const [hotelInfo, setHotelInfo] = useState([]); // New state for hotel information
+
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [isMasterDropdownOpen, setIsMasterDropdownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -62,6 +67,7 @@ const Sidebar = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
   useEffect(() => {
     const token = localStorage.getItem("EmployeeAuthToken");
     if (token) {
@@ -321,7 +327,7 @@ const Sidebar = () => {
     const fetchItems = async () => {
       try {
         const response = await fetch(
-          "http://ec2-16-171-154-162.eu-north-1.compute.amazonaws.com:5000/api/item/items/equal-low-stock"
+          "http://172.188.99.139:5000/api/item/items/equal-low-stock"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
@@ -391,17 +397,37 @@ const Sidebar = () => {
   const openProxyLogin = () => {
     router.push("/proxyLogin");
   };
+
+  useEffect(() => {
+    const fetchHotelInfo = async () => {
+      try {
+        // Fetch all hotels
+        const response = await axios.get(
+          "http://172.188.99.139:5000/api/hotel/get-all"
+        );
+
+        setHotelInfo(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching hotel information:", error);
+      }
+    };
+
+    fetchHotelInfo();
+  }, []); // Empty dependency array ensures the effect runs only once on mount
+
   return (
     <>
       <div>
         <nav
           className="fixed top-0 z-50 w-full  border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
-          style={{ backgroundColor: "#E2F1E7" }}
+          style={{ backgroundColor: process.env.NEXT_PUBLIC_THIRD_COLOR }}
         >
           <div className="px-3 py-3 lg:px-5 lg:pl-3">
             <div className="flex items-center justify-between">
-              <div className="flex items-center justify-start rtl:justify-end">
-                <button
+              <div className="flex items-center justify-start">
+              {/*
+                     <button
                   data-drawer-target="logo-sidebar"
                   data-drawer-toggle="logo-sidebar"
                   aria-controls="logo-sidebar"
@@ -409,7 +435,27 @@ const Sidebar = () => {
                   className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                   onClick={toggleSidebar}
                 ></button>
+                
+                */}
+           
+                <div className="flex">
+                  <div className="">
+                    <FontAwesomeIcon
+                      icon={faHouse}
+                      onClick={home}
+                      className="cursor-pointer text-xl  text-[#ffffff] hover:text-[#b9e8eb] mt-0.5"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-[#ffffff]  lg:ml-4 md:ml-4 ml-2 font-semibold text-xl">
+                      {hotelInfo.length > 0
+                        ? hotelInfo[0].hotelName
+                        : "Hotel Not Found"}
+                    </p>
+                  </div>
+                </div>
               </div>
+
               <div className="flex items-center">
                 <div className="flex items-center ms-3">
                   <div className="relative mr-6">
@@ -417,14 +463,14 @@ const Sidebar = () => {
                       <FontAwesomeIcon
                         icon={faBell}
                         onClick={openModal}
-                        className="cursor-pointer text-xl text-[#629584] hover:text-[#387478]"
+                        className="cursor-pointer text-xl mt-1 ml-1 text-[#ffffff] hover:text-[#b9e8eb]"
                       />
                       {itemCount > 0 && (
                         <span
                           className="absolute -top-2 -right-6 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-orange-700  rounded-full border  border-gray-300"
                           style={{
-                            backgroundColor: "#E2F1E7",
-                            color: "#387478",
+                            backgroundColor: process.env.NEXT_PUBLIC_FIRST_COLOR,
+                            color: process.env.NEXT_PUBLIC_THIRD_COLOR,
                           }}
                         >
                           {itemCount}
@@ -564,16 +610,9 @@ const Sidebar = () => {
 
                   <div className="">
                     <FontAwesomeIcon
-                      icon={faHouse}
-                      onClick={home}
-                      className="cursor-pointer text-xl text-[#629584] hover:text-[#387478]"
-                    />
-                  </div>
-                  <div className="">
-                    <FontAwesomeIcon
                       icon={faRightFromBracket}
                       onClick={logout}
-                      className="cursor-pointer text-xl text-[#629584] hover:text-[#387478] ml-3 mt-1"
+                      className="cursor-pointer text-xl text-[#ffffff] hover:text-[#b9e8eb] ml-3 mt-1"
                     />
                   </div>
                 </div>
@@ -584,15 +623,16 @@ const Sidebar = () => {
 
         <aside
           id="logo-sidebar"
-          className={`fixed top-0 left-0 z-40 py-20  h-screen transition-transform  border-r  sm:translate-x-0 ${
+          className={`fixed top-0  left-0 z-40 py-20    h-screen transition-transform  border-r  sm:translate-x-0 ${
             isSidebarOpen ? "w-64" : "w-10"
           }`}
-          style={{ backgroundColor: "#629584" }}
+          style={{ backgroundColor: process.env.NEXT_PUBLIC_FIRST_COLOR}}
+
           aria-label="Sidebar"
         >
-          <div
-            className="h-full flex flex-col  pb-4    "
-            style={{ backgroundColor: "#629584" }}
+          <div className="h-full flex flex-col  pb-4    "
+       style={{ backgroundColor: process.env.NEXT_PUBLIC_FIRST_COLOR}}
+          
           >
             <div className="relative">
               <button
@@ -607,11 +647,14 @@ const Sidebar = () => {
               </button>
             </div>
             <div className="relative group inline-block">
-              <button className="outline-none focus:outline-none px-3 py-1  flex items-center text-white">
+              <button className="outline-none focus:outline-none px-3 py-1  flex items-center "
+            style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR}}
+              
+              >
                 <FontAwesomeIcon
                   icon={faCircleInfo}
                   size="lg"
-                  style={{ color: "#ffff" }}
+                  style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR }}
                 />
 
                 <span className="pr-1 font-semibold flex-1 ml-3 ">
@@ -634,7 +677,7 @@ const Sidebar = () => {
 
               <ul
                 className="border border-gray-400 rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32 "
-                style={{ backgroundColor: "#E2F1E7" }}
+                style={{ backgroundColor: process.env.NEXT_PUBLIC_FIRST_COLOR }}
               >
                 <li className=" px-1 py-1 whitespace-nowrap  hover:bg-[#a3dfcb] ">
                   <Link href="/hotel">
@@ -676,11 +719,14 @@ const Sidebar = () => {
             </div>
 
             <div className="mt-4 group inline-block">
-              <button className="outline-none focus:outline-none px-3 py-1  flex items-center text-white">
+              <button className="outline-none focus:outline-none px-3 py-1  flex items-center "
+            style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR}}
+              
+              >
                 <FontAwesomeIcon
                   icon={faCubes}
                   size="lg"
-                  style={{ color: "#ffff" }}
+                  style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR }}
                 />
                 <span className="pr-1 font-semibold flex-1 ml-3">
                   {isSidebarOpen ? "Masters" : ""}
@@ -701,8 +747,8 @@ const Sidebar = () => {
               </button>
 
               <ul
-                className=" border border-gray-400 rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32 "
-                style={{ backgroundColor: "#E2F1E7" }}
+                className=" border  border-gray-400 rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32 "
+                style={{ backgroundColor: process.env.NEXT_PUBLIC_FIRST_COLOR }}
               >
                 <div className="relative group inline-block mt-2">
                   <button
@@ -1138,11 +1184,14 @@ const Sidebar = () => {
             </div>
 
             <div className="mt-4 group inline-block w-full">
-              <button className="outline-none focus:outline-none px-3 py-1  flex items-center  text-white">
+              <button className="outline-none focus:outline-none px-3 py-1  flex items-center  "
+            style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR}}
+              
+              >
                 <FontAwesomeIcon
                   icon={faPaste}
                   size="lg"
-                  style={{ color: "#ffff" }}
+                  style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR }}
                 />
 
                 <span className="pr-1 font-semibold flex-1 ml-3 ">
@@ -1165,7 +1214,7 @@ const Sidebar = () => {
 
               <ul
                 className=" border border-gray-400 w-48 rounded-md transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32"
-                style={{ backgroundColor: "#E2F1E7" }}
+                style={{ backgroundColor: process.env.NEXT_PUBLIC_FIRST_COLOR }}
               >
                 <li className=" px-3 py-1 hover:bg-[#a3dfcb]">
                   <Link href="/purchase">
@@ -1203,11 +1252,14 @@ const Sidebar = () => {
 
             <div className="mt-4 group inline-block w-full">
               <Link href="/expense">
-                <button className="outline-none focus:outline-none px-4 py-1  flex items-center text-white">
+                <button className="outline-none focus:outline-none px-4 py-1  flex items-center "
+            style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR}}
+                
+                >
                   <FontAwesomeIcon
                     icon={faReceipt}
                     size="lg"
-                    style={{ color: "#ffff" }}
+                    style={{ color: process.env.NEXT_PUBLIC_THIRD_COLOR }}
                   />
                   <span className="pr-1 font-semibold flex-1 ml-3">
                     {isSidebarOpen ? "Expenses" : ""}
@@ -1216,21 +1268,7 @@ const Sidebar = () => {
               </Link>
             </div>
 
-            <div className="mt-4 group inline-block w-full">
-              <Link href="/order">
-                <button className="outline-none focus:outline-none px-3 py-1 flex items-center text-white">
-                  <FontAwesomeIcon
-                    icon={faBellConcierge}
-                    size="lg"
-                    style={{ color: "#ffff" }}
-                  />
-                  <span className="pr-1 font-semibold flex-1 ml-3">
-                    {" "}
-                    {isSidebarOpen ? "Order" : ""}
-                  </span>
-                </button>
-              </Link>
-            </div>
+        
           </div>
         </aside>
       </div>
